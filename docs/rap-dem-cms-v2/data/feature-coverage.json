@@ -1,0 +1,1497 @@
+[
+  {
+    "id": "CMS-001",
+    "phase": "P0",
+    "screenIds": [
+      "UI-035",
+      "UI-036"
+    ],
+    "apiOperations": [
+      "staff.list",
+      "staff.read",
+      "staff.create",
+      "staff.invite",
+      "staff.lock",
+      "staff.unlock",
+      "staff.revoke-sessions",
+      "auth.login",
+      "auth.mfa",
+      "auth.me",
+      "auth.csrf"
+    ],
+    "uat": [
+      "UAT-001",
+      "UAT-002",
+      "UAT-053"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-002",
+    "phase": "P0",
+    "screenIds": [
+      "UI-033"
+    ],
+    "apiOperations": [
+      "staff.list",
+      "staff.read",
+      "staff.create",
+      "staff.invite",
+      "staff.lock",
+      "staff.unlock",
+      "staff.revoke-sessions"
+    ],
+    "uat": [
+      "UAT-003"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-003",
+    "phase": "P0",
+    "screenIds": [
+      "UI-034"
+    ],
+    "apiOperations": [
+      "roles.list",
+      "roles.read",
+      "roles.create",
+      "roles.update",
+      "auth.me"
+    ],
+    "uat": [
+      "UAT-004",
+      "UAT-005",
+      "UAT-053"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-004",
+    "phase": "P0",
+    "screenIds": [
+      "UI-037"
+    ],
+    "apiOperations": [
+      "staff.list",
+      "staff.read",
+      "staff.create",
+      "staff.invite",
+      "staff.lock",
+      "staff.unlock",
+      "staff.revoke-sessions",
+      "auth.resetRequest",
+      "auth.resetComplete",
+      "auth.logout",
+      "sessions.list",
+      "sessions.revoke"
+    ],
+    "uat": [
+      "UAT-002",
+      "UAT-003",
+      "UAT-053"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-005",
+    "phase": "P0",
+    "screenIds": [
+      "UI-038"
+    ],
+    "apiOperations": [
+      "audit-events.list",
+      "audit-events.read"
+    ],
+    "uat": [
+      "UAT-006"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-006",
+    "phase": "P0",
+    "screenIds": [
+      "UI-001"
+    ],
+    "apiOperations": [
+      "analytics.read"
+    ],
+    "uat": [
+      "UAT-007"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-007",
+    "phase": "P0",
+    "screenIds": [
+      "UI-002"
+    ],
+    "apiOperations": [
+      "tasks.list",
+      "tasks.update",
+      "notifications.list",
+      "notifications.markRead"
+    ],
+    "uat": [
+      "UAT-008"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-008",
+    "phase": "P0",
+    "screenIds": [
+      "UI-001"
+    ],
+    "apiOperations": [
+      "bulk.execute"
+    ],
+    "uat": [
+      "UAT-009",
+      "UAT-055"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-009",
+    "phase": "P0",
+    "screenIds": [
+      "UI-003",
+      "UI-004",
+      "UI-005"
+    ],
+    "apiOperations": [
+      "movies.list",
+      "movies.read",
+      "movies.create",
+      "movies.update",
+      "movies.submit",
+      "movies.verify-rights",
+      "movies.withdraw",
+      "movies.restore",
+      "movies.archive",
+      "public.movie"
+    ],
+    "uat": [
+      "UAT-010",
+      "UAT-055"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-010",
+    "phase": "P0",
+    "screenIds": [
+      "UI-004"
+    ],
+    "apiOperations": [
+      "movies.list",
+      "movies.read",
+      "movies.create",
+      "movies.update",
+      "movies.submit",
+      "movies.verify-rights",
+      "movies.withdraw",
+      "movies.restore",
+      "movies.archive"
+    ],
+    "uat": [
+      "UAT-010"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-011",
+    "phase": "P0",
+    "screenIds": [
+      "UI-006"
+    ],
+    "apiOperations": [
+      "taxonomies.list",
+      "taxonomies.read",
+      "taxonomies.create",
+      "taxonomies.update",
+      "taxonomies.archive",
+      "public.taxonomies"
+    ],
+    "uat": [
+      "UAT-011"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-012",
+    "phase": "P1",
+    "screenIds": [],
+    "apiOperations": [],
+    "uat": [],
+    "status": "Backlog; not implemented",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-013",
+    "phase": "P0",
+    "screenIds": [
+      "UI-004"
+    ],
+    "apiOperations": [
+      "movies.list",
+      "movies.read",
+      "movies.create",
+      "movies.update",
+      "movies.submit",
+      "movies.verify-rights",
+      "movies.withdraw",
+      "movies.restore",
+      "movies.archive",
+      "privateFiles.upload",
+      "assets.privateAccess"
+    ],
+    "uat": [
+      "UAT-012"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-014",
+    "phase": "P0",
+    "screenIds": [
+      "UI-004"
+    ],
+    "apiOperations": [
+      "movies.list",
+      "movies.read",
+      "movies.create",
+      "movies.update",
+      "movies.submit",
+      "movies.verify-rights",
+      "movies.withdraw",
+      "movies.restore",
+      "movies.archive"
+    ],
+    "uat": [
+      "UAT-012"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-015",
+    "phase": "P0-C",
+    "screenIds": [
+      "UI-008"
+    ],
+    "apiOperations": [
+      "episodes.list",
+      "episodes.read",
+      "episodes.create",
+      "episodes.update",
+      "episodes.publish",
+      "episodes.withdraw"
+    ],
+    "uat": [
+      "UAT-013"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-016",
+    "phase": "P0",
+    "screenIds": [
+      "UI-004"
+    ],
+    "apiOperations": [
+      "movies.list",
+      "movies.read",
+      "movies.create",
+      "movies.update",
+      "movies.submit",
+      "movies.verify-rights",
+      "movies.withdraw",
+      "movies.restore",
+      "movies.archive"
+    ],
+    "uat": [
+      "UAT-014"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-017",
+    "phase": "P0",
+    "screenIds": [
+      "UI-007"
+    ],
+    "apiOperations": [
+      "assets.list",
+      "assets.read",
+      "assets.update",
+      "assets.archive",
+      "assets.rebuild-variants",
+      "assets.upload"
+    ],
+    "uat": [
+      "UAT-015"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-018",
+    "phase": "P0",
+    "screenIds": [
+      "UI-007"
+    ],
+    "apiOperations": [
+      "assets.list",
+      "assets.read",
+      "assets.update",
+      "assets.archive",
+      "assets.rebuild-variants"
+    ],
+    "uat": [
+      "UAT-015"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-019",
+    "phase": "P0",
+    "screenIds": [
+      "UI-007"
+    ],
+    "apiOperations": [
+      "assets.list",
+      "assets.read",
+      "assets.update",
+      "assets.archive",
+      "assets.rebuild-variants",
+      "assets.usage"
+    ],
+    "uat": [
+      "UAT-016"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-020",
+    "phase": "P0",
+    "screenIds": [
+      "UI-009"
+    ],
+    "apiOperations": [
+      "providers.list",
+      "providers.read",
+      "providers.create",
+      "providers.update",
+      "providers.disable"
+    ],
+    "uat": [
+      "UAT-017"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-021",
+    "phase": "P0",
+    "screenIds": [
+      "UI-010"
+    ],
+    "apiOperations": [
+      "sources.list",
+      "sources.read",
+      "sources.create",
+      "sources.update",
+      "sources.test",
+      "sources.disable",
+      "public.playback"
+    ],
+    "uat": [
+      "UAT-017"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-022",
+    "phase": "P0",
+    "screenIds": [
+      "UI-009",
+      "UI-011"
+    ],
+    "apiOperations": [
+      "providers.list",
+      "providers.read",
+      "providers.create",
+      "providers.update",
+      "providers.disable",
+      "providers.verifyCapability",
+      "privateFiles.upload"
+    ],
+    "uat": [
+      "UAT-018"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-023",
+    "phase": "P0",
+    "screenIds": [
+      "UI-010"
+    ],
+    "apiOperations": [
+      "sources.list",
+      "sources.read",
+      "sources.create",
+      "sources.update",
+      "sources.test",
+      "sources.disable"
+    ],
+    "uat": [
+      "UAT-017"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-024",
+    "phase": "P0-C",
+    "screenIds": [
+      "UI-010"
+    ],
+    "apiOperations": [
+      "sources.list",
+      "sources.read",
+      "sources.create",
+      "sources.update",
+      "sources.test",
+      "sources.disable",
+      "public.playback"
+    ],
+    "uat": [
+      "UAT-018"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-025",
+    "phase": "P1",
+    "screenIds": [],
+    "apiOperations": [],
+    "uat": [],
+    "status": "Backlog; not implemented",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-026",
+    "phase": "P0",
+    "screenIds": [
+      "UI-005"
+    ],
+    "apiOperations": [
+      "movies.list",
+      "movies.read",
+      "movies.create",
+      "movies.update",
+      "movies.submit",
+      "movies.verify-rights",
+      "movies.withdraw",
+      "movies.restore",
+      "movies.archive",
+      "movies.versions"
+    ],
+    "uat": [
+      "UAT-010",
+      "UAT-019"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-027",
+    "phase": "P0",
+    "screenIds": [
+      "UI-012",
+      "UI-013"
+    ],
+    "apiOperations": [
+      "reviews.list",
+      "reviews.read",
+      "reviews.approve",
+      "reviews.reject"
+    ],
+    "uat": [
+      "UAT-020"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-028",
+    "phase": "P0",
+    "screenIds": [
+      "UI-013",
+      "UI-015"
+    ],
+    "apiOperations": [
+      "reviews.list",
+      "reviews.read",
+      "reviews.approve",
+      "reviews.reject",
+      "previews.create"
+    ],
+    "uat": [
+      "UAT-021"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-029",
+    "phase": "P0",
+    "screenIds": [
+      "UI-014"
+    ],
+    "apiOperations": [
+      "releases.list",
+      "releases.read",
+      "releases.create",
+      "releases.retry",
+      "releases.rollback",
+      "releases.cancel"
+    ],
+    "uat": [
+      "UAT-022"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-030",
+    "phase": "P0",
+    "screenIds": [
+      "UI-014"
+    ],
+    "apiOperations": [
+      "releases.list",
+      "releases.read",
+      "releases.create",
+      "releases.retry",
+      "releases.rollback",
+      "releases.cancel",
+      "movies.versions"
+    ],
+    "uat": [
+      "UAT-022"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-031",
+    "phase": "P0",
+    "screenIds": [
+      "UI-014"
+    ],
+    "apiOperations": [
+      "releases.list",
+      "releases.read",
+      "releases.create",
+      "releases.retry",
+      "releases.rollback",
+      "releases.cancel",
+      "system.killSwitch"
+    ],
+    "uat": [
+      "UAT-023"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-032",
+    "phase": "P0",
+    "screenIds": [
+      "UI-017"
+    ],
+    "apiOperations": [
+      "home-sections.list",
+      "home-sections.read",
+      "home-sections.create",
+      "home-sections.update",
+      "home-sections.submit",
+      "home-sections.archive",
+      "public.home"
+    ],
+    "uat": [
+      "UAT-024"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-033",
+    "phase": "P0",
+    "screenIds": [
+      "UI-016"
+    ],
+    "apiOperations": [
+      "site-configs.list",
+      "site-configs.read",
+      "site-configs.create",
+      "site-configs.update",
+      "site-configs.submit",
+      "public.siteConfig"
+    ],
+    "uat": [
+      "UAT-024"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-034",
+    "phase": "P0",
+    "screenIds": [
+      "UI-016"
+    ],
+    "apiOperations": [
+      "site-configs.list",
+      "site-configs.read",
+      "site-configs.create",
+      "site-configs.update",
+      "site-configs.submit",
+      "public.siteConfig",
+      "public.taxonomies"
+    ],
+    "uat": [
+      "UAT-024"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-035",
+    "phase": "P0",
+    "screenIds": [
+      "UI-016"
+    ],
+    "apiOperations": [
+      "site-configs.list",
+      "site-configs.read",
+      "site-configs.create",
+      "site-configs.update",
+      "site-configs.submit",
+      "public.siteConfig"
+    ],
+    "uat": [
+      "UAT-024"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-036",
+    "phase": "P0",
+    "screenIds": [
+      "UI-018"
+    ],
+    "apiOperations": [
+      "pages.list",
+      "pages.read",
+      "pages.create",
+      "pages.update",
+      "pages.submit",
+      "pages.archive"
+    ],
+    "uat": [
+      "UAT-025"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-037",
+    "phase": "P0",
+    "screenIds": [
+      "UI-018"
+    ],
+    "apiOperations": [
+      "pages.list",
+      "pages.read",
+      "pages.create",
+      "pages.update",
+      "pages.submit",
+      "pages.archive",
+      "redirects.list"
+    ],
+    "uat": [
+      "UAT-025"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-038",
+    "phase": "P1",
+    "screenIds": [],
+    "apiOperations": [],
+    "uat": [],
+    "status": "Backlog; not implemented",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-039",
+    "phase": "P0",
+    "screenIds": [],
+    "apiOperations": [
+      "public.movies",
+      "public.taxonomies"
+    ],
+    "uat": [
+      "UAT-026"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-040",
+    "phase": "P1",
+    "screenIds": [],
+    "apiOperations": [],
+    "uat": [],
+    "status": "Backlog; not implemented",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-041",
+    "phase": "P0",
+    "screenIds": [],
+    "apiOperations": [
+      "public.movies",
+      "public.movie"
+    ],
+    "uat": [
+      "UAT-026"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-042",
+    "phase": "P0",
+    "screenIds": [],
+    "apiOperations": [
+      "ad-partners.list",
+      "ad-partners.read",
+      "ad-partners.create",
+      "ad-partners.update",
+      "ad-partners.deactivate",
+      "privateFiles.upload"
+    ],
+    "uat": [
+      "UAT-027"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-043",
+    "phase": "P0",
+    "screenIds": [
+      "UI-019",
+      "UI-020"
+    ],
+    "apiOperations": [
+      "campaigns.list",
+      "campaigns.read",
+      "campaigns.create",
+      "campaigns.update",
+      "campaigns.submit",
+      "campaigns.activate",
+      "campaigns.pause",
+      "campaigns.resume",
+      "campaigns.end",
+      "campaigns.block"
+    ],
+    "uat": [
+      "UAT-027"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-044",
+    "phase": "P0",
+    "screenIds": [
+      "UI-021"
+    ],
+    "apiOperations": [
+      "creatives.list",
+      "creatives.read",
+      "creatives.create",
+      "creatives.update",
+      "creatives.submit",
+      "creatives.block"
+    ],
+    "uat": [
+      "UAT-028"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-045",
+    "phase": "P0",
+    "screenIds": [
+      "UI-022"
+    ],
+    "apiOperations": [
+      "placements.list",
+      "placements.read",
+      "placements.create",
+      "placements.update",
+      "placements.disable"
+    ],
+    "uat": [
+      "UAT-029",
+      "UAT-054"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-046",
+    "phase": "P0",
+    "screenIds": [
+      "UI-019"
+    ],
+    "apiOperations": [
+      "campaigns.list",
+      "campaigns.read",
+      "campaigns.create",
+      "campaigns.update",
+      "campaigns.submit",
+      "campaigns.activate",
+      "campaigns.pause",
+      "campaigns.resume",
+      "campaigns.end",
+      "campaigns.block",
+      "assignments.list",
+      "assignments.read",
+      "assignments.create",
+      "assignments.update",
+      "assignments.disable",
+      "public.adDecision"
+    ],
+    "uat": [
+      "UAT-030",
+      "UAT-034",
+      "UAT-035"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-047",
+    "phase": "P0-C",
+    "screenIds": [
+      "UI-025"
+    ],
+    "apiOperations": [
+      "ad-policies.list",
+      "ad-policies.read",
+      "ad-policies.create",
+      "ad-policies.update",
+      "ad-policies.submit",
+      "ad-policies.disable",
+      "public.adDecision"
+    ],
+    "uat": [
+      "UAT-036",
+      "UAT-054"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-048",
+    "phase": "P0-C",
+    "screenIds": [
+      "UI-025"
+    ],
+    "apiOperations": [
+      "ad-policies.list",
+      "ad-policies.read",
+      "ad-policies.create",
+      "ad-policies.update",
+      "ad-policies.submit",
+      "ad-policies.disable",
+      "public.adDecision"
+    ],
+    "uat": [
+      "UAT-037",
+      "UAT-054"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-049",
+    "phase": "P0-C",
+    "screenIds": [
+      "UI-025"
+    ],
+    "apiOperations": [
+      "ad-policies.list",
+      "ad-policies.read",
+      "ad-policies.create",
+      "ad-policies.update",
+      "ad-policies.submit",
+      "ad-policies.disable"
+    ],
+    "uat": [
+      "UAT-038"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-050",
+    "phase": "P0",
+    "screenIds": [
+      "UI-021"
+    ],
+    "apiOperations": [
+      "creatives.list",
+      "creatives.read",
+      "creatives.create",
+      "creatives.update",
+      "creatives.submit",
+      "creatives.block"
+    ],
+    "uat": [
+      "UAT-028"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-051",
+    "phase": "P0",
+    "screenIds": [
+      "UI-019"
+    ],
+    "apiOperations": [
+      "campaigns.list",
+      "campaigns.read",
+      "campaigns.create",
+      "campaigns.update",
+      "campaigns.submit",
+      "campaigns.activate",
+      "campaigns.pause",
+      "campaigns.resume",
+      "campaigns.end",
+      "campaigns.block",
+      "system.killSwitch"
+    ],
+    "uat": [
+      "UAT-034"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-052",
+    "phase": "P0-C",
+    "screenIds": [
+      "UI-025"
+    ],
+    "apiOperations": [
+      "ad-policies.list",
+      "ad-policies.read",
+      "ad-policies.create",
+      "ad-policies.update",
+      "ad-policies.submit",
+      "ad-policies.disable",
+      "adAdapters.list",
+      "adAdapters.verify",
+      "adAdapters.disable"
+    ],
+    "uat": [
+      "UAT-039"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-053",
+    "phase": "P1",
+    "screenIds": [],
+    "apiOperations": [],
+    "uat": [],
+    "status": "Backlog; not implemented",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-054",
+    "phase": "P0",
+    "screenIds": [
+      "UI-026"
+    ],
+    "apiOperations": [
+      "analytics.read",
+      "public.adEvent"
+    ],
+    "uat": [
+      "UAT-007",
+      "UAT-040"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-055",
+    "phase": "P0",
+    "screenIds": [
+      "UI-026"
+    ],
+    "apiOperations": [
+      "analytics.read"
+    ],
+    "uat": [
+      "UAT-041"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-056",
+    "phase": "P0",
+    "screenIds": [
+      "UI-026"
+    ],
+    "apiOperations": [
+      "analytics.read"
+    ],
+    "uat": [
+      "UAT-007",
+      "UAT-041"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-057",
+    "phase": "P0",
+    "screenIds": [
+      "UI-028"
+    ],
+    "apiOperations": [
+      "revenue-imports.list",
+      "revenue-imports.read",
+      "revenue-imports.create",
+      "revenue-imports.validate",
+      "revenue-imports.commit",
+      "revenue-imports.supersede",
+      "revenueFiles.upload",
+      "assets.privateAccess",
+      "revenueImports.errors"
+    ],
+    "uat": [
+      "UAT-042",
+      "UAT-043"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-058",
+    "phase": "P0",
+    "screenIds": [
+      "UI-027",
+      "UI-029"
+    ],
+    "apiOperations": [
+      "statements.list",
+      "statements.read",
+      "statements.create",
+      "statements.update",
+      "statements.submit",
+      "statements.confirm",
+      "statements.lock"
+    ],
+    "uat": [
+      "UAT-043",
+      "UAT-044"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-059",
+    "phase": "P0",
+    "screenIds": [
+      "UI-030"
+    ],
+    "apiOperations": [
+      "payments.list",
+      "payments.read",
+      "payments.create",
+      "payments.update",
+      "payments.confirm",
+      "payments.reverse"
+    ],
+    "uat": [
+      "UAT-045"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-060",
+    "phase": "P0",
+    "screenIds": [],
+    "apiOperations": [
+      "reports.export"
+    ],
+    "uat": [
+      "UAT-046"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-061",
+    "phase": "P1",
+    "screenIds": [],
+    "apiOperations": [],
+    "uat": [],
+    "status": "Backlog; not implemented",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-062",
+    "phase": "P0",
+    "screenIds": [
+      "UI-031"
+    ],
+    "apiOperations": [
+      "reports.list",
+      "reports.read",
+      "reports.update",
+      "reports.triage",
+      "reports.start",
+      "reports.resolve",
+      "reports.close",
+      "reports.reopen",
+      "public.report"
+    ],
+    "uat": [
+      "UAT-047",
+      "UAT-055"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-063",
+    "phase": "P0",
+    "screenIds": [
+      "UI-031",
+      "UI-032"
+    ],
+    "apiOperations": [
+      "reports.list",
+      "reports.read",
+      "reports.update",
+      "reports.triage",
+      "reports.start",
+      "reports.resolve",
+      "reports.close",
+      "reports.reopen"
+    ],
+    "uat": [
+      "UAT-047"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-064",
+    "phase": "P0",
+    "screenIds": [
+      "UI-032"
+    ],
+    "apiOperations": [
+      "reports.list",
+      "reports.read",
+      "reports.update",
+      "reports.triage",
+      "reports.start",
+      "reports.resolve",
+      "reports.close",
+      "reports.reopen",
+      "takedowns.create",
+      "takedownRequests.create"
+    ],
+    "uat": [
+      "UAT-048"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-065",
+    "phase": "P0",
+    "screenIds": [
+      "UI-016"
+    ],
+    "apiOperations": [
+      "site-configs.list",
+      "site-configs.read",
+      "site-configs.create",
+      "site-configs.update",
+      "site-configs.submit",
+      "system.killSwitch"
+    ],
+    "uat": [
+      "UAT-023"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-066",
+    "phase": "P0",
+    "screenIds": [
+      "UI-040"
+    ],
+    "apiOperations": [
+      "system.settingsRead",
+      "system.settingsUpdate"
+    ],
+    "uat": [
+      "UAT-049"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-067",
+    "phase": "P0",
+    "screenIds": [
+      "UI-039"
+    ],
+    "apiOperations": [
+      "jobs.list",
+      "jobs.read",
+      "jobs.retry"
+    ],
+    "uat": [
+      "UAT-050"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-068",
+    "phase": "P0",
+    "screenIds": [
+      "UI-039"
+    ],
+    "apiOperations": [
+      "jobs.list",
+      "jobs.read",
+      "jobs.retry"
+    ],
+    "uat": [
+      "UAT-050"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-069",
+    "phase": "P0",
+    "screenIds": [
+      "UI-041"
+    ],
+    "apiOperations": [
+      "jobs.list",
+      "jobs.read",
+      "jobs.retry",
+      "backups.list",
+      "backups.create",
+      "restores.create"
+    ],
+    "uat": [
+      "UAT-051"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-070",
+    "phase": "P0",
+    "screenIds": [
+      "UI-040"
+    ],
+    "apiOperations": [
+      "system.settingsRead",
+      "system.settingsUpdate"
+    ],
+    "uat": [
+      "UAT-052"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-071",
+    "phase": "P0",
+    "screenIds": [
+      "UI-040"
+    ],
+    "apiOperations": [
+      "system.settingsRead",
+      "auth.csrf"
+    ],
+    "uat": [
+      "UAT-017",
+      "UAT-052"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-072",
+    "phase": "P0",
+    "screenIds": [
+      "UI-040"
+    ],
+    "apiOperations": [
+      "providers.rotateSecret"
+    ],
+    "uat": [
+      "UAT-006",
+      "UAT-049"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-073",
+    "phase": "P1",
+    "screenIds": [],
+    "apiOperations": [],
+    "uat": [],
+    "status": "Backlog; not implemented",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-074",
+    "phase": "P1",
+    "screenIds": [],
+    "apiOperations": [],
+    "uat": [],
+    "status": "Backlog; not implemented",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-075",
+    "phase": "P2",
+    "screenIds": [],
+    "apiOperations": [],
+    "uat": [],
+    "status": "Backlog; not implemented",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-076",
+    "phase": "P2",
+    "screenIds": [],
+    "apiOperations": [],
+    "uat": [],
+    "status": "Backlog; not implemented",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-077",
+    "phase": "P2",
+    "screenIds": [],
+    "apiOperations": [],
+    "uat": [],
+    "status": "Backlog; not implemented",
+    "note": "No dedicated interactive screen. See catalog/contract or backlog."
+  },
+  {
+    "id": "CMS-078",
+    "phase": "P0",
+    "screenIds": [
+      "UI-023",
+      "UI-024"
+    ],
+    "apiOperations": [
+      "reservations.list",
+      "reservations.read",
+      "reservations.create",
+      "reservations.update",
+      "reservations.confirm",
+      "reservations.cancel"
+    ],
+    "uat": [
+      "UAT-031",
+      "UAT-032",
+      "UAT-033",
+      "UAT-034"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  },
+  {
+    "id": "CMS-079",
+    "phase": "P0",
+    "screenIds": [
+      "UI-023",
+      "UI-024"
+    ],
+    "apiOperations": [
+      "reservations.list",
+      "reservations.read",
+      "reservations.create",
+      "reservations.update",
+      "reservations.confirm",
+      "reservations.cancel",
+      "reservations.check"
+    ],
+    "uat": [
+      "UAT-031",
+      "UAT-032",
+      "UAT-033"
+    ],
+    "status": "Requirement specified; no production implementation",
+    "note": "See per-screen interaction coverage"
+  }
+]

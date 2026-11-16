@@ -1,0 +1,60 @@
+{
+  "heroTitle": "Tối nay xem gì?",
+  "heroHint": "Nhập tên phim hoặc chọn thể loại bên dưới.",
+  "searchPlaceholder": "Tìm tên phim…",
+  "footer": [
+    {
+      "heading": "Khám phá",
+      "links": [
+        {
+          "label": "Mới cập nhật",
+          "href": "/moi-cap-nhat"
+        },
+        {
+          "label": "Phim lẻ",
+          "href": "/phim-le"
+        },
+        {
+          "label": "Phim bộ",
+          "href": "/phim-bo"
+        },
+        {
+          "label": "Thể loại",
+          "href": "/the-loai"
+        }
+      ]
+    },
+    {
+      "heading": "Hỗ trợ & chính sách",
+      "links": [
+        {
+          "label": "Trung tâm hỗ trợ",
+          "href": "/ho-tro"
+        },
+        {
+          "label": "Góp ý & báo lỗi",
+          "href": "/gop-y"
+        },
+        {
+          "label": "Điều khoản sử dụng",
+          "href": "/dieu-khoan"
+        },
+        {
+          "label": "Chính sách riêng tư",
+          "href": "/rieng-tu"
+        }
+      ]
+    },
+    {
+      "heading": "Hợp tác quảng cáo",
+      "description": "Kết nối thương hiệu với khán giả yêu phim.",
+      "links": [
+        {
+          "label": "Liên hệ hợp tác",
+          "href": "/hop-tac"
+        }
+      ]
+    }
+  ],
+  "notes": "Placeholder MVP không hứa tìm diễn viên P1; cần xác nhận D-12. Footer kế thừa V18 nguyên danh sách."
+}

@@ -1,0 +1,28 @@
+{
+  "scope": "Delivery links, actual PNG dimensions, diagram overflow, QA contact sheets",
+  "checks": [
+    {
+      "name": "diagram 01-viewer-flow",
+      "status": "PASS"
+    },
+    {
+      "name": "diagram 02-cms-flow",
+      "status": "PASS"
+    },
+    {
+      "name": "diagram 03-combined-flow",
+      "status": "PASS"
+    },
+    {
+      "name": "Local HTML links and asset existence",
+      "status": "PASS",
+      "links": 601
+    },
+    {
+      "name": "PNG IHDR dimensions match manifests",
+      "status": "PASS",
+      "count": 140
+    }
+  ],
+  "errors": []
+}

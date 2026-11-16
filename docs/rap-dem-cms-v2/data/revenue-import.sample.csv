@@ -1,0 +1,3 @@
+sourceRowId,partnerId,reportDate,sourceTimezone,campaignExternalId,placementExternalId,currency,billableImpressions,clicks,grossMinor,adjustmentMinor,reportVersion
+row-demo-1,partner-demo,2026-11-16,Asia/Bangkok,campaign-a,HOME_TOP_DESKTOP,VND,1000,8,120000,0,demo-1
+row-demo-2,partner-demo,2026-11-16,Asia/Bangkok,campaign-b,WATCH_INLINE_DESKTOP,VND,500,4,60000,0,demo-1

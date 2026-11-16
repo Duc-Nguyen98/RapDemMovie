@@ -1,0 +1,134 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quy tắc quảng cáo và lịch đặt chỗ — Rạp Đêm CMS V2</title><style>*{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:#263243;font:16px/1.65 'Segoe UI',Arial,sans-serif}header{background:#151b25;color:white;padding:34px max(5vw,24px)}header a{color:#f3c459}main{max-width:1300px;margin:auto;padding:35px 28px 70px}h1{font-size:34px;line-height:1.25}h2{font-size:25px;margin:36px 0 14px}h3{font-size:20px}p,li{max-width:1050px}a{color:#855d12}a:hover{text-decoration:underline}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #426ce4;outline-offset:3px}.lead{font-size:19px;color:#b8c3d5;max-width:1050px}.note{background:#fff4d8;border-left:4px solid #d5a23c;padding:16px 20px;border-radius:7px;margin:20px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.card{background:white;border:1px solid #dfe5ed;border-radius:12px;padding:23px}.card h2{margin:0 0 10px}.muted{color:#647186;font-size:14px}.button{display:inline-block;background:#f3c459;color:#30240b;border-radius:7px;padding:10px 18px;text-decoration:none;font-weight:600;margin:5px 10px 5px 0}.scroll{overflow:auto;background:white;border:1px solid #dce3ed;border-radius:8px;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px;background:white}th{background:#253244;color:white;text-align:left;position:sticky;top:0}th,td{padding:12px 15px;border-bottom:1px solid #e2e7ef;vertical-align:top}td{min-width:130px}tr:nth-child(even){background:#f7f8fa}code{background:#e7edf5;padding:2px 5px;border-radius:4px;font:13px Consolas,monospace;overflow-wrap:anywhere}pre{overflow:auto;background:#202c3d;color:#e4eaf3;padding:20px;border-radius:8px}pre code{background:transparent;color:inherit}img{max-width:100%;height:auto;border:1px solid #dde4ee;border-radius:10px}details{border:1px solid #dce3ed;background:white;border-radius:9px;padding:15px;margin:12px 0}summary{cursor:pointer;font-weight:650}.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}.gallery figure{margin:0;background:white;padding:12px;border:1px solid #dfe5ed;border-radius:12px}.gallery figcaption{font-size:14px;padding:10px 0}.gallery img{display:block;width:100%;max-height:330px;object-fit:contain;object-position:top;background:#edf0f4}select,input,button{font:inherit;padding:9px 12px;border:1px solid #bbc5d5;border-radius:6px}nav{display:flex;gap:16px;flex-wrap:wrap}footer{padding:30px;text-align:center;font-size:13px;color:#617085}@media(max-width:650px){main{padding:25px 16px}h1{font-size:28px}.gallery{grid-template-columns:1fr}header{padding:25px 18px}}</style></head><body><header><nav><a href="../index.html">← Mục lục CMS V2</a><span>Thiết kế & contract · 16/11/2026</span></nav></header><main><h1>Quy tắc quảng cáo và lịch đặt chỗ</h1>
+<h2>1. Mô hình áp dụng</h2>
+<p>Hai cơ chế: <strong>thuê độc quyền một vị trí theo khoảng thời gian</strong> và <strong>chia sẻ theo trọng số khi không có đặt chỗ độc quyền</strong>. Nội dung house là dự phòng đã được duyệt. Không có đấu giá, tối ưu giá động, tự refresh hoặc cam kết doanh thu trong MVP.</p>
+<p>Campaign quản lý mục tiêu/lịch/đối tác; Creative quản lý nội dung; Placement xác định vị trí giao diện; Assignment gán creative vào vị trí; Reservation giữ độc quyền. Không dùng một cột priority để thay cả năm đối tượng này.</p>
+<h2>2. Đặt chỗ và chống xung đột</h2>
+<ol>
+<li>Người quảng cáo soạn reservation draft: campaign exclusive, danh sách slot theo thiết bị, startsAt/endsAt, fallback, reason.</li>
+<li>UI gọi kiểm tra xung đột để gợi ý. Kết quả không giữ chỗ và có thể hết đúng ngay khi người khác xác nhận.</li>
+<li>Owner/Admin confirm: kiểm quyền, revision, campaign approval, schedule/device/slot và quyền nội dung creative.</li>
+<li>Trong <strong>một transaction</strong>, khóa các slot theo thứ tự ID cố định; tìm mọi reservation confirmed có <code>a.start &lt; b.end &amp;&amp; b.start &lt; a.end</code>; có xung đột thì rollback toàn bộ. Cần DB constraint hoặc isolation phù hợp, không chỉ check rồi insert ngoài transaction.</li>
+<li>“Tất cả thiết bị” được chuẩn hóa thành slot desktop/tablet/mobile. Confirm nhiều slot là all-or-nothing; không âm thầm bán được desktop nhưng bỏ mobile.</li>
+<li>Chạm biên không trùng: A kết thúc 20/11 00:00, B bắt đầu cùng lúc là hợp lệ. Server dùng UTC; UI hiển thị UTC+7.</li>
+<li>Campaign pause/blocked/creative lỗi <strong>vẫn giữ reservation</strong>. Chỉ explicit cancel có lý do hoặc thời gian kết thúc mới hết độc quyền. Đổi lịch confirmed: cancel+create thay thế trong transaction, không có khe hở chiếm chỗ giữa chừng.</li>
+<li>Duplicate submit cùng idempotency key trả kết quả cũ. Hai key khác nhau cạnh tranh một slot: tối đa một confirm thành công, request kia 409 BOOKING_CONFLICT. Audit cả kết quả quan trọng.</li>
+</ol>
+<h2>3. Thứ tự phân phối</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Bước</th>
+<th>Điều kiện</th>
+<th>Kết quả</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Kill switch, slot disabled, policy chưa approved, thiết bị không hợp lệ</td>
+<td>no_fill, không tạo quảng cáo giả</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Có nhiều reservation độc quyền cùng slot/time (dữ liệu lỗi)</td>
+<td>fail closed, no_fill, cảnh báo vận hành</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Có một reservation confirmed còn hiệu lực</td>
+<td>Chỉ xét campaign đó và creative approved cùng campaign</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Độc quyền không có creative khả dụng</td>
+<td>approved_house nếu reservation cho phép; nếu không collapse. <strong>Không chuyển sang shared trả tiền khác</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Không có reservation</td>
+<td>Lọc shared active theo schedule/device/format/approval; chọn theo weight 1–100</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Không có shared hợp lệ</td>
+<td>house approved hoặc no_fill</td>
+</tr>
+</tbody></table></div>
+<p>Với 60/40, xác suất mục tiêu là 0,6/0,4 trên tập đủ điều kiện; không hứa đúng 6/4 ở mỗi 10 lượt. Không đặt hai creative cùng campaign gây sai trọng số mà không có quy tắc: weight thuộc assignment; tổng weight của campaign là tổng assignments hợp lệ. DEV phải ghi rõ khi UI dùng weight theo creative, không gắn nhãn “tỷ trọng campaign” sai.</p>
+<p>Quyết định server có decisionId/token ký và configVersion. Một lượt mount là một request; không tự refresh. Nội dung trả về có nhãn “Quảng cáo”/“Tài trợ”, đích HTTPS đã duyệt. Nếu bên thứ ba không cho phép đo visible trong iframe, không bịa số billable.</p>
+<h2>4. Quy tắc trải nghiệm — giá trị đề xuất, cần ký duyệt</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Mục</th>
+<th>Đề xuất</th>
+<th>Trạng thái</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Modal</td>
+<td>Chỉ HOME; chờ ≥3 giây sau route ổn định; tối đa 1/24 giờ và 1/phiên trên trình duyệt</td>
+<td>Chờ duyệt thông số</td>
+</tr>
+<tr>
+<td>Đóng modal</td>
+<td>X nhìn gọn nhưng vùng bấm ≥44×44 CSS px; Esc; không khóa bằng đồng hồ giả</td>
+<td>Chờ duyệt kích thước vùng bấm</td>
+</tr>
+<tr>
+<td>Thời gian lỗi ad</td>
+<td>Timeout 3 giây; đóng/bỏ slot, không chặn nội dung</td>
+<td>Chờ duyệt timeout</td>
+</tr>
+<tr>
+<td>Floating</td>
+<td>Chờ ≥8 giây và scroll ≥25%; đóng thì nghỉ 24 giờ; một slot mobile một lúc</td>
+<td>Chờ duyệt</td>
+</tr>
+<tr>
+<td>Khoảng đáy</td>
+<td>12px + safe-area-inset-bottom; không đè bottom nav/footer/player</td>
+<td>Chờ duyệt</td>
+</tr>
+<tr>
+<td>Loại trừ</td>
+<td>Không modal và floating cùng lúc; ẩn floating khi dialog/menu/bàn phím/fullscreen hoặc player/footer giao viewport</td>
+<td>Quy tắc an toàn trong contract; cần test thật</td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td>Một banner 320×50 hoặc co theo max-width viewport−32px; không hai popup hai góc đồng thời</td>
+<td>Phương án cần chủ sản phẩm chốt</td>
+</tr>
+<tr>
+<td>Tablet</td>
+<td>Chỉ rail khi đủ khoảng ngoài nội dung; còn lại chuyển slot inline đã đăng ký</td>
+<td>Chờ duyệt layout/slot</td>
+</tr>
+<tr>
+<td>Desktop</td>
+<td>Rail ngoài nội dung, nhiều slot xếp dọc có khoảng cách; không nhiều fixed chồng nhau</td>
+<td>Cần đối chiếu slot registry với frontend V18</td>
+</tr>
+<tr>
+<td>Auto refresh</td>
+<td>Tắt mặc định</td>
+<td>Đề xuất MVP</td>
+</tr>
+</tbody></table></div>
+<p>Cap key theo site + slot family + policyVersion, không theo campaign để tránh lách cap khi đổi chiến dịch. Tính lượt khi creative đã hiển thị thành công; khi lỗi không đánh dấu impression nhưng có cooldown lỗi trong phiên để không lặp liên tục. Khi storage không khả dụng, giữ cap trong bộ nhớ phiên và chọn mặc định không tăng tần suất. Không fingerprint người xem để đồng bộ thiết bị.</p>
+<p>Đóng modal không làm floating xuất hiện ngay: floating vẫn phải đủ delay/scroll và không trong cooldown của policy. Khi quay lại route, cap còn hiệu lực. Đổi route bỏ quảng cáo cũ, không giữ overlay trên màn không được phép.</p>
+<p>Các kích thước ở prototype là ví dụ UI CMS. Không thay bộ ảnh website V18, không phải inventory đã được đối tác bán. Số lượng vị trí không bảo đảm doanh thu; đo tỷ lệ tải, viewability nội bộ, tác động trải nghiệm và báo cáo đối tác trước tăng mật độ.</p>
+<h2>5. Preroll và trình phát</h2>
+<p>Preroll chỉ qua API/SDK/cấu hình được đối tác cho phép và đã có evidence. Skip chỉ khi có event/mốc skip thực. Không phủ banner giả lên iframe rồi tính là video ad. Nếu không hỗ trợ preroll mà đây là yêu cầu bắt buộc ra mắt, phải xin quyết định thay đổi scope/đối tác, không nghiệm thu banner-only là hoàn tất.</p>
+<h2>6. Đo lường, tiền và báo cáo</h2>
+<ul>
+<li>Phân biệt request, loaded, visible_internal, click, close, error và billable của đối tác. Events client không phải sổ doanh thu.</li>
+<li>Visible nội bộ đề xuất: ảnh có ≥50% diện tích trong viewport liên tục ≥1 giây khi tab visible; đây là định nghĩa nội bộ cần duyệt, không tự coi là chuẩn tính tiền đối tác.</li>
+<li>Mỗi eventId duy nhất, bind decisionToken, slot/campaign/creative/device/version; server dedupe, rate limit, loại test/bot theo rule đã duyệt. Không trust occurredAt tuyệt đối.</li>
+<li>Báo cáo ghi rõ nguồn, timezone, currency, ngày dữ liệu gần nhất và định nghĩa. Thiếu dữ liệu là N/A, không 0.</li>
+<li>Doanh thu xác nhận từ CSV/API/hợp đồng; payment ledger chỉ tiền đã nhận. Không cộng VND với USD, không quy đổi tỷ giá tự đặt.</li>
+<li>Mô hình giá flat/CPM/CPC/mixed, thuế, phí, kỳ và xử lý chênh lệch chờ thỏa thuận thật. Không ghi giá demo vào hợp đồng production.</li>
+</ul>
+<h2>7. Vận hành khi quảng cáo lỗi</h2>
+<p>Tắt slot/campaign hoặc kill switch theo mức độ; giữ reservation để không bán trùng; kiểm logs không secret; liên hệ người phụ trách; chỉ bật lại sau test creative/URL/cap. Nếu có nội dung không phù hợp, block creative ngay nhưng không xóa evidence/audit. Không tự hoàn tiền hoặc hứa bồi thường bằng logic hệ thống.</p>
+</main><footer>Rạp Đêm CMS V2 · Chưa triển khai production · Không có doanh thu hoặc tích hợp thật trong bộ mẫu</footer></body></html>

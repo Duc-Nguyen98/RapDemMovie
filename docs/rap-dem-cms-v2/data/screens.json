@@ -1,0 +1,548 @@
+[
+  {
+    "id": "UI-001",
+    "route": "dashboard",
+    "title": "Tổng quan",
+    "features": [
+      "CMS-006",
+      "CMS-008"
+    ],
+    "coverage": "Xem dữ liệu mẫu",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-002",
+    "route": "tasks",
+    "title": "Công việc",
+    "features": [
+      "CMS-007"
+    ],
+    "coverage": "Điều hướng hồ sơ",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-003",
+    "route": "movies",
+    "title": "Kho phim",
+    "features": [
+      "CMS-009"
+    ],
+    "coverage": "Tìm/lọc/chọn/tạo bản mẫu",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-004",
+    "route": "movie-edit",
+    "title": "Biên tập phim",
+    "features": [
+      "CMS-009",
+      "CMS-010",
+      "CMS-013",
+      "CMS-014",
+      "CMS-016"
+    ],
+    "coverage": "Form lưu nháp, validation, gửi duyệt",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-005",
+    "route": "movie-detail",
+    "title": "Chi tiết phim",
+    "features": [
+      "CMS-009",
+      "CMS-026"
+    ],
+    "coverage": "Đổi revision nháp, ngừng phát mẫu",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-006",
+    "route": "taxonomies",
+    "title": "Danh mục",
+    "features": [
+      "CMS-011"
+    ],
+    "coverage": "Danh sách + form minh họa",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-007",
+    "route": "assets",
+    "title": "Thư viện ảnh",
+    "features": [
+      "CMS-017",
+      "CMS-018",
+      "CMS-019"
+    ],
+    "coverage": "Gallery + form minh họa",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-008",
+    "route": "episodes",
+    "title": "Tập nội bộ",
+    "features": [
+      "CMS-015"
+    ],
+    "coverage": "Gate phim bộ + form minh họa",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-009",
+    "route": "providers",
+    "title": "Đối tác player",
+    "features": [
+      "CMS-020",
+      "CMS-022"
+    ],
+    "coverage": "Danh sách + form minh họa",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-010",
+    "route": "sources",
+    "title": "Nguồn phát",
+    "features": [
+      "CMS-021",
+      "CMS-023",
+      "CMS-024"
+    ],
+    "coverage": "Danh sách + form, chưa test đối tác",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-011",
+    "route": "capabilities",
+    "title": "Khả năng tích hợp",
+    "features": [
+      "CMS-022"
+    ],
+    "coverage": "Bảng bằng chứng chưa xác minh",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-012",
+    "route": "reviews",
+    "title": "Hàng đợi duyệt",
+    "features": [
+      "CMS-027"
+    ],
+    "coverage": "Chọn bản đang duyệt",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-013",
+    "route": "review-detail",
+    "title": "Chi tiết duyệt",
+    "features": [
+      "CMS-027",
+      "CMS-028"
+    ],
+    "coverage": "Nhận xét, duyệt / trả sửa mẫu",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-014",
+    "route": "publishing",
+    "title": "Xuất bản",
+    "features": [
+      "CMS-029",
+      "CMS-030",
+      "CMS-031"
+    ],
+    "coverage": "Release mẫu, hẹn giờ mẫu, lỗi job",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-015",
+    "route": "preview",
+    "title": "Xem trước",
+    "features": [
+      "CMS-028"
+    ],
+    "coverage": "Preview metadata, không phát video",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-016",
+    "route": "site",
+    "title": "Cấu hình website",
+    "features": [
+      "CMS-033",
+      "CMS-034",
+      "CMS-035",
+      "CMS-065"
+    ],
+    "coverage": "Lưu hero nháp mẫu",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-017",
+    "route": "sections",
+    "title": "Section trang chủ",
+    "features": [
+      "CMS-032"
+    ],
+    "coverage": "Danh sách thiết kế",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-018",
+    "route": "pages",
+    "title": "Trang thông tin",
+    "features": [
+      "CMS-036",
+      "CMS-037"
+    ],
+    "coverage": "Danh sách + form minh họa",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-019",
+    "route": "campaigns",
+    "title": "Chiến dịch quảng cáo",
+    "features": [
+      "CMS-043",
+      "CMS-046",
+      "CMS-051"
+    ],
+    "coverage": "Danh sách, tạm dừng có lý do",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-020",
+    "route": "campaign-edit",
+    "title": "Tạo chiến dịch",
+    "features": [
+      "CMS-043"
+    ],
+    "coverage": "Lưu chiến dịch nháp mẫu",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-021",
+    "route": "creatives",
+    "title": "Mẫu quảng cáo",
+    "features": [
+      "CMS-044",
+      "CMS-050"
+    ],
+    "coverage": "Danh sách + form minh họa",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-022",
+    "route": "placements",
+    "title": "Vị trí quảng cáo",
+    "features": [
+      "CMS-045"
+    ],
+    "coverage": "Tra cứu kích thước đề xuất",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-023",
+    "route": "reservations",
+    "title": "Lịch quảng cáo",
+    "features": [
+      "CMS-078",
+      "CMS-079"
+    ],
+    "coverage": "Lịch theo dữ liệu, hủy có lý do",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-024",
+    "route": "reservation-new",
+    "title": "Đặt chỗ độc quyền",
+    "features": [
+      "CMS-078",
+      "CMS-079"
+    ],
+    "coverage": "Check conflict / xác nhận mẫu",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-025",
+    "route": "ad-rules",
+    "title": "Quy tắc quảng cáo",
+    "features": [
+      "CMS-047",
+      "CMS-048",
+      "CMS-049",
+      "CMS-052"
+    ],
+    "coverage": "Thông số chờ duyệt, kill switch mẫu",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-026",
+    "route": "analytics",
+    "title": "Thống kê",
+    "features": [
+      "CMS-054",
+      "CMS-055",
+      "CMS-056"
+    ],
+    "coverage": "Số mẫu, không suy doanh thu",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-027",
+    "route": "statements",
+    "title": "Kỳ đối soát",
+    "features": [
+      "CMS-058"
+    ],
+    "coverage": "Danh sách mẫu",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-028",
+    "route": "revenue-import",
+    "title": "Nhập báo cáo",
+    "features": [
+      "CMS-057"
+    ],
+    "coverage": "Fixture import, chặn trùng",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-029",
+    "route": "statement-detail",
+    "title": "Chi tiết đối soát",
+    "features": [
+      "CMS-058"
+    ],
+    "coverage": "Xác nhận / khóa kỳ mẫu",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-030",
+    "route": "payments",
+    "title": "Tiền thực nhận",
+    "features": [
+      "CMS-059"
+    ],
+    "coverage": "Danh sách + form minh họa",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-031",
+    "route": "reports",
+    "title": "Báo lỗi",
+    "features": [
+      "CMS-062",
+      "CMS-063"
+    ],
+    "coverage": "Danh sách và chọn hồ sơ",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-032",
+    "route": "report-detail",
+    "title": "Xử lý báo lỗi",
+    "features": [
+      "CMS-063",
+      "CMS-064"
+    ],
+    "coverage": "Bắt đầu / ghi chú / giải quyết",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-033",
+    "route": "staff",
+    "title": "Nhân sự",
+    "features": [
+      "CMS-002"
+    ],
+    "coverage": "Thiết kế, không mời/khóa thật",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-034",
+    "route": "roles",
+    "title": "Ma trận quyền",
+    "features": [
+      "CMS-003"
+    ],
+    "coverage": "Ma trận thiết kế rút gọn",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-035",
+    "route": "login",
+    "title": "Đăng nhập",
+    "features": [
+      "CMS-001"
+    ],
+    "coverage": "Luồng mẫu không xác thực",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-036",
+    "route": "mfa",
+    "title": "MFA",
+    "features": [
+      "CMS-001"
+    ],
+    "coverage": "Luồng mẫu không xác thực",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-037",
+    "route": "recover",
+    "title": "Khôi phục truy cập",
+    "features": [
+      "CMS-004"
+    ],
+    "coverage": "Phản hồi mẫu không gửi email",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-038",
+    "route": "audit",
+    "title": "Nhật ký",
+    "features": [
+      "CMS-005"
+    ],
+    "coverage": "Đọc thao tác mẫu trong phiên",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-039",
+    "route": "jobs",
+    "title": "Hàng đợi tác vụ",
+    "features": [
+      "CMS-067",
+      "CMS-068"
+    ],
+    "coverage": "Retry kết quả mẫu",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-040",
+    "route": "settings",
+    "title": "Cài đặt",
+    "features": [
+      "CMS-066",
+      "CMS-070",
+      "CMS-071",
+      "CMS-072"
+    ],
+    "coverage": "Giá trị đề xuất, chưa cấu hình thật",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-041",
+    "route": "backups",
+    "title": "Sao lưu",
+    "features": [
+      "CMS-069"
+    ],
+    "coverage": "Màn thiết kế + hướng dẫn",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-042",
+    "route": "states",
+    "title": "Các trạng thái",
+    "features": [],
+    "coverage": "Loading/empty/error/403",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  },
+  {
+    "id": "UI-043",
+    "route": "components",
+    "title": "Thành phần UI",
+    "features": [],
+    "coverage": "Token và danh mục màn",
+    "viewport": "Desktop 1440×1000; tablet 1024×1000; mobile 390×844",
+    "states": "normal/loading/empty/error/403/success (login riêng)",
+    "permission": "Theo API + giới hạn màn trong prototype; không thay auth server"
+  }
+]

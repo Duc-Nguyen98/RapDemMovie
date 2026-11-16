@@ -1,0 +1,84 @@
+{
+  "version": "v18",
+  "status": "proposed",
+  "units": "CSS px, not image pixels",
+  "fontFamily": [
+    "Noto Sans",
+    "system-ui",
+    "sans-serif"
+  ],
+  "colors": {
+    "background": "#09090B",
+    "surface": "#171719",
+    "text": "#FAFAFA",
+    "muted": "#D4D4D8",
+    "accent": "#FACC15",
+    "onAccent": "#111111"
+  },
+  "spacing": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    48
+  ],
+  "breakpoints": {
+    "tablet": 768,
+    "desktop": 1024,
+    "sideRails": 1536
+  },
+  "layout": {
+    "contentMax": 1120,
+    "shellMax": 1536,
+    "gutterMobile": 16,
+    "gutterOther": 24,
+    "columns": {
+      "mobile": 2,
+      "tablet": 3,
+      "desktop": 4
+    },
+    "mediaAspectRatio": "16/9"
+  },
+  "typography": {
+    "body": [
+      16,
+      24
+    ],
+    "secondary": [
+      14,
+      20
+    ],
+    "h1Mobile": [
+      26,
+      34
+    ],
+    "h1Tablet": [
+      32,
+      40
+    ],
+    "h1Desktop": [
+      36,
+      44
+    ],
+    "section": [
+      20,
+      28
+    ]
+  },
+  "close": {
+    "visualDiameter": 24,
+    "iconSize": 14,
+    "targetWidth": 44,
+    "targetHeight": 44,
+    "inset": 8
+  },
+  "zIndex": {
+    "header": 100,
+    "floating": 300,
+    "menu": 900,
+    "backdrop": 1000,
+    "modal": 1010
+  }
+}

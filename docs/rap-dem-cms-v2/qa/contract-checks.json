@@ -1,0 +1,45 @@
+{
+  "scope": "Structural design-contract checks only; not official complete OAS validator, JSON Schema instance validator, backend/security/transaction tests.",
+  "checks": [
+    {
+      "name": "All local refs and required fields resolve",
+      "status": "PASS"
+    },
+    {
+      "name": "OpenAPI 3.1.1 design version and no production server",
+      "status": "PASS"
+    },
+    {
+      "name": "Unique operation IDs and matching path params",
+      "status": "PASS"
+    },
+    {
+      "name": "Admin protected except explicit auth bootstrap",
+      "status": "PASS"
+    },
+    {
+      "name": "No readOnly fields in entity input/patch",
+      "status": "PASS"
+    },
+    {
+      "name": "Versioned mutations describe stale errors and CSRF",
+      "status": "PASS"
+    },
+    {
+      "name": "Feature links resolve to catalog",
+      "status": "PASS"
+    },
+    {
+      "name": "Public schemas omit internal business data",
+      "status": "PASS"
+    },
+    {
+      "name": "Upload purpose allowlists are separate",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "operations": 197,
+  "schemas": 170,
+  "localReferences": 2318
+}

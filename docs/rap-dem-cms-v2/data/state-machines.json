@@ -1,0 +1,98 @@
+{
+  "notes": "Transitions require role/revision/business guards in docs. Not executable backend.",
+  "transitions": {
+    "movieEditorial": {
+      "draft": [
+        "in_review"
+      ],
+      "in_review": [
+        "draft",
+        "approved"
+      ],
+      "approved": [
+        "draft"
+      ]
+    },
+    "campaign": {
+      "draft": [
+        "in_review"
+      ],
+      "in_review": [
+        "draft",
+        "approved"
+      ],
+      "approved": [
+        "scheduled",
+        "active"
+      ],
+      "scheduled": [
+        "active",
+        "paused",
+        "ended"
+      ],
+      "active": [
+        "paused",
+        "ended",
+        "blocked"
+      ],
+      "paused": [
+        "active",
+        "ended",
+        "blocked"
+      ],
+      "ended": [],
+      "blocked": []
+    },
+    "reservation": {
+      "draft": [
+        "confirmed",
+        "cancelled"
+      ],
+      "confirmed": [
+        "cancelled",
+        "completed"
+      ],
+      "cancelled": [],
+      "completed": []
+    },
+    "report": {
+      "new": [
+        "triaged"
+      ],
+      "triaged": [
+        "in_progress"
+      ],
+      "in_progress": [
+        "resolved"
+      ],
+      "resolved": [
+        "closed",
+        "in_progress"
+      ],
+      "closed": [
+        "in_progress"
+      ]
+    },
+    "statement": {
+      "draft": [
+        "in_review"
+      ],
+      "in_review": [
+        "confirmed"
+      ],
+      "confirmed": [
+        "locked"
+      ],
+      "locked": []
+    },
+    "payment": {
+      "draft": [
+        "confirmed"
+      ],
+      "confirmed": [
+        "reversed"
+      ],
+      "reversed": []
+    }
+  }
+}

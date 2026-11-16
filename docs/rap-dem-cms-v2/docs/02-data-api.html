@@ -1,0 +1,198 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contract dữ liệu, API và phân quyền — Rạp Đêm CMS V2</title><style>*{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:#263243;font:16px/1.65 'Segoe UI',Arial,sans-serif}header{background:#151b25;color:white;padding:34px max(5vw,24px)}header a{color:#f3c459}main{max-width:1300px;margin:auto;padding:35px 28px 70px}h1{font-size:34px;line-height:1.25}h2{font-size:25px;margin:36px 0 14px}h3{font-size:20px}p,li{max-width:1050px}a{color:#855d12}a:hover{text-decoration:underline}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #426ce4;outline-offset:3px}.lead{font-size:19px;color:#b8c3d5;max-width:1050px}.note{background:#fff4d8;border-left:4px solid #d5a23c;padding:16px 20px;border-radius:7px;margin:20px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.card{background:white;border:1px solid #dfe5ed;border-radius:12px;padding:23px}.card h2{margin:0 0 10px}.muted{color:#647186;font-size:14px}.button{display:inline-block;background:#f3c459;color:#30240b;border-radius:7px;padding:10px 18px;text-decoration:none;font-weight:600;margin:5px 10px 5px 0}.scroll{overflow:auto;background:white;border:1px solid #dce3ed;border-radius:8px;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px;background:white}th{background:#253244;color:white;text-align:left;position:sticky;top:0}th,td{padding:12px 15px;border-bottom:1px solid #e2e7ef;vertical-align:top}td{min-width:130px}tr:nth-child(even){background:#f7f8fa}code{background:#e7edf5;padding:2px 5px;border-radius:4px;font:13px Consolas,monospace;overflow-wrap:anywhere}pre{overflow:auto;background:#202c3d;color:#e4eaf3;padding:20px;border-radius:8px}pre code{background:transparent;color:inherit}img{max-width:100%;height:auto;border:1px solid #dde4ee;border-radius:10px}details{border:1px solid #dce3ed;background:white;border-radius:9px;padding:15px;margin:12px 0}summary{cursor:pointer;font-weight:650}.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}.gallery figure{margin:0;background:white;padding:12px;border:1px solid #dfe5ed;border-radius:12px}.gallery figcaption{font-size:14px;padding:10px 0}.gallery img{display:block;width:100%;max-height:330px;object-fit:contain;object-position:top;background:#edf0f4}select,input,button{font:inherit;padding:9px 12px;border:1px solid #bbc5d5;border-radius:6px}nav{display:flex;gap:16px;flex-wrap:wrap}footer{padding:30px;text-align:center;font-size:13px;color:#617085}@media(max-width:650px){main{padding:25px 16px}h1{font-size:28px}.gallery{grid-template-columns:1fr}header{padding:25px 18px}}</style></head><body><header><nav><a href="../index.html">← Mục lục CMS V2</a><span>Thiết kế & contract · 16/11/2026</span></nav></header><main><h1>Contract dữ liệu, API và phân quyền</h1>
+<h2>Tài liệu chuẩn</h2>
+<p><code>api/openapi.json</code> là hợp đồng máy đọc được dùng để review/generate client, <strong>chưa có server</strong>. <code>data/data-dictionary.json</code> liệt kê field và ràng buộc từ cùng schema; bảng HTML được sinh từ nguồn đó. <code>data/permission-actions.json</code> liệt kê quyền theo operation. Không duy trì ba danh sách field độc lập bằng tay.</p>
+<p>Contract dùng <a href="https://spec.openapis.org/oas/v3.1.1.html">OpenAPI 3.1.1</a>, không khẳng định đây là phiên bản mới nhất. Lỗi dùng <code>application/problem+json</code> với các field chuẩn và extension code/fieldErrors/requestId theo <a href="https://www.rfc-editor.org/rfc/rfc9457.html">RFC 9457</a>.</p>
+<h2>Quan hệ và nguồn dữ liệu chuẩn</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Quan hệ</th>
+<th>Cardinality / ràng buộc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Staff ↔ Role</td>
+<td>N–N; ít nhất một Owner active; không tự nâng quyền; tài khoản locked thu hồi phiên</td>
+</tr>
+<tr>
+<td>Movie ↔ Taxonomy</td>
+<td>N–N; genre active, không xóa taxonomy đang dùng; country/language chuẩn hóa</td>
+</tr>
+<tr>
+<td>Movie → Episode → Source</td>
+<td>1–N; unique(movieId,season,number); Source trỏ cùng phim/tập; movie lẻ episodeId=null</td>
+</tr>
+<tr>
+<td>Provider → Source</td>
+<td>1–N; exact-host allowlist; nguồn disabled/expired không trả public</td>
+</tr>
+<tr>
+<td>Asset → Movie/Creative</td>
+<td>Nơi sử dụng phải tra cứu trước archive; không sửa bitmap đang live tại cùng key</td>
+</tr>
+<tr>
+<td>Resource → Review → Release</td>
+<td>Review gắn revision bất biến; release từ review approved; public chỉ đọc published snapshot</td>
+</tr>
+<tr>
+<td>AdPartner → Campaign → Creative</td>
+<td>1–N; creative thuộc campaign; chỉnh creative đã duyệt phải duyệt revision mới</td>
+</tr>
+<tr>
+<td>Campaign → Reservation → Placement</td>
+<td>Exclusive; mỗi slot/thiết bị không được có hai khoảng confirmed chồng nhau</td>
+</tr>
+<tr>
+<td>Campaign / Creative → Assignment → Placement</td>
+<td>Chỉ cùng campaign, format, device và kích thước hợp lệ</td>
+</tr>
+<tr>
+<td>RevenueImport → Statement → Payment allocation</td>
+<td>Import committed; cùng partner/kỳ/currency; allocation không vượt tiền nhận/công nợ</td>
+</tr>
+<tr>
+<td>Report → Staff / Movie / Source</td>
+<td>Người nhận active; source phải thuộc phim/tập được báo</td>
+</tr>
+<tr>
+<td>AuditEvent / Job</td>
+<td>Audit bất biến, job idempotent có correlationId; không trả token</td>
+</tr>
+</tbody></table></div>
+<p>DB vật lý do DEV chọn nhưng phải có khóa ngoại, unique constraints và transaction cho các bất biến. Hạn chế xóa cứng; archive/withdraw khác nhau. Audit và báo cáo tiền không được xóa để “sửa tổng”.</p>
+<h2>Quy ước request / response</h2>
+<ul>
+<li>Admin <code>/admin/v2</code>, public <code>/api/v2</code>; public không trả draft, internal notes, rights evidence, finance, credentials.</li>
+<li>ID ổn định do server sinh; slug duy nhất; mutation không được nhận readOnly field. Patch chỉ thay field gửi lên, validate trên bản merged, null chỉ khi schema cho phép. Empty patch bị chặn.</li>
+<li>Input text normalize trim/NFC; HTML chỉ allowlist ở nội dung trang, sanitize server; render text bằng textContent/template escape. Required không đồng nghĩa mọi chuỗi được phép rỗng: các ràng buộc nghiệp vụ dưới đây vẫn bắt buộc.</li>
+<li>Timestamp RFC3339 có offset, lưu UTC; hiển thị UTC+7. Các khoảng đều <code>[start,end)</code>. Start &lt; end; không đoán timezone từ máy nhân viên.</li>
+<li>GET entity trả <code>ETag: &quot;revision&quot;</code>; update/action gửi <code>If-Match</code>. Sai version trả 412 STALE_REVISION, thiếu trả 428. UI giữ nội dung đang nhập để so sánh. Cơ chế này tránh lost update theo <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/If-Match">MDN If-Match</a>.</li>
+<li>Mutation admin (trừ auth) dùng Idempotency-Key. Đề xuất TTL 24 giờ; cùng actor/route/key/payload trả kết quả cũ, khác payload trả 409 IDEMPOTENCY_CONFLICT. Không dùng key để bỏ qua kiểm quyền mới.</li>
+<li>List dùng cursor opaque, limit mặc định 25/tối đa 100 admin; public tối đa 24. Sort ổn định createdAt DESC,id DESC (kho phim public recent theo publishedAt,id). Cursor phải ràng filters/sort, không đưa SQL tùy ý từ client.</li>
+<li>201: bản ghi đã tạo; 202: tác vụ đã nhận, cần đọc job; 200: hoàn tất operation sync. Lỗi không được giả 200 với rỗng.</li>
+<li>400 sai cấu trúc, 401 chưa auth, 403 cấm, 404 không tồn tại/không lộ ngoài scope, 409 lịch/state/duplicate, 422 field/business, 429 rate limit, 503 tích hợp unavailable. Không trả stack trace hoặc secrets.</li>
+<li>Request ghi dữ liệu phải có correlationId ở server và audit actor/action/resource/revision/reason. Đáp ứng lỗi có requestId để hỗ trợ.</li>
+</ul>
+<h2>Xác thực và quyền</h2>
+<p>Cookie staff session <code>Secure</code>, <code>HttpOnly</code>, <code>SameSite=Strict</code>; TLS bắt buộc. Mutation kiểm X-CSRF-Token gắn session và Origin allowlist. CORS không wildcard với credentials. Login/reset rate-limit, phản hồi không tiết lộ email tồn tại. MFA bắt buộc cho Owner/Admin và quyền nhạy cảm; hành động restore/secret/role/tài chính yêu cầu step-up theo chính sách được duyệt. Session đề xuất 30 phút idle/12 giờ tuyệt đối, challenge 5 phút, reset token 15 phút một lần — vẫn chờ chốt.</p>
+<p>Áp dụng deny-by-default, kiểm quyền mọi request và từng đối tượng, không chỉ ẩn nút; theo <a href="https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html">OWASP Authorization</a>. Vai trò là grant tối đa, còn object scope/field/state có thể giảm quyền.</p>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Vai trò</th>
+<th>Có thể</th>
+<th>Không được</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Owner</td>
+<td>Quyền toàn hệ thống, quản lý vai trò; override có lý do/audit</td>
+<td>Xóa Owner active cuối cùng; sửa audit; giả bằng chứng đối tác</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>Duyệt/xuất bản, nội dung, dừng QC, đối soát, vận hành</td>
+<td>Tự nâng Owner, tự gán quyền vượt grant, xem plaintext secret</td>
+</tr>
+<tr>
+<td>Editor</td>
+<td>Soạn metadata, ảnh, cấu hình nháp, gửi duyệt; nguồn trong phạm vi</td>
+<td>Duyệt/publish trực tiếp, verify rights/capability, tiền và phân quyền</td>
+</tr>
+<tr>
+<td>Ads</td>
+<td>Soạn campaign/creative/assignment/reservation; tạm dừng campaign</td>
+<td>Duyệt, activate, confirm/cancel reservation, thay system slot hoặc chi tiền</td>
+</tr>
+<tr>
+<td>Finance</td>
+<td>Nhập báo cáo, lập kỳ, ghi payment draft, xuất báo cáo theo partner</td>
+<td>Tự confirm/lock kỳ; confirm/reverse payment; sửa nội dung phim</td>
+</tr>
+<tr>
+<td>Support</td>
+<td>Ticket được giao, ghi chú, yêu cầu gỡ</td>
+<td>Gỡ trực tiếp, đọc tiền, đổi nguồn/chiến dịch</td>
+</tr>
+</tbody></table></div>
+<p>Phiếu do chính người duyệt tạo: chỉ Owner được override với selfApproval=true và lý do. Admin không tự duyệt. Staff invitation role grant phải là tập con quyền cấp của actor. Finance chỉ đọc/download file revenue_csv, không quyền phát/hợp đồng riêng nếu chưa được cấp. Task/notification/session theo own/assigned; không sửa session người khác trừ action thu hồi của staff đúng quyền.</p>
+<h2>Ràng buộc nghiệp vụ ngoài JSON Schema</h2>
+<ol>
+<li>Movie: title 1–200, slug đúng pattern unique, year 1888…năm hiện tại+5, ít nhất 1 genre trước submit; poster clean và quyền có evidence trước publish. Related IDs tối đa 12, không chính nó, không duplicate. Khi quyền hết hạn, job ngừng public và invalidate cache; không chờ nhân sự gỡ thủ công.</li>
+<li>Episode: chỉ cho series; nguồn phim bộ trỏ tập tồn tại. Gate episodeNavigation=supported có evidence còn hiệu lực theo adapter version. Chưa đạt thì chặn publish series bằng CAPABILITY_UNVERIFIED.</li>
+<li>Source: HTTPS exact-host, không userinfo/IP private/localhost; không follow redirect sang host khác; kiểm egress và timeout khi backend test. Client không được tải URL tùy ý thay server. Health phải từ kiểm tra thật; iframe load không chứng minh playback.</li>
+<li>Asset: ảnh JPG/PNG/WebP ≤5MB đề xuất; validate chữ ký/MIME/dimensions, scan/quarantine; không raw JS/SVG/HTML. Private evidence PDF/ảnh, revenue CSV qua endpoint riêng. Server quyết định private/public theo purpose; không cho client đổi evidence thành public. Asset đã dùng/live không archive/ghi đè. Download private audit + URL ngắn hạn.</li>
+<li>Review: submit tạo review pending gắn revision. Update resource đang in_review bị chặn; phải reject/withdraw review về draft. Bản approved muốn sửa tạo revision mới và reset approval. Không cho patch status.</li>
+<li>Publish: review approved current revision + rights verified còn hạn + source ready + capability gates. Worker ghi release/public snapshot và outbox, invalidate cache; mọi node đọc version thống nhất. Không hoàn tất nếu cache/viewer chưa xác nhận version. Rollback chọn snapshot đã approved nhưng vẫn phải kiểm quyền, lịch và nguồn hiện hành.</li>
+<li>Page/SiteConfig/HomeSection: cùng review/release. Mode manual chỉ movieIds; mode rule chỉ rule; tránh hai nguồn cạnh tranh. Chỉ public phim đã published và còn khả dụng. Hero/footer/filter IDs dùng chung.</li>
+<li>Campaign/creative/assignment/reservation: xem rulebook quảng cáo. Confirm reservation cần active/approved/scheduled campaign exclusive, chứa trọn lịch reservation, slot canonical hợp lệ. Reservation confirmed không patch lịch; cancel và tạo mới trong transaction nếu cần đổi. Không sửa assignment của campaign active để bypass duyệt.</li>
+<li>CSV: lưu bản nguồn private, checksum SHA-256; unique partner+checksum và unique partner+sourceRowId+period+currency. Cần mapping mẫu thật trước go-live; chặn duplicate/unknown slot/out-of-period/wrong currency. Validate không ghi tiền; commit atomic; file sai có lỗi từng dòng. Không tự thay dòng lỗi bằng 0.</li>
+<li>Statement: server tính gross từ committed imports cùng scope, điều chỉnh có chứng từ/lý do; net=gross+adjustment không âm; paid từ allocations confirmed; due=net−paid. Input gross phải khớp tổng nguồn hoặc bị từ chối; client không tự xác nhận tiền. Khóa kỳ cấm sửa; correction là bản bổ sung có dấu vết, không sửa import cũ.</li>
+<li>Payment: không chuyển tiền. Reference unique theo partner; amount&gt;0; cùng currency; tổng allocation≤amount và≤công nợ. Confirm/reverse Owner, có bằng chứng/lý do; reverse tạo bút toán đối ứng, không xóa. Không khóa kỳ khi nhập nhằng số liệu chưa giải trình.</li>
+<li>Report: other cần description; không bắt email; dedupe clientRequestId, rate limit chống spam. Resolve cần resolution; sửa role support chỉ report được giao. Takedown request tạo task, chưa gỡ; action gỡ dành owner/admin có audit.</li>
+<li>Export: partner và thời gian bắt buộc, giới hạn phạm vi, escaping CSV formula (<code>= + - @</code>), link riêng tư có hạn. Không bao gồm số tiền đối tác khác.</li>
+<li>SystemSettings: environment do deploy quyết định, không cho UI đổi staging thành production; settings approved cần owner quyết định, có version/audit. Secret write-only, redact log và export. Không có API edit/delete audit.</li>
+</ol>
+<h2>State machine và action</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Đối tượng</th>
+<th>Chuyển trạng thái được phép</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Movie editorial</td>
+<td>draft → in_review → approved; reject → draft; approved edit → draft revision mới</td>
+</tr>
+<tr>
+<td>Movie publication</td>
+<td>unpublished/withdrawn → scheduled/publishing → live; lỗi → failed/degraded; withdraw từ live/scheduled/publishing; restore chỉ draft, không tự live</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>pending → approved/rejected/superseded; quyết định sau đó bất biến</td>
+</tr>
+<tr>
+<td>Release</td>
+<td>queued → publishing → live/degraded/failed; retry failed/degraded; rollback tạo job phục hồi snapshot hợp lệ, release cũ marked rolled_back; cancel chỉ queued</td>
+</tr>
+<tr>
+<td>Campaign</td>
+<td>draft → in_review → approved → scheduled/active; active ↔ paused (resume recheck); active/paused → ended/blocked; blocked/ended không tự resume</td>
+</tr>
+<tr>
+<td>Creative</td>
+<td>draft → in_review → approved/rejected; reject sửa → draft; block dừng ngay; thay nội dung cần revision mới</td>
+</tr>
+<tr>
+<td>Reservation</td>
+<td>draft → confirmed → cancelled/completed; completed theo thời gian; không tự giải phóng khi campaign pause</td>
+</tr>
+<tr>
+<td>Report</td>
+<td>new → triaged → in_progress → resolved → closed; resolved/closed → in_progress có reason</td>
+</tr>
+<tr>
+<td>RevenueImport</td>
+<td>uploaded → validated/invalid; validated → committed; committed → superseded chỉ khi chưa khóa kỳ và có replacement hợp lệ</td>
+</tr>
+<tr>
+<td>Statement</td>
+<td>draft → in_review → confirmed → locked; không reverse trực tiếp qua patch</td>
+</tr>
+<tr>
+<td>Payment</td>
+<td>draft → confirmed → reversed; immutable sau confirm</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>queued → running → succeeded/failed; retry bounded; vượt số lần → dead_letter</td>
+</tr>
+</tbody></table></div>
+<p>Các trạng thái server-managed không nằm trong DTO patch. <code>data/state-machines.json</code> là bảng máy đọc hỗ trợ triển khai; mô phỏng JS không bao phủ transaction/locking/worker thật.</p>
+<h2>Ví dụ lỗi trùng lịch</h2>
+<pre><code class="language-json">{&quot;type&quot;:&quot;urn:rapdem:problem:booking-conflict&quot;,&quot;title&quot;:&quot;Vị trí đã được đặt&quot;,&quot;status&quot;:409,&quot;detail&quot;:&quot;Khoảng thời gian giao với đặt chỗ đã xác nhận.&quot;,&quot;instance&quot;:&quot;/admin/v2/reservations/demo/confirm&quot;,&quot;code&quot;:&quot;BOOKING_CONFLICT&quot;,&quot;requestId&quot;:&quot;request-demo-001&quot;,&quot;fieldErrors&quot;:[{&quot;field&quot;:&quot;placementIds&quot;,&quot;message&quot;:&quot;HOME_TOP_DESKTOP đã có đặt chỗ trong khoảng đã chọn.&quot;}]}
+</code></pre>
+<p>DEV phải review schema với lựa chọn DB/auth thực tế và chạy contract tests trước đóng băng RC. Các test cấu trúc trên tệp không chứng minh chống race, IDOR, upload độc hại hoặc an toàn production.</p>
+</main><footer>Rạp Đêm CMS V2 · Chưa triển khai production · Không có doanh thu hoặc tích hợp thật trong bộ mẫu</footer></body></html>

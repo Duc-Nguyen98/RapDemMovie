@@ -1,0 +1,121 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thiết kế màn CMS và quy tắc giao diện — Rạp Đêm CMS V2</title><style>*{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:#263243;font:16px/1.65 'Segoe UI',Arial,sans-serif}header{background:#151b25;color:white;padding:34px max(5vw,24px)}header a{color:#f3c459}main{max-width:1300px;margin:auto;padding:35px 28px 70px}h1{font-size:34px;line-height:1.25}h2{font-size:25px;margin:36px 0 14px}h3{font-size:20px}p,li{max-width:1050px}a{color:#855d12}a:hover{text-decoration:underline}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #426ce4;outline-offset:3px}.lead{font-size:19px;color:#b8c3d5;max-width:1050px}.note{background:#fff4d8;border-left:4px solid #d5a23c;padding:16px 20px;border-radius:7px;margin:20px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.card{background:white;border:1px solid #dfe5ed;border-radius:12px;padding:23px}.card h2{margin:0 0 10px}.muted{color:#647186;font-size:14px}.button{display:inline-block;background:#f3c459;color:#30240b;border-radius:7px;padding:10px 18px;text-decoration:none;font-weight:600;margin:5px 10px 5px 0}.scroll{overflow:auto;background:white;border:1px solid #dce3ed;border-radius:8px;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px;background:white}th{background:#253244;color:white;text-align:left;position:sticky;top:0}th,td{padding:12px 15px;border-bottom:1px solid #e2e7ef;vertical-align:top}td{min-width:130px}tr:nth-child(even){background:#f7f8fa}code{background:#e7edf5;padding:2px 5px;border-radius:4px;font:13px Consolas,monospace;overflow-wrap:anywhere}pre{overflow:auto;background:#202c3d;color:#e4eaf3;padding:20px;border-radius:8px}pre code{background:transparent;color:inherit}img{max-width:100%;height:auto;border:1px solid #dde4ee;border-radius:10px}details{border:1px solid #dce3ed;background:white;border-radius:9px;padding:15px;margin:12px 0}summary{cursor:pointer;font-weight:650}.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}.gallery figure{margin:0;background:white;padding:12px;border:1px solid #dfe5ed;border-radius:12px}.gallery figcaption{font-size:14px;padding:10px 0}.gallery img{display:block;width:100%;max-height:330px;object-fit:contain;object-position:top;background:#edf0f4}select,input,button{font:inherit;padding:9px 12px;border:1px solid #bbc5d5;border-radius:6px}nav{display:flex;gap:16px;flex-wrap:wrap}footer{padding:30px;text-align:center;font-size:13px;color:#617085}@media(max-width:650px){main{padding:25px 16px}h1{font-size:28px}.gallery{grid-template-columns:1fr}header{padding:25px 18px}}</style></head><body><header><nav><a href="../index.html">← Mục lục CMS V2</a><span>Thiết kế & contract · 16/11/2026</span></nav></header><main><h1>Thiết kế màn CMS và quy tắc giao diện</h1>
+<h2>Cấu trúc</h2>
+<p>Sidebar: Tổng quan; Nội dung; Kinh doanh; Vận hành. Header có breadcrumb và danh tính nhân sự. Khu vực chính chứa tiêu đề, hành động, bộ lọc, bảng/form/chi tiết. Dữ liệu nháp tách trạng thái công khai. Thanh vàng chỉ dành cho prototype, không đưa vào sản phẩm thật.</p>
+<p>Tra danh mục màn trong <code>data/screens.json</code> hoặc bảng Danh mục màn ở trang bàn giao. Mỗi dòng có mã UI, route, mã tính năng và mức tương tác thực tế. Các trạng thái không có dữ liệu / đang tải / lỗi / 403 / thành công có thể xem bằng bộ chọn chung. Đây là biến thể thiết kế, không phải lỗi API đã thực sự xảy ra.</p>
+<h2>Thông số UI đề xuất cho CMS</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Thuộc tính</th>
+<th>Quy tắc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Font</td>
+<td>Segoe UI, fallback Arial/sans-serif; dùng text thật, không cắt chữ từ PNG</td>
+</tr>
+<tr>
+<td>Màu</td>
+<td>Sidebar #151B25, nền làm việc #F4F5F7, nhấn #F3C459, chữ chính #202733</td>
+</tr>
+<tr>
+<td>Chữ</td>
+<td>Body/form 14px desktop; input mobile 16px; H1 28px desktop/25px mobile; nhãn 12px</td>
+</tr>
+<tr>
+<td>Khoảng cách</td>
+<td>Hệ cơ sở 4px; khoảng nhóm 16–24px; padding chính desktop 34px, tablet 24px, mobile 16px</td>
+</tr>
+<tr>
+<td>Chiều rộng</td>
+<td>Sidebar 232px; 768–1150px sidebar 205px; main max-width 1700px; không cố định chiều cao trang</td>
+</tr>
+<tr>
+<td>Bảng</td>
+<td>Cuộn ngang trong khung, không tràn toàn trang. Giữ các cột và bộ lọc trên mobile; không bỏ nghiệp vụ</td>
+</tr>
+<tr>
+<td>Form</td>
+<td>Hai cột khi đủ rộng, một cột trên mobile; lỗi sát trường, không mất dữ liệu khi API lỗi</td>
+</tr>
+<tr>
+<td>Dialog CMS</td>
+<td>Rộng tối đa 640px, giới hạn viewport−32px; max-height viewport−32px, nội dung cuộn; nút đóng có tên truy cập</td>
+</tr>
+<tr>
+<td>Tương tác</td>
+<td>Focus rõ; Tab trong dialog, Esc đóng khi an toàn, trả focus về nút mở. Hành động phá hủy có lý do và xác nhận</td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td>Dưới 768px dùng drawer; ưu tiên xem, duyệt, dừng quảng cáo và xử lý ticket; nhập liệu dài/báo cáo hàng loạt nên dùng desktop</td>
+</tr>
+</tbody></table></div>
+<p>PNG desktop 1440×1000, tablet 1024×1000, mobile 390×844 là <strong>viewport chụp</strong>, không phải breakpoint duy nhất, cũng không phải toàn chiều dài trang. Phần dưới khung ảnh xem bằng cuộn trong prototype. Không thêm khoảng trắng vào trang thật để bắt chước chiều cao canvas.</p>
+<h2>Chi tiết hành vi chính</h2>
+<ul>
+<li>Kho phim: tìm/lọc; tạo nháp; slug duy nhất; metadata dùng chung. Nút gửi duyệt chỉ hợp lệ từ draft. Lưu thành công không làm đổi live revision.</li>
+<li>Duyệt: gắn resourceRevision. Sửa sau khi gửi làm review cũ superseded. Reviewer thấy diff đúng hai snapshot; diff của prototype chỉ là ví dụ, DEV phải lấy snapshot thật.</li>
+<li>Xuất bản: review approved + đúng revision + quyền nội dung + nguồn hợp lệ. Job accepted chưa phải live. Phim bộ có gate riêng. Scheduled là thời gian UTC được nhập từ múi giờ dự án.</li>
+<li>Quảng cáo: lịch độc quyền không được thay bằng cột “trạng thái campaign”. Pause giữ reservation; cancel có lý do mới giải phóng.</li>
+<li>Đối soát: import → validate → commit → lập kỳ → gửi duyệt → confirm → lock; tiền thực nhận ghi riêng. Tổng N/A khi chưa có nguồn, không dùng 0 thay thiếu dữ liệu.</li>
+<li>Báo lỗi: new → triaged → in_progress → resolved → closed; resolved bắt buộc giải trình. Reopen có lý do.</li>
+<li>Vai trò: UI ẩn/vô hiệu hóa hoặc hiển thị 403; API luôn kiểm quyền riêng. Không dùng <code>localStorage.role</code> làm auth.</li>
+</ul>
+<h2>Nội dung chữ chuẩn</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Vị trí</th>
+<th>Text</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Hero website</td>
+<td>Tối nay xem gì?</td>
+</tr>
+<tr>
+<td>Tìm kiếm</td>
+<td>Tìm tên phim…</td>
+</tr>
+<tr>
+<td>Phim đã lưu</td>
+<td>Lưu trên trình duyệt này. Không đồng bộ giữa thiết bị.</td>
+</tr>
+<tr>
+<td>Không dữ liệu</td>
+<td>Chưa có dữ liệu</td>
+</tr>
+<tr>
+<td>Không kết quả</td>
+<td>Không có phim phù hợp. Thử từ khóa khác hoặc xóa bộ lọc.</td>
+</tr>
+<tr>
+<td>Lỗi kết nối</td>
+<td>Không thể tải dữ liệu. Vui lòng thử lại.</td>
+</tr>
+<tr>
+<td>Không có quyền</td>
+<td>Bạn chưa có quyền truy cập.</td>
+</tr>
+<tr>
+<td>Xung đột revision</td>
+<td>Dữ liệu đã được người khác cập nhật. Tải bản mới và so sánh trước khi lưu.</td>
+</tr>
+<tr>
+<td>Lịch trùng</td>
+<td>Vị trí đã có đặt chỗ trong khoảng thời gian này.</td>
+</tr>
+<tr>
+<td>Không có báo cáo</td>
+<td>Chưa nhận dữ liệu từ đối tác.</td>
+</tr>
+<tr>
+<td>Chưa xác minh player</td>
+<td>Chưa có bằng chứng tích hợp. Không bật tính năng này.</td>
+</tr>
+</tbody></table></div>
+<p>Footer website nằm ở một SiteConfig chung, không có bản desktop/mobile riêng. Phim mẫu kế thừa metadata V18; ảnh CMS đang là placeholder có nhãn, không phải thay poster của bộ website. CMS không bổ sung đăng nhập khách hoặc nút “Về đầu trang”.</p>
+<h2>Phần UI cần hoàn thiện khi nối backend</h2>
+<p>Form phụ (taxonomy, tài nguyên, creative, nguồn, nhân sự, trang thông tin, payment) minh họa cấu trúc, chưa bao phủ mọi widget/validation của schema. Bảng API và data dictionary là danh sách field yêu cầu; DEV phải hoàn thiện widget, lỗi field, permission field, trạng thái saving/pending và kiểm thử tích hợp. Danh mục màn ghi rõ phần nào là mô phỏng và phần nào chỉ xem thiết kế. Không coi ảnh là đặc tả backend đầy đủ.</p>
+</main><footer>Rạp Đêm CMS V2 · Chưa triển khai production · Không có doanh thu hoặc tích hợp thật trong bộ mẫu</footer></body></html>

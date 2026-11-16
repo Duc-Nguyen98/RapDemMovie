@@ -1,0 +1,95 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nghiệm thu và vận hành — Rạp Đêm CMS V2</title><style>*{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:#263243;font:16px/1.65 'Segoe UI',Arial,sans-serif}header{background:#151b25;color:white;padding:34px max(5vw,24px)}header a{color:#f3c459}main{max-width:1300px;margin:auto;padding:35px 28px 70px}h1{font-size:34px;line-height:1.25}h2{font-size:25px;margin:36px 0 14px}h3{font-size:20px}p,li{max-width:1050px}a{color:#855d12}a:hover{text-decoration:underline}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #426ce4;outline-offset:3px}.lead{font-size:19px;color:#b8c3d5;max-width:1050px}.note{background:#fff4d8;border-left:4px solid #d5a23c;padding:16px 20px;border-radius:7px;margin:20px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.card{background:white;border:1px solid #dfe5ed;border-radius:12px;padding:23px}.card h2{margin:0 0 10px}.muted{color:#647186;font-size:14px}.button{display:inline-block;background:#f3c459;color:#30240b;border-radius:7px;padding:10px 18px;text-decoration:none;font-weight:600;margin:5px 10px 5px 0}.scroll{overflow:auto;background:white;border:1px solid #dce3ed;border-radius:8px;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px;background:white}th{background:#253244;color:white;text-align:left;position:sticky;top:0}th,td{padding:12px 15px;border-bottom:1px solid #e2e7ef;vertical-align:top}td{min-width:130px}tr:nth-child(even){background:#f7f8fa}code{background:#e7edf5;padding:2px 5px;border-radius:4px;font:13px Consolas,monospace;overflow-wrap:anywhere}pre{overflow:auto;background:#202c3d;color:#e4eaf3;padding:20px;border-radius:8px}pre code{background:transparent;color:inherit}img{max-width:100%;height:auto;border:1px solid #dde4ee;border-radius:10px}details{border:1px solid #dce3ed;background:white;border-radius:9px;padding:15px;margin:12px 0}summary{cursor:pointer;font-weight:650}.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}.gallery figure{margin:0;background:white;padding:12px;border:1px solid #dfe5ed;border-radius:12px}.gallery figcaption{font-size:14px;padding:10px 0}.gallery img{display:block;width:100%;max-height:330px;object-fit:contain;object-position:top;background:#edf0f4}select,input,button{font:inherit;padding:9px 12px;border:1px solid #bbc5d5;border-radius:6px}nav{display:flex;gap:16px;flex-wrap:wrap}footer{padding:30px;text-align:center;font-size:13px;color:#617085}@media(max-width:650px){main{padding:25px 16px}h1{font-size:28px}.gallery{grid-template-columns:1fr}header{padding:25px 18px}}</style></head><body><header><nav><a href="../index.html">← Mục lục CMS V2</a><span>Thiết kế & contract · 16/11/2026</span></nav></header><main><h1>Nghiệm thu và vận hành</h1>
+<h2>Hai lớp kiểm thử khác nhau</h2>
+<p><code>qa/prototype-results.json</code>: kết quả đã chạy trên HTML/JS cục bộ, gồm render/overflow, logic mô phỏng và tương tác. Không kiểm DB, xác thực thật, transaction, worker, đối tác, hiệu năng hoặc an toàn production.</p>
+<p><code>data/uat-cases.json</code> và tab UAT: ca kiểm thử hệ thống thật. Trạng thái ban đầu “Chưa chạy” hoặc “Chờ đối tác”. Chỉ cập nhật Pass khi có build/environment, người kiểm, thời điểm, actual result và evidence. Nếu còn dependency chưa đạt thì không ghi Pass dù màn thiết kế trông đúng.</p>
+<h2>Dữ liệu và trách nhiệm thử</h2>
+<ul>
+<li>QA/DEV: chuẩn bị staging tách production; seed 6 vai trò, movie draft/live/expired, hai nguồn thử, campaign exclusive/shared/paused, confirmed booking, invalid CSV, hai thao tác cạnh tranh.</li>
+<li>Người quản nội dung: nghiệm thu metadata, preview, duyệt, publish/rollback và quyền nội dung.</li>
+<li>Người quảng cáo: nghiệm thu inventory, reservation, cap, creative, báo cáo phân phối.</li>
+<li>Finance + Owner: nghiệm thu import, duplicate, reconciliation, lock, payment và export.</li>
+<li>Đầu mối đối tác + DEV: chạy INT-01…12 và ký evidence.</li>
+<li>Owner sản phẩm: duyệt thông số/ngoại lệ, xác nhận phạm vi launch. Tên người phụ trách vẫn để trống, không tự gán cho nhân sự chưa được chỉ định.</li>
+</ul>
+<h2>Điều kiện qua từng cổng</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Cổng</th>
+<th>Điều kiện</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>G0 — bắt đầu DEV</td>
+<td>Duyệt phạm vi P0/P0-C và ưu tiên; review contract; chọn auth/DB/storage/environment; chốt field đang có tranh luận</td>
+</tr>
+<tr>
+<td>G1 — nội dung trên staging</td>
+<td>Auth/RBAC/audit, upload, revision, publish/cache, public filtering, responsive, các trạng thái lỗi chạy thật</td>
+</tr>
+<tr>
+<td>G2 — quảng cáo</td>
+<td>Không race booking, exclusive đúng, cap và protection pass; creative/URL được duyệt; không impression giả</td>
+</tr>
+<tr>
+<td>G3 — tích hợp</td>
+<td>Bằng chứng player/report; nếu thiếu capability bắt buộc phải đổi scope bằng quyết định, không tự bỏ</td>
+</tr>
+<tr>
+<td>G4 — vận hành</td>
+<td>UAT P0 không lỗi nghiêm trọng; diễn tập backup/restore; giám sát và người trực; checklist rollback, secrets, domain/TLS</td>
+</tr>
+<tr>
+<td>G5 — go-live</td>
+<td>Chủ sản phẩm ký build/version cụ thể, danh sách tồn đọng được chấp nhận, cấu hình production được duyệt riêng</td>
+</tr>
+</tbody></table></div>
+<p>Không cam kết “đạt triển khai production” từ việc hoàn thành file thiết kế. Có thể DEV và test staging theo từng phần, nhưng mọi phụ thuộc phải có trạng thái rõ.</p>
+<h2>Kịch bản UAT trọng tâm</h2>
+<p>Các ca cụ thể có ID, feature, màn, API, tiền điều kiện, dữ liệu, bước, expected, vai trò, mức ưu tiên, trạng thái, người kiểm và evidence trong bảng bàn giao. Bổ sung regression khi backend/partner có behavior khác contract; không ghi đè lịch sử chạy trước.</p>
+<h2>Runbook sự cố</h2>
+<h3>OPS-01: Website/player không phát</h3>
+<ol>
+<li>Support ghi thời điểm, phim/tập/source, browser/device, requestId; không gửi token qua ticket.</li>
+<li>Admin phân biệt API/publication/player/CDN, xem health và version live. Kiểm thử bằng nguồn được phép, không quét URL ngoài allowlist.</li>
+<li>Nếu có nguồn dự phòng verified cùng phim/tập, chuyển cấu hình đúng quy trình; nếu không, báo lỗi thân thiện và tắt nguồn hỏng. Không hứa tiếp tục timestamp nếu chưa có seek.</li>
+<li>DEV xử lý adapter/cache/job; Admin phục hồi có test desktop/mobile; ghi nguyên nhân, thời gian, ảnh hưởng và evidence đóng ticket.</li>
+</ol>
+<h3>OPS-02: Quảng cáo che nội dung / đích không phù hợp</h3>
+<ol>
+<li>Ads có thể pause campaign; Admin kill-switch đúng scope, block creative khi cần. Không xóa audit/reservation.</li>
+<li>Chụp evidence viewport, xác định configVersion, slot/campaign/creative và thời điểm. Không bấm quảng cáo thật để thử CTR.</li>
+<li>Kiểm cap/mutual exclusion/player/footer/menu/keyboard/fullscreen. Sửa staging, chạy regression.</li>
+<li>Owner/Admin quyết định bật lại. Người kinh doanh liên hệ đối tác về lịch/đối soát; không tự hứa bồi thường.</li>
+</ol>
+<h3>OPS-03: Xuất bản lỗi hoặc sai nội dung</h3>
+<ol>
+<li>Dừng job đang lỗi nếu an toàn, giữ published snapshot tốt trước đó; gỡ khẩn nếu nội dung không được phép.</li>
+<li>Đối chiếu resourceRevision, review, release, cacheVersion; retry idempotent với cùng nghiệp vụ.</li>
+<li>Rollback chỉ snapshot hợp lệ theo rights/source hiện tại; không phục hồi nội dung đã blocked/expired.</li>
+<li>Kiểm web công khai, search/home/watch dùng cùng version. Lưu audit và ca regression.</li>
+</ol>
+<h3>OPS-04: Báo cáo tiền lệch / nhập trùng</h3>
+<ol>
+<li>Không confirm/lock kỳ đang lệch. Giữ file gốc private, checksum và source timezone/currency.</li>
+<li>Finance kiểm row keys, kỳ chồng, adjustment, số net/paid, mapping campaign/slot. Không đổi missing thành 0.</li>
+<li>Liên hệ đầu mối đối tác qua quy trình ngoài hệ thống; tài liệu này không gửi thay.</li>
+<li>Supersede/correction theo trạng thái kỳ; kỳ locked dùng bản bổ sung được duyệt. Đóng với report version + người duyệt.</li>
+</ol>
+<h3>OPS-05: Tài khoản bị lộ / mất quyền</h3>
+<ol>
+<li>Owner khóa staff, thu hồi sessions; rotate secrets bị ảnh hưởng; audit thời gian và scope.</li>
+<li>Không tự reset toàn hệ thống hoặc xóa log. Duy trì Owner active cuối cùng qua quy trình break-glass được duyệt.</li>
+<li>DEV kiểm access logs/IDOR, khôi phục quyền tối thiểu, MFA và cảnh báo. Truy cập lại phải xác minh chính chủ qua quy trình nội bộ.</li>
+</ol>
+<h3>OPS-06: Khôi phục dữ liệu</h3>
+<ol>
+<li>Duyệt yêu cầu, phạm vi, backup và người thực hiện; production cần step-up/approval. Sao lưu hiện trạng trước thay đổi.</li>
+<li>Restore trên isolated staging; kiểm count, FK, revision, reservations không trùng, payment balances, role và secrets references.</li>
+<li>Chọn cửa sổ production và thông báo nội bộ theo người phụ trách; chạy cutover có rollback rõ.</li>
+<li>Smoke test public/admin, cache invalidation, jobs và thống kê; không gắn nhãn backup “verified” chỉ vì file tồn tại.</li>
+</ol>
+<h2>Lịch vận hành đề xuất</h2>
+<p>Hằng ngày: hàng đợi lỗi, nguồn phát, lịch bắt đầu/kết thúc QC, rights sắp hết hạn, backup. Hằng tuần: quyền nhân sự, creative/URL, báo cáo lỗi, khoảng trống hoặc xung đột inventory. Hằng kỳ đối tác: import/đối soát/khóa kỳ/xuất báo cáo. Diễn tập restore và review quyền theo lịch được Owner duyệt.</p>
+<p>Mục tiêu đề xuất chưa ký: sự cố critical được tiếp nhận trong 15 phút giờ trực; backup mỗi ngày, RPO≤24h/RTO≤4h; raw events 30 ngày, aggregate 13 tháng, audit 365 ngày. Chưa có người trực, năng lực hạ tầng hoặc yêu cầu tuân thủ xác nhận nên <strong>không coi đây là SLA đã cam kết</strong>.</p>
+</main><footer>Rạp Đêm CMS V2 · Chưa triển khai production · Không có doanh thu hoặc tích hợp thật trong bộ mẫu</footer></body></html>

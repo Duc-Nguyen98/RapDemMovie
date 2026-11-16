@@ -1,0 +1,9 @@
+{
+  "scope": "XLSX XML verification, not live Excel testing",
+  "sheets": 6,
+  "frozenPanes": 6,
+  "tables": 6,
+  "validationSheets": 4,
+  "errorCells": [],
+  "status": "PASS"
+}

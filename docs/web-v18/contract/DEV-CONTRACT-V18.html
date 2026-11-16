@@ -1,0 +1,701 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contract triển khai — V18</title><style>
+:root{color-scheme:light;--ink:#17202b;--muted:#516073;--gold:#a66a00}
+*{box-sizing:border-box}body{margin:0;background:#f4f5f7;color:var(--ink);font:16px/1.65 system-ui,"Segoe UI",Arial,sans-serif}
+header{background:#111318;color:#fff;border-bottom:5px solid #facc15;padding:36px max(24px,calc((100vw - 1200px)/2))}
+header .tag{display:inline-block;color:#facc15;font-weight:700;letter-spacing:.08em;font-size:13px}
+header h1{font-size:32px;line-height:1.25;margin:12px 0}header p{color:#d4d4d8;max-width:1000px}
+main{max-width:1200px;margin:28px auto;padding:32px;background:white;border-radius:12px}
+h1,h2,h3{line-height:1.3}h1{font-size:30px}h2{font-size:24px;margin-top:48px;border-bottom:2px solid #e9b949;padding-bottom:10px;scroll-margin-top:20px}h3{font-size:19px;margin-top:28px}
+p,li{max-width:100%;overflow-wrap:anywhere}li{margin:6px 0}a{color:#805400;text-underline-offset:3px}blockquote{margin:24px 0;padding:16px 20px;border-left:5px solid #e9b949;background:#fff8e6}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;table-layout:auto}th,td{padding:10px 12px;border:1px solid #d8dde4;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#eff1f5;font-weight:700}
+code{background:#f0f2f5;padding:2px 5px;border-radius:4px}pre{padding:20px;overflow:auto;background:#f0f2f5}
+.toc{columns:2;gap:24px;border:1px solid #ddd;padding:16px 24px;background:#fafafa}.toc a{display:block;margin:8px 0;break-inside:avoid}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.card{padding:16px;border:1px solid #ddd;border-radius:10px;overflow:hidden}.card h3{margin:10px 0;font-size:18px}.card small{display:block;color:var(--muted)}.card img.preview{width:100%;height:240px;object-fit:contain;background:#111;border-radius:6px}
+.poster{display:block;background-image:url(../source-assets/poster-master.png);background-repeat:no-repeat;width:180px;max-width:100%;border:0}
+.note{background:#fff8e6;padding:16px;border-left:4px solid #e9b949}.good{color:#126c40}footer{max-width:1200px;margin:24px auto;padding:20px;color:#657082}
+@media(max-width:700px){main{padding:18px;margin:12px}header{padding:24px}header h1{font-size:25px}.toc{columns:1}table{display:block;overflow-x:auto}h2{font-size:22px}}
+@media print{body{background:white;font-size:11pt}header{padding:12mm;background:#fff;color:#000}header p{color:#222}.tag{color:#333!important}main{margin:0;padding:0;max-width:none;border-radius:0}table{font-size:9pt}th,td{padding:6px}h2{break-after:avoid}tr,.card{break-inside:avoid}a{color:#111}.toc{display:none}.no-print{display:none}footer{font-size:9pt}}
+</style></head><body><header><span class="tag">RẠP ĐÊM / V18 / BẢN DUYỆT</span><h1>Contract triển khai — V18</h1><p>Bộ bàn giao V18 · 14/11/2026 · Chưa nghiệm thu production</p></header><main><nav class="toc" aria-label="Mục lục"><a href="#section-1">1. Cách đọc và thứ tự ưu tiên</a><a href="#section-2">2. Quyết định và điểm phải duyệt</a><a href="#section-3">3. Hệ thống màn hình</a><a href="#section-4">4. Header, hero, lọc và footer dùng chung</a><a href="#section-5">5. Dữ liệu và poster dùng chung</a><a href="#section-6">6. Đặc tả responsive và token — D06 ĐỀ XUẤT</a><a href="#section-7">7. Inventory quảng cáo và chuyển layout</a><a href="#section-8">8. Modal trang chủ — D02 ĐỀ XUẤT</a><a href="#section-9">9. Quảng cáo nổi — D03 ĐỀ XUẤT</a><a href="#section-10">10. Player nhúng — CHỜ ĐỐI TÁC</a><a href="#section-11">11. Phim nhiều tập — D05 cần chủ sản phẩm chốt</a><a href="#section-12">12. Lưu phim không tài khoản — D04 ĐỀ XUẤT</a><a href="#section-13">13. Báo lỗi và trạng thái thiếu</a><a href="#section-14">14. API/data contract tối thiểu — ĐỀ XUẤT</a><a href="#section-15">15. Phân quyền và quản trị tối thiểu</a><a href="#section-16">16. Đo lường, bảo mật và vận hành</a><a href="#section-17">17. Checklist nghiệm thu</a><a href="#section-18">18. Điều kiện bàn giao và phát hành</a><a href="#section-19">19. Câu trả lời cần bổ sung</a></nav><h1>RẠP ĐÊM — Contract triển khai V18</h1>
+<p>Ngày lập: 14/11/2026 · Phiên bản tài liệu: V18-draft.1</p>
+<blockquote>
+<p>Đây là đặc tả sản phẩm/kỹ thuật để bàn giao DEV, không phải hợp đồng pháp lý và không phải biên bản nghiệm thu. Ảnh là mockup bằng ImageGen, chưa cập nhật hoặc kiểm thử website. Các quyết định mang nhãn ĐỀ XUẤT chưa được chủ sản phẩm duyệt.</p>
+</blockquote>
+<h2 id="section-1">1. Cách đọc và thứ tự ưu tiên</h2>
+<ul>
+<li><strong>ĐÃ CHỐT:</strong> yêu cầu trực tiếp của chủ sản phẩm trong hội thoại.</li>
+<li><strong>ĐỀ XUẤT:</strong> thông số/giải pháp BA đưa ra trong bộ V18 để duyệt; được dựng ở môi trường mẫu, chưa được tự bật trên production.</li>
+<li><strong>CHỜ ĐỐI TÁC:</strong> cần tài liệu SDK/API, tên nhà cung cấp và bằng chứng thử nghiệm.</li>
+<li>Khi khác nhau: yêu cầu đã chốt &gt; quyết định được ký duyệt sau đó &gt; JSON nội dung/dữ liệu và contract &gt; hình minh họa PNG.</li>
+<li>DEV dựng text, icon và layout bằng thành phần giao diện thật. Không cắt nguyên trang PNG làm website. Không đọc cỡ chữ, kích thước CSS từ số pixel của ảnh ghép.</li>
+<li>V18 là phiên bản bộ bàn giao; phiên bản ra mắt sản phẩm là MVP. V18 không chứng minh website đã phát hành 18 lần.</li>
+<li>Phạm vi: website công khai + yêu cầu quản trị tối thiểu + tích hợp quảng cáo/trình phát. Không bao gồm xây CDN, transcoding hoặc lưu trữ video.</li>
+</ul>
+<h2 id="section-2">2. Quyết định và điểm phải duyệt</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Nội dung</th>
+<th>Trạng thái</th>
+<th>Người chốt</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C01</td>
+<td>Hero “Tối nay xem gì?”, dòng hướng dẫn “Nhập tên phim hoặc chọn thể loại bên dưới.”</td>
+<td>ĐÃ CHỐT</td>
+<td>Chủ sản phẩm</td>
+</tr>
+<tr>
+<td>C02</td>
+<td>Không đăng nhập/đăng ký hội viên, không bán gói, doanh thu quảng cáo</td>
+<td>ĐÃ CHỐT</td>
+<td>Chủ sản phẩm</td>
+</tr>
+<tr>
+<td>C03</td>
+<td>Modal chỉ ở trang chủ; màn xem có quảng cáo trước phim, không modal toàn trang</td>
+<td>ĐÃ CHỐT về ý định; tích hợp CHỜ ĐỐI TÁC</td>
+<td>Chủ sản phẩm + đối tác</td>
+</tr>
+<tr>
+<td>C04</td>
+<td>Bỏ bộ chọn tập; giữ quyền mở rộng sau</td>
+<td>ĐÃ CHỐT</td>
+<td>Chủ sản phẩm</td>
+</tr>
+<tr>
+<td>C05</td>
+<td>Bỏ “Về đầu trang”; X nhìn nhỏ nhưng rõ; footer và bộ dữ liệu dùng chung</td>
+<td>ĐÃ CHỐT</td>
+<td>Chủ sản phẩm</td>
+</tr>
+<tr>
+<td>C06</td>
+<td>Không cổng đối tác quảng cáo; quản trị gửi báo cáo</td>
+<td>ĐÃ CHỐT</td>
+<td>Chủ sản phẩm</td>
+</tr>
+<tr>
+<td>D01</td>
+<td>Bộ lọc đủ 6 lựa chọn, cuộn ngang khi thiếu chỗ</td>
+<td>ĐỀ XUẤT triển khai trong V18</td>
+<td>Chủ sản phẩm</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>Modal tối đa 1 lần/24 giờ/trình duyệt, đồng thời 1 lần/session</td>
+<td>ĐỀ XUẤT</td>
+<td>Chủ sản phẩm</td>
+</tr>
+<tr>
+<td>D03</td>
+<td>Quảng cáo nổi ẩn khi player/footer/modal/menu/dialog hiển thị, đóng thì nghỉ 24 giờ theo vị trí</td>
+<td>ĐỀ XUẤT</td>
+<td>Chủ sản phẩm</td>
+</tr>
+<tr>
+<td>D04</td>
+<td>Lưu phim bằng localStorage, không đồng bộ, tối đa 200 phim</td>
+<td>ĐỀ XUẤT</td>
+<td>Chủ sản phẩm</td>
+</tr>
+<tr>
+<td>D05</td>
+<td>Ưu tiên bộ điều hướng tập bên trong player đối tác; nếu không có, chưa phát hành phim bộ</td>
+<td>CHỜ CHỌN PHƯƠNG ÁN + ĐỐI TÁC</td>
+<td>Chủ sản phẩm</td>
+</tr>
+<tr>
+<td>D06</td>
+<td>Các số đo CSS, thời gian chờ và điểm ngắt dưới đây</td>
+<td>ĐỀ XUẤT làm baseline</td>
+<td>Chủ sản phẩm + DEV</td>
+</tr>
+<tr>
+<td>P01</td>
+<td>Preroll, skip, đổi server, sự kiện phát, fullscreen, tập phim</td>
+<td>CHỜ ĐỐI TÁC</td>
+<td>Đối tác + DEV</td>
+</tr>
+</tbody></table>
+<p>Không tự đánh dấu P01 đạt vì ảnh có nút. Không dùng việc đổi tên file để đánh dấu C01–C06 đã được triển khai.</p>
+<h2 id="section-3">3. Hệ thống màn hình</h2>
+<table>
+<thead>
+<tr>
+<th>ID / route đề xuất</th>
+<th>Chức năng và dữ liệu</th>
+<th>Trạng thái bắt buộc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HOME / /</td>
+<td>Header, 6 section, hero tìm kiếm, slot quảng cáo, footer</td>
+<td>loading, success, section rỗng, ad no-fill</td>
+</tr>
+<tr>
+<td>SEARCH / /tim-kiem?q=</td>
+<td>Tìm theo tên hoặc diễn viên, áp dụng thể loại/loại phim</td>
+<td>loading, có kết quả, rỗng, API lỗi</td>
+</tr>
+<tr>
+<td>CATALOG / /phim-le, /phim-bo, /the-loai, /the-loai/:slug, /moi-cap-nhat</td>
+<td>Danh sách có lọc, sắp xếp, xem thêm; /the-loai là danh mục toàn bộ thể loại</td>
+<td>loading, có dữ liệu, rỗng, tải thêm lỗi</td>
+</tr>
+<tr>
+<td>WATCH / /xem/:slug</td>
+<td>Thông tin phim, player nhúng, server, lưu, báo lỗi, tắt đèn, đề xuất</td>
+<td>chờ phát, tải, preroll nếu hỗ trợ, phát phim, lỗi, không có nguồn</td>
+</tr>
+<tr>
+<td>SAVED / /da-luu</td>
+<td>Danh sách lưu cục bộ và bỏ lưu</td>
+<td>có dữ liệu, rỗng, bộ nhớ bị chặn, phim ngừng phát</td>
+</tr>
+<tr>
+<td>MOBILE-NAV</td>
+<td>Drawer: Trang chủ, Phim lẻ, Phim bộ, Thể loại, Phim đã lưu, Hỗ trợ</td>
+<td>mở/đóng, focus, Escape</td>
+</tr>
+<tr>
+<td>REPORT</td>
+<td>Dialog chọn loại lỗi, mô tả tùy chọn</td>
+<td>nhập, gửi, thành công, lỗi, rate limit</td>
+</tr>
+<tr>
+<td>SUPPORT / /ho-tro</td>
+<td>FAQ và hướng dẫn</td>
+<td>nội dung, lỗi tải</td>
+</tr>
+<tr>
+<td>FEEDBACK / /gop-y</td>
+<td>Góp ý chung, không bắt đăng nhập</td>
+<td>nhập, xác nhận, lỗi</td>
+</tr>
+<tr>
+<td>TERMS / /dieu-khoan; PRIVACY / /rieng-tu</td>
+<td>Nội dung do chủ sản phẩm cung cấp</td>
+<td>có nội dung đã duyệt</td>
+</tr>
+<tr>
+<td>PARTNER / /hop-tac</td>
+<td>Liên hệ hợp tác quảng cáo</td>
+<td>thông tin liên hệ hoặc form đã cấu hình</td>
+</tr>
+<tr>
+<td>NOT-FOUND</td>
+<td>Phim/route không tồn tại</td>
+<td>404, link về trang chủ</td>
+</tr>
+</tbody></table>
+<p>Đây là danh mục chức năng. Hai board trạng thái bổ sung không thay thế mọi tổ hợp lỗi/trạng thái kể trên.</p>
+<h2 id="section-4">4. Header, hero, lọc và footer dùng chung</h2>
+<h3>4.1 Header</h3>
+<p>Logo về trang chủ; Trang chủ, Phim lẻ, Phim bộ, Thể loại; icon tìm kiếm; icon phim đã lưu. Không avatar, đăng nhập, đăng ký hoặc gói hội viên. Menu thu gọn theo chỗ thực tế, không theo user-agent. Trạng thái active theo route. Khi route phim bộ chưa được duyệt phát hành theo D05, ẩn entry/section phim bộ khỏi production chứ không để dead link.</p>
+<h3>4.2 Hero và bộ lọc</h3>
+<p>Nguồn chữ: data/ui-copy.vi.json. H1 chính xác “Tối nay xem gì?”; eyebrow “TÌM PHIM”; hướng dẫn giữ nguyên C01. Placeholder ngắn trên mobile được phép là “Tìm phim, diễn viên…”.</p>
+<ul>
+<li>Cùng 6 mục theo thứ tự: Tất cả, Hành động, Viễn tưởng, Tình cảm, Tâm lý, Phim bộ.</li>
+<li>Tất cả xóa genre và type. Bốn mục thể loại đặt một genre. Phim bộ đặt type=series, xóa genre của quick-filter. Đây là quick-filter loại trừ nhau; trang kết quả có thể thêm bộ lọc độc lập sau.</li>
+<li>Chọn chip điều hướng danh sách kết quả với query đang nhập. Bấm Tìm phim/Enter gửi cùng trạng thái. Query rỗng + Tất cả mở danh sách toàn bộ phim; không giả “không tìm thấy”.</li>
+<li>Đề xuất: trim, Unicode NFC, tìm không phân biệt hoa/thường và dấu; tối đa 100 ký tự, không chạy HTML trong query.</li>
+<li>Responsive: một hàng overflow-x auto; không loại bỏ mục. Hiện chevron khi còn nội dung ngoài khung; focus cuộn mục đang chọn vào tầm nhìn. Chỉ hàng chip được cuộn ngang, không gây tràn toàn trang.</li>
+<li>Danh sách: đề xuất 24 phim/lần, “Xem thêm” tăng trang, giữ thứ tự ổn định; sắp xếp mặc định updated_at giảm dần rồi id. Bộ lọc phản ánh trong URL, Back khôi phục trạng thái.</li>
+</ul>
+<h3>4.3 Footer</h3>
+<p><strong>Mọi màn có footer dùng cùng cấu hình, không sao chép thủ công từng màn.</strong></p>
+<ul>
+<li>Khám phá: Mới cập nhật; Phim lẻ; Phim bộ; Thể loại.</li>
+<li>Hỗ trợ &amp; chính sách: Trung tâm hỗ trợ; Góp ý &amp; báo lỗi; Điều khoản sử dụng; Chính sách riêng tư.</li>
+<li>Hợp tác quảng cáo: “Kết nối thương hiệu với khán giả yêu phim.” + “Liên hệ hợp tác”.</li>
+<li>Brand: RẠP ĐÊM. Tagline: “Khám phá phim hay cho mọi tối.”. Copyright theo năm hiển thị.</li>
+<li>Desktop 4 cột; tablet 3 nhóm dưới hàng logo; mobile 2 cột link và khối hợp tác toàn hàng. Không ẩn liên kết để ép footer thấp.</li>
+<li>Dòng “Mẫu duyệt V18”, nhãn thiết bị và chú thích quy tắc là chú thích bản thiết kế, <strong>không đưa lên website</strong>.</li>
+</ul>
+<h2 id="section-5">5. Dữ liệu và poster dùng chung</h2>
+<p>data/movies.sample.json chứa 20 phim giả lập, mọi năm 2026; không phải danh mục phim đã mua quyền phát. data/home-sections.json xác định 6 nhóm và thứ tự. Mọi component nhận movieId và tra cùng dữ liệu; không gõ lại tên/thể loại theo màn.</p>
+<ul>
+<li>“Bóng Trên Sông”: Hành động · Chính kịch, artwork phố/cầu ven sông màu cam.</li>
+<li>“Quỹ Đạo Cuối”: Viễn tưởng · Khoa học, artwork trạm quỹ đạo màu xanh; không dùng người lính.</li>
+<li>“Những Ngày Mùa Hạ”: Tình cảm · Chính kịch; “Đèn Khuya”: Tâm lý · Giật gân.</li>
+<li>Không ép “6 tập” lên phim lẻ. episodeCount=null với phim lẻ; số tập giả lập chỉ dành prototype.</li>
+<li>source-assets/poster-master.png là bản gốc giữ nguyên dùng làm atlas tham chiếu; posterRef/cropPx trong JSON chỉ đúng một vùng cho mỗi ID. Cùng ID phải dùng cùng vùng trên mọi màn.</li>
+<li>catalog-preview.html cho xem bộ poster/copy chuẩn từ atlas, không dùng ảnh AI mới sinh làm nguồn chuẩn.</li>
+<li>Atlas có độ phân giải thumbnail thấp, chỉ phục vụ prototype. Trước production phải thay bằng poster riêng đủ chất lượng đã được chủ sản phẩm duyệt, giữ nguyên ID. Không coi các crop này là bộ asset production đã sẵn sàng.</li>
+<li>Các PNG ImageGen có thể diễn giải lại poster/vi ký tự. Khi đối chiếu dữ liệu/asset, JSON và atlas là nguồn chuẩn; không tuyên bố pixel-identical giữa các PNG.</li>
+</ul>
+<h2 id="section-6">6. Đặc tả responsive và token — D06 ĐỀ XUẤT</h2>
+<table>
+<thead>
+<tr>
+<th>Token/quy tắc</th>
+<th>Giá trị CSS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Font</td>
+<td>Noto Sans (bộ ký tự tiếng Việt), fallback system-ui, sans-serif; self-host file hợp lệ khi triển khai</td>
+</tr>
+<tr>
+<td>Body / phụ / tối thiểu trong component</td>
+<td>16/24; 14/20; không ép label thao tác dưới 12/16</td>
+</tr>
+<tr>
+<td>H1 desktop / tablet / mobile</td>
+<td>36/44, 32/40, 26/34; font-weight 700</td>
+</tr>
+<tr>
+<td>Tiêu đề section / tên phim</td>
+<td>20/28, 16/22; tên phim tối đa 2 dòng, title đầy đủ cho trợ năng</td>
+</tr>
+<tr>
+<td>Màu</td>
+<td>nền #09090B; panel #171719; text #FAFAFA; phụ #D4D4D8; vàng #FACC15; chữ trên vàng #111111</td>
+</tr>
+<tr>
+<td>Khoảng cách</td>
+<td>4, 8, 12, 16, 24, 32, 48; card gap 16 desktop, 12 tablet/mobile</td>
+</tr>
+<tr>
+<td>Radius</td>
+<td>input/button 8; card 12; dialog 16</td>
+</tr>
+<tr>
+<td>Chiều rộng</td>
+<td>nội dung giữa max 1120; shell có rails max 1536; gutter 16 mobile, 24 tablet/desktop</td>
+</tr>
+<tr>
+<td>Breakpoints</td>
+<td>mobile &lt;768; tablet 768–1023; desktop &gt;=1024; side rails chỉ &gt;=1536 và đủ chỗ</td>
+</tr>
+<tr>
+<td>Grid phim</td>
+<td>2 cột mobile; 3 tablet; 4 desktop; ảnh 16:9 object-fit cover</td>
+</tr>
+<tr>
+<td>Player</td>
+<td>ưu tiên 16:9; width100%; không dùng chiều cao cố định làm méo trên mobile</td>
+</tr>
+<tr>
+<td>Header</td>
+<td>64 desktop/tablet, 56 mobile; không giả định sticky nếu chưa test va chạm</td>
+</tr>
+<tr>
+<td>Close</td>
+<td>hình tròn hiển thị 24px, icon X 14px; vùng bấm 44x44px, inset 8px, không chồng CTA</td>
+</tr>
+<tr>
+<td>Z layers</td>
+<td>nội dung0; header100; floating300; menu/report900; backdrop1000; modal1010</td>
+</tr>
+</tbody></table>
+<p>Đây là số đo CSS đề xuất, không phải số đo đã kiểm chứng từ ảnh. Test tối thiểu 360×800, 390×844, 768×1024, 834×1112, 1024×768, 1366×768, 1536×864, 1920×1080; thêm xoay ngang và zoom 200%. CSS phải tự co, không có cuộn ngang cả trang.</p>
+<p>Nút X có vùng bấm rộng hơn hình vẽ. Mục tiêu 44×44 là lựa chọn của dự án; WCAG 2.2 SC2.5.8 mô tả mức tối thiểu 24×24 CSS px và các ngoại lệ, không nên đánh đồng hai số. <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">Nguồn W3C</a>.</p>
+<h2 id="section-7">7. Inventory quảng cáo và chuyển layout</h2>
+<p>Nguồn cấu hình: data/ad-policy.proposed.json. Các slot là vị trí có thể bán, không phải cam kết mọi slot luôn có quảng cáo.</p>
+<table>
+<thead>
+<tr>
+<th>Nhóm</th>
+<th>Desktop rộng</th>
+<th>Tablet</th>
+<th>Mobile</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Top inline</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Side rails</td>
+<td>3 trái + 3 phải; mỗi slot 160×300; chảy theo tài liệu</td>
+<td>Không rails</td>
+<td>Không rails</td>
+</tr>
+<tr>
+<td>Home giữa section</td>
+<td>6 vị trí xen nội dung</td>
+<td>3 vị trí</td>
+<td>3 vị trí</td>
+</tr>
+<tr>
+<td>Watch nội dung</td>
+<td>trước player1 + sidebar1 + dưới player3 + giữa đề xuất2</td>
+<td>dưới player3 + giữa đề xuất2</td>
+<td>dưới player3 + giữa đề xuất2</td>
+</tr>
+<tr>
+<td>Floating</td>
+<td>2×300×90</td>
+<td>2×240×72</td>
+<td>1×min(320,viewport-32)×50</td>
+</tr>
+<tr>
+<td>Homepage modal</td>
+<td>1, theo cap</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Preroll</td>
+<td>1 inventory phía player, chỉ khi được xác nhận</td>
+<td>Tương tự</td>
+<td>Tương tự</td>
+</tr>
+</tbody></table>
+<p>Desktop home tối đa 17 slot gồm modal/floating; desktop watch tối đa 18 gồm preroll. Đây là đếm inventory cấu hình, <strong>không phải số impression hay số quảng cáo đồng thời</strong>. Modal và floating loại trừ nhau. Không cam kết doanh thu từ số slot.</p>
+<p>Khi desktop hẹp không đủ rails: tắt 6 rail slot, không nhồi cả 6 xuống nội dung. Nội dung vẫn max1120 và không bị ép nhỏ để giữ quảng cáo. Hai creative cùng vị trí có thể luân phiên theo chiến dịch đã cấu hình; mặc định không tự refresh khi người dùng đứng yên.</p>
+<p>Mọi creative có nhãn Tài trợ/Quảng cáo. Không giả nút hệ thống, không auto redirect, không cửa sổ bật thêm khi click đóng. Không phủ lớp click lên nút play/đóng. Lỗi/no-fill bỏ slot có kiểm soát, không chặn chức năng xem/tìm.</p>
+<h2 id="section-8">8. Modal trang chủ — D02 ĐỀ XUẤT</h2>
+<ul>
+<li>Chỉ route HOME; chỉ khi document hiển thị, không có menu/dialog, người dùng không nhập tìm kiếm. Sau trang sẵn sàng ít nhất 2 giây, thử tải creative.</li>
+<li>Chỉ mở sau creative tải thành công. Timeout 3 giây: bỏ lần mở, không hiện ô rỗng, ghi ad_error/no_fill. Mỗi session tối đa một lần thử; không lặp retry.</li>
+<li>Cap: tối đa 1 lần mở/24 giờ lăn theo trình duyệt + 1 lần/session; dùng key toàn vị trí, đổi chiến dịch không reset cap. Ghi lastShown khi thật sự mở, không khi fetch.</li>
+<li>X đóng ngay, không countdown. Escape đóng, click backdrop đóng (không click xuyên xuống banner dưới). Đóng không tự mở lại trên Back/refresh trong cap.</li>
+<li>localStorage ghi timestamp; sessionStorage ghi attempt/shown. Nếu storage bị chặn, <strong>không hiển thị modal tự động</strong> để tránh spam không kiểm soát.</li>
+<li>Width min(720px,viewportWidth-32px), mobile viewport-32px; max-height calc(100dvh-32px-safeInsets). Giữ tỉ lệ creative bằng contain, không crop mất nút/nhãn.</li>
+<li>Center theo viewport, không theo chiều dài trang. Khóa scroll nền; khi mở đưa focus vào nút đóng; trap focus; khi đóng trả focus về vị trí hợp lý.</li>
+<li>Không chạy cùng floating. Inline ads phía sau không tương tác được; không ghi là viewable nếu bị modal che.</li>
+<li>Mặc định feature flag false trên production trước khi D02 được duyệt.</li>
+</ul>
+<p>Modal theo mẫu APG cần quản lý focus và tương tác nền, không chỉ có hình phủ tối. <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">Nguồn W3C APG</a>.</p>
+<h2 id="section-9">9. Quảng cáo nổi — D03 ĐỀ XUẤT</h2>
+<h3>9.1 Điều kiện hiện</h3>
+<p>Tất cả phải đúng: route HOME/WATCH; creative loaded; chưa đóng slot trong 24 giờ; document visible; đã ở route &gt;=8 giây; đã cuộn &gt;=25% nội dung có thể cuộn; không modal/menu/report; không keyboard; chiều cao viewport &gt;=600px; không fullscreen/PiP/tắt đèn.</p>
+<p>Trên WATCH: ẩn nếu bất kỳ phần player hoặc thanh điều khiển/server còn giao với viewport. Trên HOME: ẩn nếu hero tìm kiếm còn giao với viewport. Trên cả hai: ẩn ngay khi bất kỳ phần footer xuất hiện. Không suy ra paused/playing từ ảnh; kiểm tra vị trí wrapper bằng cơ chế giao cắt viewport, và event đối tác nếu có.</p>
+<h3>9.2 Vị trí</h3>
+<ul>
+<li>Desktop: left/right16px, bottom16px + safe-area. Tablet: left/right16px, bottom12px + safe-area. Mobile: giữa ngang, bottom8px + safe-area.</li>
+<li>Creative kích thước theo mục7. Close có hit-area44px, nằm trong vùng dành cho control, không mở URL quảng cáo.</li>
+<li>Dải bảo vệ đáy cao creativeHeight + bottomGap + 16px + safeArea. Nội dung cuối phải cuộn tới được phía trên dải; không tạo khối trắng lớn sau footer.</li>
+<li>Bất cứ va chạm với CTA/player/form cần thao tác: tạm ẩn. Không dùng z-index để che lỗi.</li>
+<li>Khi footer xuất hiện: ẩn cả dock, không để footer phía sau quảng cáo. Khi footer ra khỏi viewport và điều kiện vẫn đúng, có thể hiện lại; đây không phải impression mới tự động.</li>
+<li>Người dùng bấm X: ẩn riêng slot đó ngay, persist closedUntil24h; không thay bằng creative khác để né lần đóng.</li>
+<li>Nếu chỉ một trong hai desktop/tablet slot loaded: chỉ hiện slot đó tại góc của nó. Không kéo dãn che nhiều diện tích hơn.</li>
+<li>Không quảng cáo nổi trên SEARCH/SAVED/SUPPORT hoặc trong các dialog. Khi storage không khả dụng: tắt floating tự động.</li>
+<li>Viewport boards là minh họa quy tắc; DEV phải test thật trên trình duyệt, không suy ra vị trí CSS từ tỷ lệ ảnh ghép.</li>
+</ul>
+<h2 id="section-10">10. Player nhúng — CHỜ ĐỐI TÁC</h2>
+<p>Phải có mẫu embed thật, tài liệu chính thức, tên đơn vị chịu trách nhiệm và allowlist domain trước khi tích hợp.</p>
+<table>
+<thead>
+<tr>
+<th>Khả năng</th>
+<th>Bằng chứng cần</th>
+<th>Khi không hỗ trợ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Preroll</td>
+<td>API/SDK hoặc cấu hình đối tác, ad-start/ad-end/ad-error thực</td>
+<td>Không giả quảng cáo trong iframe; báo blocker mô hình doanh thu trước phim</td>
+</tr>
+<tr>
+<td>Skip</td>
+<td>skip offset từ đối tác và API được phép</td>
+<td>Không vẽ “Bỏ qua” giả; để control native hoặc không hiện</td>
+</tr>
+<tr>
+<td>Server dự phòng</td>
+<td>&gt;=2 nguồn hợp lệ cho cùng phim/tập</td>
+<td>Ẩn server#2; không hứa tự động khôi phục vị trí phát</td>
+</tr>
+<tr>
+<td>Lỗi phát</td>
+<td>mã lỗi/event chính thức</td>
+<td>Vẫn cho báo lỗi thủ công; timeout chỉ ghi “chưa sẵn sàng”, không kết luận video hỏng</td>
+</tr>
+<tr>
+<td>play/pause/fullscreen/PiP</td>
+<td>callback đã thử</td>
+<td>Không hứa điều khiển từ website; dùng control native</td>
+</tr>
+<tr>
+<td>Chuyển tập</td>
+<td>danh sách và điều hướng native hoặc API</td>
+<td>Áp dụng gate mục11</td>
+</tr>
+<tr>
+<td>Đo quảng cáo/video</td>
+<td>log đối soát với nhà cung cấp</td>
+<td>Báo “không có dữ liệu”, không suy từ thời gian hiện iframe</td>
+</tr>
+</tbody></table>
+<p>Iframe khác origin có hạn chế truy cập; nhúng URL không có nghĩa website điều khiển được video bên trong. <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Same-origin_policy">Nguồn MDN</a>.</p>
+<ul>
+<li>Adapter có capability flags, mặc định false; chỉ bật sau test. Xác thực origin/source/schema khi nhận postMessage; không nhận mọi origin hoặc dựng HTML tùy ý.</li>
+<li>Wrapper states: idle → loading → ready; ready có thể native-preroll → playing nếu partner báo. error có retry/manual report. Không hard-code “skip sau 5s” khi chưa có hợp đồng đối tác.</li>
+<li>Đề xuất wrapper ready timeout10s: thông báo chờ lâu + Thử lại/Báo lỗi; không retry vô hạn. Click thử lại tối đa2 lần tự động trong một thao tác rồi cho hành động thủ công.</li>
+<li>Không chạy cả preroll native và preroll của website nối tiếp nếu chưa có thỏa thuận. Không tạo click-to-play giả dẫn đến quảng cáo.</li>
+<li>“Tắt đèn” chỉ đổi lớp nền website và ẩn quảng cáo nổi; không tuyên bố pause/control iframe.</li>
+<li>Server đổi nguồn phải bảo toàn movieId/episodeId; nếu không seek được thì cảnh báo “Máy chủ mới có thể phát lại từ đầu.”.</li>
+</ul>
+<h2 id="section-11">11. Phim nhiều tập — D05 cần chủ sản phẩm chốt</h2>
+<p>Yêu cầu bỏ bộ chọn tập được giữ. Không âm thầm thêm dropdown hoặc lưới tập.</p>
+<ul>
+<li><strong>Phương án đề xuất A:</strong> dùng điều hướng tập bên trong player đối tác. Chỉ phát hành phim bộ nếu người dùng thực sự đến được mọi tập đã xuất bản.</li>
+<li>Nếu player không có điều hướng tập: <strong>phương án B cần duyệt</strong>, MVP chỉ phát phim lẻ; ẩn phim bộ/filter/section trên production. Bộ mockup vẫn có phim bộ để duyệt định hướng, không đồng nghĩa luồng đã hoàn chỉnh.</li>
+<li>Không tự thêm “Tập trước / Tập sau” vì đó là thay đổi quyết định sản phẩm.</li>
+<li>Metadata “Tập1/6tập” chỉ hiển thị khi xác định được episodeId và tổng tập thật. Không dùng số giả trong data mẫu lên production.</li>
+<li>Đây là release blocker cho nội dung phim bộ, không nhất thiết chặn phát hành phim lẻ.</li>
+</ul>
+<h2 id="section-12">12. Lưu phim không tài khoản — D04 ĐỀ XUẤT</h2>
+<p>Key rapdem.saved.v1, lưu {movieId,savedAt}, không lưu URL nhúng/token hay thông tin nhạy cảm. Tối đa200; vượt giới hạn báo rõ, không xóa âm thầm. Click bookmark/lưu là toggle; thông báo “Đã lưu phim trên trình duyệt này.” / “Đã bỏ lưu phim.”.</p>
+<ul>
+<li>Trang SAVED hiển thị dòng “Chỉ lưu trên trình duyệt này, không đồng bộ thiết bị.”.</li>
+<li>Tải lại vẫn còn nếu storage cho phép. Xóa dữ liệu trình duyệt có thể mất danh sách; chế độ riêng tư không hứa giữ lâu.</li>
+<li>Storage lỗi/đầy: thông báo “Không thể lưu trên trình duyệt này.”, không hiện thành công giả; có thể dùng bộ nhớ tạm nếu gắn nhãn rõ.</li>
+<li>Phim đã ngừng phát: giữ mục với nhãn “Hiện không khả dụng” và nút Bỏ lưu; không tự mở phim khác.</li>
+<li>Nhiều tab cập nhật qua storage event; server không được coi đây là tài khoản người dùng.</li>
+</ul>
+<p>localStorage gắn theo origin và có thể bị chặn/xóa; không phải dịch vụ đồng bộ tài khoản. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">Nguồn MDN</a>.</p>
+<h2 id="section-13">13. Báo lỗi và trạng thái thiếu</h2>
+<p>REPORT: loại lỗi bắt buộc (Không phát được / Giật hoặc tải chậm / Sai phim hoặc tập / Âm thanh hoặc phụ đề / Khác); mô tả0–500 ký tự, Khác cần mô tả; không bắt email. Tự đính movieId, episodeId nếu có, serverId, timestamp, mã lỗi partner nếu nhận được; không đính raw embed token hoặc nội dung nhạy cảm.</p>
+<ul>
+<li>Gửi qua backend; disable nút khi gửi, chống gửi lặp. Đề xuất giới hạn5 báo cáo/10phút theo lớp bảo vệ server; cơ chế định danh/rate limit được DEV thiết kế tối thiểu dữ liệu.</li>
+<li>Lỗi mạng giữ nội dung đã nhập, cho thử lại. Thành công trả reportId, toast cảm ơn. Escape/Cancel đóng; đang có nội dung thì xác nhận bỏ.</li>
+<li>Search empty: “Không tìm thấy phim phù hợp.” / “Thử từ khóa khác hoặc xóa bộ lọc.” / Xóa bộ lọc / Về trang chủ.</li>
+<li>Loading: skeleton ở card; spinner player + “Đang tải trình phát…”, không progress% giả.</li>
+<li>Player lỗi: “Không thể tải trình phát.” / Thử lại / Báo lỗi. Đổi máy chủ chỉ nếu có nguồn khác.</li>
+<li>Saved empty: “Bạn chưa lưu phim nào.” / Khám phá phim.</li>
+<li>Menu mobile: khóa tương tác nền, Escape/backdrop/X đóng, focus trả nút menu; không hiện cùng ad modal.</li>
+<li>API lỗi danh sách không được hiển thị thành “0 kết quả”; phân biệt lỗi và rỗng.</li>
+</ul>
+<h2 id="section-14">14. API/data contract tối thiểu — ĐỀ XUẤT</h2>
+<p>Không gắn framework hoặc database bắt buộc. Đây là interface logic; DEV được ánh xạ stack nhưng giữ ý nghĩa.</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Input</th>
+<th>Output/validation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET /api/movies</td>
+<td>q, genre, type, cursor, limit&lt;=24</td>
+<td>items[], nextCursor, total; cùng Movie schema</td>
+</tr>
+<tr>
+<td>GET /api/movies/:id</td>
+<td>id</td>
+<td>Movie + availability + providerCapabilities + sources không lộ secret</td>
+</tr>
+<tr>
+<td>GET /api/home</td>
+<td>locale=vi</td>
+<td>sectionId, title, movieIds, slotIds</td>
+</tr>
+<tr>
+<td>GET /api/ads/eligible</td>
+<td>placementId, viewportClass, route</td>
+<td>creative hoặc no_fill; không dùng để né cap client</td>
+</tr>
+<tr>
+<td>POST /api/reports</td>
+<td>movieId, episodeId?, serverId?, category, description, clientRequestId</td>
+<td>reportId;400/429/5xx rõ; idempotency theo requestId</td>
+</tr>
+<tr>
+<td>POST /api/ad-events</td>
+<td>eventId, eventType, placementId, creativeId, timestamp, context</td>
+<td>accepted; dedup eventId; không ghi revenue từ client</td>
+</tr>
+<tr>
+<td>GET /api/site-config</td>
+<td>version</td>
+<td>footer, copyVersion, featureFlags, ad policy đã duyệt</td>
+</tr>
+</tbody></table>
+<p>Movie: id, slug, title, year, genres[], type, posterRef, episodeCount?, availability. Sample JSON không chứa URL đối tác thật.
+Partner source: id, label, providerId, allowedEmbedUrl, episodeId?, capabilities; server-side kiểm tra domain, không cho nhập javascript: hoặc iframe HTML tùy ý.</p>
+<h2 id="section-15">15. Phân quyền và quản trị tối thiểu</h2>
+<p>Không có login khách hàng <strong>không đồng nghĩa bỏ xác thực quản trị</strong>. Các vai trò sau là đề xuất, chưa có mockup admin trong bộ ảnh.</p>
+<table>
+<thead>
+<tr>
+<th>Vai trò</th>
+<th>Quyền</th>
+<th>Không được</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Khách</td>
+<td>xem, tìm, lưu cục bộ, báo lỗi, đóng quảng cáo</td>
+<td>vào API quản trị</td>
+</tr>
+<tr>
+<td>Biên tập nội dung</td>
+<td>CRUD metadata/poster, section, nguồn trong allowlist</td>
+<td>thay quyền người dùng, script quảng cáo tùy ý</td>
+</tr>
+<tr>
+<td>Quản lý quảng cáo</td>
+<td>chiến dịch, creative, lịch, slot, cap trong cấu hình duyệt, báo cáo</td>
+<td>sửa phim/quyền hệ thống</td>
+</tr>
+<tr>
+<td>Hỗ trợ</td>
+<td>xem và xử lý report</td>
+<td>xuất secret, sửa quảng cáo</td>
+</tr>
+<tr>
+<td>Quản trị</td>
+<td>cấu hình, quyền, publish/unpublish, nhật ký</td>
+<td>bỏ qua kiểm tra dữ liệu/tích hợp</td>
+</tr>
+<tr>
+<td>Đối tác quảng cáo</td>
+<td>nhận file báo cáo do quản trị gửi</td>
+<td>không có tài khoản riêng giai đoạn này</td>
+</tr>
+</tbody></table>
+<p>Một người có thể nhiều vai trò nhưng API vẫn kiểm tra server-side. Bắt buộc audit log thay đổi cấu hình chiến dịch/nguồn phát/quyền. Có kill switch modal/floating/preroll integration và rollback phiên bản cấu hình. Báo cáo đối tác không chứa IP/PII thô.</p>
+<h2 id="section-16">16. Đo lường, bảo mật và vận hành</h2>
+<ul>
+<li>Tách ad_request, ad_loaded, ad_visible, ad_click, ad_close, ad_error; đếm tải thành công không đồng nghĩa viewable hay có tiền.</li>
+<li>ĐỀ XUẤT đo nội bộ: visible khi &gt;=50% vùng creative trong viewport liên tục1s và document visible, không modal che; chỉ tính một lần mỗi lần mount hợp lệ. Đây là định nghĩa nội bộ, <strong>không khẳng định chuẩn tính tiền của mạng quảng cáo</strong>.</li>
+<li>Không suy doanh thu từ số click client. Revenue/fill/eCPM lấy từ đối tác và gắn kỳ đối soát; dữ liệu chưa có hiển thị N/A.</li>
+<li>Báo cáo tối thiểu theo ngày/placement/device/campaign; lưu UTC, hiển thị múi giờ dự án Asia/Bangkok; ghi rõ timezone trên file.</li>
+<li>Lazy-load slot ngoài màn, kích thước dự phòng ổn định; lỗi quảng cáo không chặn nội dung; không preload tất cả creative đầu trang.</li>
+<li>Không dùng mã quảng cáo chưa duyệt. Allowlist nguồn nhúng, CSP theo nhà cung cấp được thử thực tế; không chấp nhận URL/script từ query người dùng.</li>
+<li>Text escape, kiểm tra file/upload; liên kết ngoài an toàn; server secrets không đưa vào frontend.</li>
+<li>Chủ sản phẩm chịu trách nhiệm xác nhận nguồn phát/poster và điều khoản đối tác đủ điều kiện sử dụng trước production. Đây là gate tài liệu, không kết luận pháp lý đã kiểm chứng.</li>
+<li>Không bảo đảm SEO, hiệu năng, doanh thu hay tuân thủ mạng quảng cáo chỉ từ thiết kế. Đo trên bản build staging với creative thực.</li>
+</ul>
+<h2 id="section-17">17. Checklist nghiệm thu</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Thao tác / điều kiện</th>
+<th>Kết quả phải có</th>
+<th>Tình trạng bộ bàn giao</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A01</td>
+<td>So HOME và nền modal 3 thiết bị</td>
+<td>Cùng tiêu đề, hướng dẫn, bộ lọc; modal centered viewport</td>
+<td>Review ảnh + test DEV chưa chạy</td>
+</tr>
+<tr>
+<td>A02</td>
+<td>Đối chiếu footer mọi route</td>
+<td>4 link khám phá + 4 link hỗ trợ + hợp tác</td>
+<td>Contract/JSON là chuẩn</td>
+</tr>
+<tr>
+<td>A03</td>
+<td>Render cùng movieId ở home/watch/search/saved</td>
+<td>Cùng title/year/genres/posterRef</td>
+<td>Data validation cục bộ; UI chưa chạy</td>
+</tr>
+<tr>
+<td>A04</td>
+<td>Mobile chip scroll/keyboard</td>
+<td>Đến được cả6 mục, không tràn trang</td>
+<td>Test DEV chưa chạy</td>
+</tr>
+<tr>
+<td>A05</td>
+<td>Watch scroll qua player rồi đến footer</td>
+<td>Floating hiện/ẩn đúng3 trạng thái</td>
+<td>Có board minh họa; test DEV chưa chạy</td>
+</tr>
+<tr>
+<td>A06</td>
+<td>Modal + floating cùng đủ điều kiện</td>
+<td>Chỉ modal; không click xuyên</td>
+<td>Test DEV chưa chạy</td>
+</tr>
+<tr>
+<td>A07</td>
+<td>Đóng modal rồi refresh/Back/mở tab</td>
+<td>Cap đúng, không né bằng campaign mới</td>
+<td>Test DEV chưa chạy</td>
+</tr>
+<tr>
+<td>A08</td>
+<td>Storage chặn, ad timeout/no-fill</td>
+<td>Không modal/floating tự động; xem phim vẫn hoạt động</td>
+<td>Test DEV chưa chạy</td>
+</tr>
+<tr>
+<td>A09</td>
+<td>Save/reload/other browser/remove</td>
+<td>Lưu đúng phạm vi; không hứa sync</td>
+<td>Test DEV chưa chạy</td>
+</tr>
+<tr>
+<td>A10</td>
+<td>Partner không hỗ trợ skip/server/episodes</td>
+<td>Không nút giả; feature gate tương ứng</td>
+<td>CHỜ ĐỐI TÁC</td>
+</tr>
+<tr>
+<td>A11</td>
+<td>Input tìm kiếm không kết quả và API lỗi</td>
+<td>Hai trạng thái khác nhau</td>
+<td>Có board mẫu; test DEV chưa chạy</td>
+</tr>
+<tr>
+<td>A12</td>
+<td>Báo lỗi double-click/lỗi mạng/429</td>
+<td>Không spam; giữ draft; thông báo đúng</td>
+<td>Test DEV chưa chạy</td>
+</tr>
+<tr>
+<td>A13</td>
+<td>360px, tablet, desktop, zoom200%, keyboard</td>
+<td>Không mất link/CTA; focus rõ; close dễ bấm</td>
+<td>Test DEV chưa chạy</td>
+</tr>
+<tr>
+<td>A14</td>
+<td>Ads visible/click và provider revenue</td>
+<td>Không double-count, không bịa doanh thu</td>
+<td>CHỜ TÍCH HỢP</td>
+</tr>
+<tr>
+<td>A15</td>
+<td>Truy cập API admin bằng khách</td>
+<td>Bị từ chối server-side; audit đúng</td>
+<td>Test DEV chưa chạy</td>
+</tr>
+<tr>
+<td>A16</td>
+<td>Fullscreen, xoay ngang, keyboard, footer</td>
+<td>Không ad nổi che player/form/footer</td>
+<td>Test DEV chưa chạy</td>
+</tr>
+<tr>
+<td>A17</td>
+<td>Series nhiều tập</td>
+<td>Truy cập được mọi tập hoặc series bị chặn publish</td>
+<td>CHỜ D05/P01</td>
+</tr>
+<tr>
+<td>A18</td>
+<td>Tắt kill switch</td>
+<td>Overlay dừng, nội dung vẫn dùng được</td>
+<td>Test DEV chưa chạy</td>
+</tr>
+</tbody></table>
+<h2 id="section-18">18. Điều kiện bàn giao và phát hành</h2>
+<p>Được bắt đầu: dựng component, responsive, layout, data binding, các trạng thái lỗi, mock adapter. Không cần đợi quyết định quảng cáo để dựng shell.
+Chưa được tuyên bố hoàn tất: tần suất/cap chưa duyệt; P01 chưa có bằng chứng; D05 chưa chốt; poster production chưa có; staging và nghiệm thu A01–A18 chưa chạy.
+Bàn giao DEV phải kèm: 5 màn chính đã sửa, 2 board viewport, 2 board trạng thái, contract HTML/Markdown, JSON text/token/data/policy, atlas tham chiếu và manifest kích thước/hash thực tế.
+Không ghi “đã khắc phục triệt để/production-ready” chỉ từ việc có đủ file. Theo dõi các sai khác còn lại trong QA-NOTES.md.</p>
+<h2 id="section-19">19. Câu trả lời cần bổ sung</h2>
+<ol>
+<li>Chủ sản phẩm duyệt hay chỉnh D02/D03 (modal1lần/24h; floating ẩn khi player/footer; đóng nghỉ24h)?</li>
+<li>Đối tác player là đơn vị nào, có tài liệu SDK/API hoặc embed thử được không?</li>
+<li>Nếu đối tác không có điều hướng tập, có đồng ý MVP chỉ phát phim lẻ không?</li>
+</ol>
+<p>Không có câu trả lời không được hiểu là đồng ý. Các phần chưa duyệt giữ feature flag false khi lên production.</p>
+</main><footer>Ảnh minh họa ≠ mã nguồn website. Các điểm CHỜ DUYỆT / CHỜ ĐỐI TÁC không được tự đánh dấu hoàn tất.</footer></body></html>

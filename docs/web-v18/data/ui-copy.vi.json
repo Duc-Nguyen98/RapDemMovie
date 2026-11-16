@@ -1,0 +1,220 @@
+{
+  "version": "v18",
+  "locale": "vi",
+  "hero": {
+    "eyebrow": "TÌM PHIM",
+    "title": "Tối nay xem gì?",
+    "description": "Nhập tên phim hoặc chọn thể loại bên dưới.",
+    "placeholder": "Tìm phim, diễn viên, thể loại...",
+    "placeholderMobile": "Tìm phim, diễn viên…",
+    "submit": "Tìm phim"
+  },
+  "quickFilters": [
+    {
+      "id": "all",
+      "label": "Tất cả",
+      "genre": null,
+      "type": null
+    },
+    {
+      "id": "genre-0",
+      "label": "Hành động",
+      "genre": "Hành động",
+      "type": null
+    },
+    {
+      "id": "genre-1",
+      "label": "Viễn tưởng",
+      "genre": "Viễn tưởng",
+      "type": null
+    },
+    {
+      "id": "genre-2",
+      "label": "Tình cảm",
+      "genre": "Tình cảm",
+      "type": null
+    },
+    {
+      "id": "genre-3",
+      "label": "Tâm lý",
+      "genre": "Tâm lý",
+      "type": null
+    },
+    {
+      "id": "series",
+      "label": "Phim bộ",
+      "genre": null,
+      "type": "series"
+    }
+  ],
+  "brand": {
+    "name": "RẠP ĐÊM",
+    "tagline": "Khám phá phim hay cho mọi tối.",
+    "copyright": "© {year} Rạp Đêm."
+  },
+  "footer": [
+    {
+      "heading": "Khám phá",
+      "links": [
+        {
+          "label": "Mới cập nhật",
+          "href": "/moi-cap-nhat"
+        },
+        {
+          "label": "Phim lẻ",
+          "href": "/phim-le"
+        },
+        {
+          "label": "Phim bộ",
+          "href": "/phim-bo"
+        },
+        {
+          "label": "Thể loại",
+          "href": "/the-loai"
+        }
+      ]
+    },
+    {
+      "heading": "Hỗ trợ & chính sách",
+      "links": [
+        {
+          "label": "Trung tâm hỗ trợ",
+          "href": "/ho-tro"
+        },
+        {
+          "label": "Góp ý & báo lỗi",
+          "href": "/gop-y"
+        },
+        {
+          "label": "Điều khoản sử dụng",
+          "href": "/dieu-khoan"
+        },
+        {
+          "label": "Chính sách riêng tư",
+          "href": "/rieng-tu"
+        }
+      ]
+    },
+    {
+      "heading": "Hợp tác quảng cáo",
+      "description": "Kết nối thương hiệu với khán giả yêu phim.",
+      "links": [
+        {
+          "label": "Liên hệ hợp tác",
+          "href": "/hop-tac"
+        }
+      ]
+    }
+  ],
+  "navigation": [
+    {
+      "label": "Trang chủ",
+      "href": "/"
+    },
+    {
+      "label": "Phim lẻ",
+      "href": "/phim-le"
+    },
+    {
+      "label": "Phim bộ",
+      "href": "/phim-bo"
+    },
+    {
+      "label": "Thể loại",
+      "href": "/the-loai"
+    },
+    {
+      "label": "Phim đã lưu",
+      "href": "/da-luu"
+    },
+    {
+      "label": "Hỗ trợ",
+      "href": "/ho-tro"
+    }
+  ],
+  "controls": {
+    "save": "Lưu phim",
+    "saved": "Đã lưu",
+    "unsave": "Bỏ lưu",
+    "report": "Báo lỗi",
+    "lightsOff": "Tắt đèn",
+    "lightsOn": "Bật đèn",
+    "more": "Xem thêm",
+    "all": "Xem tất cả",
+    "close": "Đóng",
+    "cancel": "Hủy",
+    "retry": "Thử lại",
+    "send": "Gửi báo lỗi",
+    "skipAd": "Bỏ qua quảng cáo",
+    "skipAfter": "Có thể bỏ qua sau {seconds} giây",
+    "adLabel": "Quảng cáo",
+    "sponsorLabel": "Tài trợ"
+  },
+  "ads": {
+    "goc-dien-anh": {
+      "title": "GÓC ĐIỆN ẢNH",
+      "description": "Khám phá những câu chuyện điện ảnh",
+      "cta": "Khám phá"
+    },
+    "tra-mat": {
+      "title": "TRÀ MÁT",
+      "description": "Thanh mát, sảng khoái khi xem phim",
+      "cta": "Khám phá"
+    },
+    "bap-nha-rap": {
+      "title": "BẮP NHÀ RẠP",
+      "description": "Giòn thơm, trọn vị điện ảnh",
+      "cta": "Mua ngay"
+    },
+    "am-rap": {
+      "title": "ÂM RẠP",
+      "description": "Âm thanh sống động, đậm chất điện ảnh",
+      "cta": "Khám phá"
+    },
+    "ve-cuoi-tuan": {
+      "title": "VÉ CUỐI TUẦN",
+      "description": "Hẹn nhau ở rạp – Ưu đãi vé xem phim hấp dẫn",
+      "cta": "Đặt vé ngay"
+    },
+    "den-rap": {
+      "title": "ĐÈN RẠP",
+      "description": "Thắp sáng góc xem phim",
+      "cta": "Khám phá"
+    }
+  },
+  "states": {
+    "searchEmptyTitle": "Không tìm thấy phim phù hợp.",
+    "searchEmptyBody": "Thử từ khóa khác hoặc xóa bộ lọc.",
+    "clearFilters": "Xóa bộ lọc",
+    "goHome": "Về trang chủ",
+    "listError": "Không thể tải danh sách phim. Vui lòng thử lại.",
+    "savedSubtitle": "Chỉ lưu trên trình duyệt này, không đồng bộ thiết bị.",
+    "savedEmpty": "Bạn chưa lưu phim nào.",
+    "discover": "Khám phá phim",
+    "savedSuccess": "Đã lưu phim trên trình duyệt này.",
+    "unsavedSuccess": "Đã bỏ lưu phim.",
+    "saveError": "Không thể lưu trên trình duyệt này.",
+    "savedLimit": "Bạn đã lưu tối đa 200 phim. Hãy bỏ lưu một phim để thêm phim mới.",
+    "unavailable": "Hiện không khả dụng",
+    "playerLoading": "Đang tải trình phát…",
+    "playerSlow": "Trình phát chưa sẵn sàng. Bạn có thể thử lại.",
+    "playerError": "Không thể tải trình phát.",
+    "noSource": "Phim hiện chưa có nguồn phát.",
+    "reportSuccess": "Đã gửi báo lỗi. Cảm ơn bạn!",
+    "reportError": "Chưa gửi được báo lỗi. Nội dung của bạn vẫn được giữ lại.",
+    "rateLimited": "Bạn gửi quá nhiều báo lỗi. Vui lòng thử lại sau.",
+    "changeServerWarning": "Máy chủ mới có thể phát lại từ đầu."
+  },
+  "report": {
+    "title": "Báo lỗi phát phim",
+    "descriptionLabel": "Mô tả thêm",
+    "maxLength": 500,
+    "categories": [
+      "Không phát được",
+      "Giật hoặc tải chậm",
+      "Sai phim hoặc tập",
+      "Âm thanh hoặc phụ đề",
+      "Khác"
+    ]
+  }
+}

@@ -1,0 +1,798 @@
+{
+  "date": "2026-11-16",
+  "scope": "Local prototype only, NOT production UAT",
+  "results": [
+    {
+      "name": "Touching interval does not conflict",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Overlap conflicts per canonical device slot",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Different slot does not conflict",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Cancelled reservation releases slot",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Updating same reservation excludes itself",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Exclusive wins shared",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Paused exclusive never leaks paid shared",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Exclusive unavailable collapses",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Double exclusive fails closed",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Weighted 60/40 lower boundary",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Weighted 60/40 upper boundary",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Disabled delivery no fill",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Unapproved creative never serves",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Campaign end excluded",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Wrong device no fill",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "No direct draft approval",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Report must progress",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "Movie metadata validation",
+      "status": "PASS",
+      "scope": "pure JS prototype rules"
+    },
+    {
+      "name": "desktop/dashboard render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/tasks render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/movies render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/movie-edit render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/movie-detail render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/taxonomies render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/assets render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/episodes render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/providers render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/sources render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/capabilities render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/reviews render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/review-detail render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/publishing render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/preview render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/site render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/sections render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/pages render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/campaigns render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/campaign-edit render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/creatives render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/placements render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/reservations render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/reservation-new render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/ad-rules render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/analytics render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/statements render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/revenue-import render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/statement-detail render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/payments render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/reports render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/report-detail render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/staff render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/roles render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/login render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/mfa render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/recover render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/audit render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/jobs render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/settings render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/backups render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/states render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "desktop/components render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/dashboard render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/tasks render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/movies render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/movie-edit render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/movie-detail render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/taxonomies render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/assets render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/episodes render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/providers render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/sources render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/capabilities render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/reviews render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/review-detail render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/publishing render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/preview render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/site render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/sections render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/pages render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/campaigns render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/campaign-edit render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/creatives render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/placements render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/reservations render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/reservation-new render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/ad-rules render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/analytics render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/statements render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/revenue-import render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/statement-detail render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/payments render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/reports render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/report-detail render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/staff render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/roles render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/login render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/mfa render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/recover render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/audit render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/jobs render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/settings render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/backups render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/states render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "tablet/components render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/dashboard render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/tasks render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/movies render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/movie-edit render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/movie-detail render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/taxonomies render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/assets render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/episodes render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/providers render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/sources render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/capabilities render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/reviews render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/review-detail render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/publishing render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/preview render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/site render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/sections render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/pages render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/campaigns render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/campaign-edit render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/creatives render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/placements render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/reservations render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/reservation-new render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/ad-rules render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/analytics render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/statements render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/revenue-import render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/statement-detail render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/payments render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/reports render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/report-detail render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/staff render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/roles render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/login render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/mfa render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/recover render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/audit render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/jobs render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/settings render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/backups render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/states render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "mobile/components render and body overflow",
+      "status": "PASS",
+      "scope": "prototype, no server"
+    },
+    {
+      "name": "Movie draft → submit → approve → mock publish",
+      "status": "PASS",
+      "scope": "Playwright prototype interaction"
+    },
+    {
+      "name": "Booking conflict then valid confirmation",
+      "status": "PASS",
+      "scope": "Playwright prototype interaction"
+    },
+    {
+      "name": "Pause campaign retains reservations",
+      "status": "PASS",
+      "scope": "Playwright prototype interaction"
+    },
+    {
+      "name": "Cancel frees reservation",
+      "status": "PASS",
+      "scope": "Playwright prototype interaction"
+    },
+    {
+      "name": "Import commit requires validate and blocks duplicates",
+      "status": "PASS",
+      "scope": "Playwright prototype interaction"
+    },
+    {
+      "name": "Finance cannot confirm; admin confirms and locks",
+      "status": "PASS",
+      "scope": "Playwright prototype interaction"
+    },
+    {
+      "name": "Support resolves only after handling and note",
+      "status": "PASS",
+      "scope": "Playwright prototype interaction"
+    },
+    {
+      "name": "Role gate hides finance screen from support",
+      "status": "PASS",
+      "scope": "Playwright prototype interaction"
+    },
+    {
+      "name": "Dirty navigation confirmation",
+      "status": "PASS",
+      "scope": "Playwright prototype interaction"
+    },
+    {
+      "name": "Modal keyboard escape restores focus",
+      "status": "PASS",
+      "scope": "Playwright prototype interaction"
+    },
+    {
+      "name": "No external network requests",
+      "status": "PASS",
+      "scope": "all prototype pages",
+      "requests": 0
+    }
+  ],
+  "problems": []
+}

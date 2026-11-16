@@ -1,0 +1,105 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kiểm chứng đối tác trước khi bật tính năng — Rạp Đêm CMS V2</title><style>*{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:#263243;font:16px/1.65 'Segoe UI',Arial,sans-serif}header{background:#151b25;color:white;padding:34px max(5vw,24px)}header a{color:#f3c459}main{max-width:1300px;margin:auto;padding:35px 28px 70px}h1{font-size:34px;line-height:1.25}h2{font-size:25px;margin:36px 0 14px}h3{font-size:20px}p,li{max-width:1050px}a{color:#855d12}a:hover{text-decoration:underline}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #426ce4;outline-offset:3px}.lead{font-size:19px;color:#b8c3d5;max-width:1050px}.note{background:#fff4d8;border-left:4px solid #d5a23c;padding:16px 20px;border-radius:7px;margin:20px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.card{background:white;border:1px solid #dfe5ed;border-radius:12px;padding:23px}.card h2{margin:0 0 10px}.muted{color:#647186;font-size:14px}.button{display:inline-block;background:#f3c459;color:#30240b;border-radius:7px;padding:10px 18px;text-decoration:none;font-weight:600;margin:5px 10px 5px 0}.scroll{overflow:auto;background:white;border:1px solid #dce3ed;border-radius:8px;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px;background:white}th{background:#253244;color:white;text-align:left;position:sticky;top:0}th,td{padding:12px 15px;border-bottom:1px solid #e2e7ef;vertical-align:top}td{min-width:130px}tr:nth-child(even){background:#f7f8fa}code{background:#e7edf5;padding:2px 5px;border-radius:4px;font:13px Consolas,monospace;overflow-wrap:anywhere}pre{overflow:auto;background:#202c3d;color:#e4eaf3;padding:20px;border-radius:8px}pre code{background:transparent;color:inherit}img{max-width:100%;height:auto;border:1px solid #dde4ee;border-radius:10px}details{border:1px solid #dce3ed;background:white;border-radius:9px;padding:15px;margin:12px 0}summary{cursor:pointer;font-weight:650}.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}.gallery figure{margin:0;background:white;padding:12px;border:1px solid #dfe5ed;border-radius:12px}.gallery figcaption{font-size:14px;padding:10px 0}.gallery img{display:block;width:100%;max-height:330px;object-fit:contain;object-position:top;background:#edf0f4}select,input,button{font:inherit;padding:9px 12px;border:1px solid #bbc5d5;border-radius:6px}nav{display:flex;gap:16px;flex-wrap:wrap}footer{padding:30px;text-align:center;font-size:13px;color:#617085}@media(max-width:650px){main{padding:25px 16px}h1{font-size:28px}.gallery{grid-template-columns:1fr}header{padding:25px 18px}}</style></head><body><header><nav><a href="../index.html">← Mục lục CMS V2</a><span>Thiết kế & contract · 16/11/2026</span></nav></header><main><h1>Kiểm chứng đối tác trước khi bật tính năng</h1>
+<p><strong>Trạng thái hiện tại: chưa xác minh tất cả khả năng tích hợp thực tế.</strong> Không có player, tài liệu SDK, report API, báo cáo thật hoặc môi trường được phép test trong bộ V2. Màn hình và button không phải bằng chứng hỗ trợ.</p>
+<h2>Gói thông tin phải nhận</h2>
+<p>Đầu mối kỹ thuật; domain embed và domain script/media liên quan; URL test phim lẻ/phim bộ; phạm vi được phép thử; tài liệu API/SDK với version; nguồn dự phòng; cấu hình preroll/skip; định nghĩa events; report CSV/API có redaction dữ liệu nhạy cảm; mapping ID, timezone, currency và kỳ chốt.</p>
+<h2>Ma trận bằng chứng</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Khả năng</th>
+<th>Cách kiểm tra</th>
+<th>Bằng chứng cần</th>
+<th>Nếu chưa đạt</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>INT-01</td>
+<td>Phát phim nhúng</td>
+<td>Embed phim được phép trên Chrome desktop, Android Chrome, iOS Safari; play/pause/fullscreen</td>
+<td>Video/screenshot test + URL đã redacted + version trình duyệt</td>
+<td>Không bật source</td>
+</tr>
+<tr>
+<td>INT-02</td>
+<td>Cross-origin events</td>
+<td>Listener kiểm origin/source/payload; thử event giả từ origin khác</td>
+<td>SDK doc + log event thực và negative test</td>
+<td>Watch time / play metrics N/A</td>
+</tr>
+<tr>
+<td>INT-03</td>
+<td>Preroll</td>
+<td>Phát creative test được phép; lỗi/no-fill có trả phim không</td>
+<td>Tài liệu cấu hình + network/event log</td>
+<td>Feature flag off; yêu cầu quyết định nếu bắt buộc</td>
+</tr>
+<tr>
+<td>INT-04</td>
+<td>Skip</td>
+<td>Thử trước/sau thời điểm cho skip; bấm chỉ khi callback cho phép</td>
+<td>API skip + evidence mobile/desktop</td>
+<td>Không hiện nút skip giả</td>
+</tr>
+<tr>
+<td>INT-05</td>
+<td>Đổi nguồn</td>
+<td>Hai nguồn cùng phim/tập; source A lỗi; B ready</td>
+<td>Test nguồn dự phòng, mapping nội dung</td>
+<td>Chỉ một nguồn hợp lệ, không hứa failover</td>
+</tr>
+<tr>
+<td>INT-06</td>
+<td>Seek / tiếp tục</td>
+<td>Chuyển nguồn ở mốc thời gian xác định</td>
+<td>Callback seek/get-time và kết quả</td>
+<td>Chuyển nguồn có thể về đầu; ghi rõ UX</td>
+</tr>
+<tr>
+<td>INT-07</td>
+<td>Chuyển tập native</td>
+<td>Đi đến mọi tập, không kẹt tập1, mobile cũng dùng được</td>
+<td>Phim bộ mẫu và kết quả đủ tập</td>
+<td>Chặn publish series; không tự thêm selector</td>
+</tr>
+<tr>
+<td>INT-08</td>
+<td>Fullscreen / layout</td>
+<td>Fullscreen, xoay màn, back, footer/player protection</td>
+<td>Video thực tế iOS/Android</td>
+<td>Floating off ở WATCH nếu không bảo vệ được</td>
+</tr>
+<tr>
+<td>INT-09</td>
+<td>Host / CSP / sandbox</td>
+<td>Allowlist tối thiểu, không popup điều hướng bất ngờ</td>
+<td>Danh sách domain và thử CSP staging</td>
+<td>Không cho raw iframe/script mới</td>
+</tr>
+<tr>
+<td>INT-10</td>
+<td>Metrics / report</td>
+<td>Cùng campaign/slot/day đối chiếu file thật với dashboard đối tác</td>
+<td>File/API mẫu, definitions, mapping IDs</td>
+<td>Revenue N/A; chưa nghiệm thu đối soát</td>
+</tr>
+<tr>
+<td>INT-11</td>
+<td>Currency / timezone / adjustment</td>
+<td>Kỳ có biên ngày, điều chỉnh âm, cập nhật lại báo cáo</td>
+<td>Định nghĩa kỳ và 2 file version</td>
+<td>Không commit khi chưa rõ</td>
+</tr>
+<tr>
+<td>INT-12</td>
+<td>Hết hạn / lỗi / rate limit</td>
+<td>Token hết hạn, server down, timeout, 429</td>
+<td>Log redacted và trạng thái hiển thị</td>
+<td>Graceful error, không bịa play thành công</td>
+</tr>
+</tbody></table></div>
+<p>Kết quả từng capability chỉ dùng <code>unverified</code>, <code>supported</code>, <code>unsupported</code>. <code>supported</code> cần evidenceId, testedAt, adapterVersion, người kiểm và người duyệt. Đổi adapter/domain/SDK phải đánh dấu cần kiểm lại; bằng chứng cũ không tự chứng minh bản mới. Hệ thống không xác nhận quyền khai thác nội dung chỉ vì embed hoạt động.</p>
+<h2>Mẫu báo cáo chuẩn hóa để DEV chuẩn bị parser</h2>
+<p>Mỗi dòng đề xuất: sourceRowId, partnerId, reportDate, sourceTimezone, campaignExternalId, placementExternalId, currency, billableImpressions (nullable), clicks (nullable), grossMinor, adjustmentMinor, reportVersion. Không dùng dấu phân cách hàng nghìn trong số; ngày ISO; currency riêng; lưu nguyên file nguồn. VND sử dụng đơn vị đồng (minor unit exponent=0); ví dụ USD cents cần mapping currency exponent đã xác nhận. Không đoán đơn vị theo cỡ số.</p>
+<p>Fixture trong package là <strong>schema mẫu nội bộ</strong>, chưa phải format đối tác đồng ý. Parser adapter phải được xác nhận lại sau khi nhận file thực tế. Nếu đối tác không cung cấp ID dòng ổn định, phải thống nhất khóa tự nhiên và chính sách supersede trước commit dữ liệu.</p>
+</main><footer>Rạp Đêm CMS V2 · Chưa triển khai production · Không có doanh thu hoặc tích hợp thật trong bộ mẫu</footer></body></html>

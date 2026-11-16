@@ -1,0 +1,77 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rạp Đêm — Hồ sơ triển khai CMS V2 — Rạp Đêm CMS V2</title><style>*{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:#263243;font:16px/1.65 'Segoe UI',Arial,sans-serif}header{background:#151b25;color:white;padding:34px max(5vw,24px)}header a{color:#f3c459}main{max-width:1300px;margin:auto;padding:35px 28px 70px}h1{font-size:34px;line-height:1.25}h2{font-size:25px;margin:36px 0 14px}h3{font-size:20px}p,li{max-width:1050px}a{color:#855d12}a:hover{text-decoration:underline}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #426ce4;outline-offset:3px}.lead{font-size:19px;color:#b8c3d5;max-width:1050px}.note{background:#fff4d8;border-left:4px solid #d5a23c;padding:16px 20px;border-radius:7px;margin:20px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.card{background:white;border:1px solid #dfe5ed;border-radius:12px;padding:23px}.card h2{margin:0 0 10px}.muted{color:#647186;font-size:14px}.button{display:inline-block;background:#f3c459;color:#30240b;border-radius:7px;padding:10px 18px;text-decoration:none;font-weight:600;margin:5px 10px 5px 0}.scroll{overflow:auto;background:white;border:1px solid #dce3ed;border-radius:8px;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px;background:white}th{background:#253244;color:white;text-align:left;position:sticky;top:0}th,td{padding:12px 15px;border-bottom:1px solid #e2e7ef;vertical-align:top}td{min-width:130px}tr:nth-child(even){background:#f7f8fa}code{background:#e7edf5;padding:2px 5px;border-radius:4px;font:13px Consolas,monospace;overflow-wrap:anywhere}pre{overflow:auto;background:#202c3d;color:#e4eaf3;padding:20px;border-radius:8px}pre code{background:transparent;color:inherit}img{max-width:100%;height:auto;border:1px solid #dde4ee;border-radius:10px}details{border:1px solid #dce3ed;background:white;border-radius:9px;padding:15px;margin:12px 0}summary{cursor:pointer;font-weight:650}.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}.gallery figure{margin:0;background:white;padding:12px;border:1px solid #dfe5ed;border-radius:12px}.gallery figcaption{font-size:14px;padding:10px 0}.gallery img{display:block;width:100%;max-height:330px;object-fit:contain;object-position:top;background:#edf0f4}select,input,button{font:inherit;padding:9px 12px;border:1px solid #bbc5d5;border-radius:6px}nav{display:flex;gap:16px;flex-wrap:wrap}footer{padding:30px;text-align:center;font-size:13px;color:#617085}@media(max-width:650px){main{padding:25px 16px}h1{font-size:28px}.gallery{grid-template-columns:1fr}header{padding:25px 18px}}</style></head><body><header><nav><a href="../index.html">← Mục lục CMS V2</a><span>Thiết kế & contract · 16/11/2026</span></nav></header><main><h1>Rạp Đêm — Hồ sơ triển khai CMS V2</h1>
+<p>Ngày lập: 16/11/2026. Phiên bản contract: 2.0.0. Kế thừa website xem phim V18 và danh mục CMS V1.</p>
+<h2>Kết luận sử dụng</h2>
+<p>Bộ này phục vụ duyệt thiết kế, chia việc, ước lượng và triển khai trên staging. <strong>Không phải CMS production đã xây xong hoặc biên bản nghiệm thu.</strong> Có prototype chạy cục bộ, ảnh xuất từ prototype, contract API/dữ liệu, quy tắc quảng cáo, bảng xác minh đối tác, ca nghiệm thu và quy trình vận hành.</p>
+<p>V1 và bộ ảnh/handoff website V18 được giữ nguyên. Không sửa website đang hoạt động, không kết nối player, không đặt quảng cáo thật, không gửi email hoặc chuyển tiền.</p>
+<h2>Phạm vi đã có xác nhận từ chủ sản phẩm</h2>
+<ul>
+<li>Nguồn phát là trình phát nhúng của đối tác; không xây video hosting/transcoding.</li>
+<li>Giai đoạn đầu thu từ quảng cáo; không thu tiền người xem, không bán Premium.</li>
+<li>Không có đăng nhập hội viên/khách, không có portal cho đối tác quảng cáo. Nhân sự vận hành CMS cần đăng nhập riêng.</li>
+<li>Modal quảng cáo ở trang chủ. Màn xem phim có preroll nếu đối tác hỗ trợ và đã kiểm tra; không thêm modal toàn trang ở màn xem phim.</li>
+<li>Không có bộ chọn tập ngoài website trong thiết kế hiện tại. Phim bộ chỉ bật sau khi xác minh điều hướng tập native, hoặc có quyết định thay đổi phạm vi.</li>
+<li>“Lưu phim” nằm trên thiết bị/trình duyệt đang dùng; không đồng bộ thiết bị.</li>
+<li>Chủ sản phẩm đã yêu cầu áp dụng phương án hoàn thiện năm nhóm: thiết kế CMS; dữ liệu/API; lịch và phân phối quảng cáo; kiểm chứng đối tác; nghiệm thu/vận hành.</li>
+</ul>
+<p>Việc đồng ý phương án tổng thể <strong>không phải xác nhận riêng</strong> mọi giá trị tần suất quảng cáo, kích thước, giá bán, thời hạn lưu dữ liệu, SLA hoặc công nghệ hạ tầng. Xem sổ quyết định còn mở.</p>
+<h2>Bàn giao và giới hạn</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Có trong V2</th>
+<th>Không được suy diễn</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Prototype</td>
+<td>Màn CMS với dữ liệu hư cấu, một số luồng thay đổi trạng thái trong bộ nhớ</td>
+<td>Không phải frontend đã nối API; đổi vai trò không phải xác thực</td>
+</tr>
+<tr>
+<td>Ảnh UI</td>
+<td>PNG theo viewport thực, kích thước trong manifest</td>
+<td>Không phải kích thước toàn bộ trang hoặc bằng chứng responsive trên mọi thiết bị</td>
+</tr>
+<tr>
+<td>Form</td>
+<td>Các form chính dựng riêng; form phụ minh họa có ghi rõ</td>
+<td>Không được coi mọi field trong contract đã có widget hoàn thiện</td>
+</tr>
+<tr>
+<td>API</td>
+<td>OpenAPI 3.1.1, DTO, required, enums, roles, errors, revision</td>
+<td>Không có server triển khai; cần review kỹ thuật và contract tests trên server thật</td>
+</tr>
+<tr>
+<td>UAT</td>
+<td>Ca kiểm thử, điều kiện, dữ liệu, kết quả mong đợi, ô bằng chứng/người thử</td>
+<td>Chưa chạy trên hệ thống thật</td>
+</tr>
+<tr>
+<td>Player / báo cáo</td>
+<td>Checklist và bằng chứng phải thu</td>
+<td>Tất cả tích hợp vẫn chưa xác minh</td>
+</tr>
+<tr>
+<td>Excel</td>
+<td>Catalog, màn, quyền, UAT và quyết định</td>
+<td>Không tự phê duyệt các dòng chưa có người ký</td>
+</tr>
+</tbody></table></div>
+<p>Các mã CMS-001…077 giữ nguyên. CMS-078 thêm đặt chỗ độc quyền; CMS-079 thêm kiểm tra xung đột/đồng thời. P1/P2 giữ là sau MVP. Không đưa diễn viên, import catalog, hội viên hoặc thu phí vào P0 chỉ vì có trong danh mục dài hạn.</p>
+<h2>Phân chia công việc đề xuất</h2>
+<ol>
+<li>Nền tảng: xác thực nhân sự, quyền, audit, DB, migration, storage private/public, môi trường và CI.</li>
+<li>Nội dung: metadata chuẩn, tài nguyên, nguồn nhúng, quyền nội dung, duyệt revision, release, public API và cache.</li>
+<li>Quảng cáo: đối tác, campaign/creative, slot registry, reservation transaction, phân phối, cap, kill switch và events.</li>
+<li>Vận hành: báo lỗi, task, báo cáo, import, đối soát, payment ledger, export, giám sát và backup.</li>
+<li>Kiểm chứng: kiểm thử tích hợp đối tác trên staging, bảo mật, UAT và diễn tập sự cố.</li>
+</ol>
+<p>Không gán thời lượng hoặc ngân sách giả. DEV ước lượng sau khi review contract, chọn stack và nhận thông tin đối tác. Có thể bắt đầu phần nội dung/CMS trong lúc chờ đối tác, nhưng các tính năng phụ thuộc phải giữ trạng thái bị chặn, không nghiệm thu giả.</p>
+<h2>Cách duyệt bản mẫu</h2>
+<p>Mở <code>prototype/index.html</code>. Chọn vai trò thử và trạng thái trên thanh vàng. Dữ liệu được đặt lại khi tải trang; không nhập dữ liệu nhạy cảm. Thử lần lượt: sửa phim → gửi duyệt → đổi vai trò Quản trị → duyệt → xuất bản mẫu; đặt chỗ trùng rồi đổi ngày; tạm dừng chiến dịch; nhập fixture hai lần; hỗ trợ xử lý báo lỗi.</p>
+<p>Ngày trên lịch cố định 16–22/11/2026, không phải lịch hiện tại động. Tổng tiền mẫu trên màn đối soát không phải kết quả import fixture hai dòng: đây là hai tình huống UI độc lập và không có sổ kế toán thật.</p>
+<h2>Điểm cần cung cấp trước nghiệm thu tích hợp</h2>
+<p>Tên/domain đối tác, embed được phép test, tài liệu SDK/events/preroll/skip, nguồn dự phòng và phim bộ mẫu, file/API báo cáo thực tế, định nghĩa billable và kỳ/timezone/currency, đầu mối xác nhận; người nghiệm thu, môi trường staging và thông số vận hành được duyệt.</p>
+</main><footer>Rạp Đêm CMS V2 · Chưa triển khai production · Không có doanh thu hoặc tích hợp thật trong bộ mẫu</footer></body></html>

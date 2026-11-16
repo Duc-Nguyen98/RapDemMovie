@@ -1,0 +1,9 @@
+/* Final QA refinements. Layout dimensions remain CSS pixels, not screenshot pixels. */
+.movie-overview{display:flex;gap:24px;align-items:flex-start}
+.muted,.breadcrumb,th,.stat .label,.stat .foot,td .sub,.detail-list dt,.field small,.footer-note,.table-foot,.timeline-item small,.minchart-note,.calendar .cal-head,.tabs a{color:#657184}
+.sidebar .muted,.sidebar-bottom,.sidebar .nav-label{color:#a2adbe}
+.stat.highlight .label,.stat.highlight .foot{color:#b9c5d7}
+.table-scroll{max-width:100%}.code{overflow-wrap:anywhere}
+.grid>*{min-width:0}
+.panel-body>p:last-child{margin-bottom:0}
+@media(max-width:767px){.movie-overview{display:block}.movie-overview .poster{margin-bottom:18px!important}.sidebar.open{padding-top:70px}.mobile-menu{position:relative;z-index:31}.sidebar.open:before{content:'Menu CMS';position:absolute;top:24px;left:80px;color:white;font-size:15px}.demo-controls label{flex-basis:100%}.demo-controls select{max-width:none}.detail-list{gap:12px}.page-head h1{overflow-wrap:anywhere}}

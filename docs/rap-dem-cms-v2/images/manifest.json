@@ -1,0 +1,1235 @@
+[
+  {
+    "file": "rap-dem_cms-v2_dashboard_desktop.png",
+    "route": "dashboard",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_tasks_desktop.png",
+    "route": "tasks",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_movies_desktop.png",
+    "route": "movies",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_movie-edit_desktop.png",
+    "route": "movie-edit",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_movie-detail_desktop.png",
+    "route": "movie-detail",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_taxonomies_desktop.png",
+    "route": "taxonomies",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_assets_desktop.png",
+    "route": "assets",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_episodes_desktop.png",
+    "route": "episodes",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_providers_desktop.png",
+    "route": "providers",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_sources_desktop.png",
+    "route": "sources",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_capabilities_desktop.png",
+    "route": "capabilities",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reviews_desktop.png",
+    "route": "reviews",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_review-detail_desktop.png",
+    "route": "review-detail",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_publishing_desktop.png",
+    "route": "publishing",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_preview_desktop.png",
+    "route": "preview",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_site_desktop.png",
+    "route": "site",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_sections_desktop.png",
+    "route": "sections",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_pages_desktop.png",
+    "route": "pages",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_campaigns_desktop.png",
+    "route": "campaigns",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_campaign-edit_desktop.png",
+    "route": "campaign-edit",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_creatives_desktop.png",
+    "route": "creatives",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_placements_desktop.png",
+    "route": "placements",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reservations_desktop.png",
+    "route": "reservations",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reservation-new_desktop.png",
+    "route": "reservation-new",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_ad-rules_desktop.png",
+    "route": "ad-rules",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_analytics_desktop.png",
+    "route": "analytics",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_statements_desktop.png",
+    "route": "statements",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_revenue-import_desktop.png",
+    "route": "revenue-import",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_statement-detail_desktop.png",
+    "route": "statement-detail",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_payments_desktop.png",
+    "route": "payments",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reports_desktop.png",
+    "route": "reports",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_report-detail_desktop.png",
+    "route": "report-detail",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_staff_desktop.png",
+    "route": "staff",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_roles_desktop.png",
+    "route": "roles",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_login_desktop.png",
+    "route": "login",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_mfa_desktop.png",
+    "route": "mfa",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_recover_desktop.png",
+    "route": "recover",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_audit_desktop.png",
+    "route": "audit",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_jobs_desktop.png",
+    "route": "jobs",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_settings_desktop.png",
+    "route": "settings",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_backups_desktop.png",
+    "route": "backups",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_states_desktop.png",
+    "route": "states",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_components_desktop.png",
+    "route": "components",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_dashboard_tablet.png",
+    "route": "dashboard",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_tasks_tablet.png",
+    "route": "tasks",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_movies_tablet.png",
+    "route": "movies",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_movie-edit_tablet.png",
+    "route": "movie-edit",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_movie-detail_tablet.png",
+    "route": "movie-detail",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_taxonomies_tablet.png",
+    "route": "taxonomies",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_assets_tablet.png",
+    "route": "assets",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_episodes_tablet.png",
+    "route": "episodes",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_providers_tablet.png",
+    "route": "providers",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_sources_tablet.png",
+    "route": "sources",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_capabilities_tablet.png",
+    "route": "capabilities",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reviews_tablet.png",
+    "route": "reviews",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_review-detail_tablet.png",
+    "route": "review-detail",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_publishing_tablet.png",
+    "route": "publishing",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_preview_tablet.png",
+    "route": "preview",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_site_tablet.png",
+    "route": "site",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_sections_tablet.png",
+    "route": "sections",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_pages_tablet.png",
+    "route": "pages",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_campaigns_tablet.png",
+    "route": "campaigns",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_campaign-edit_tablet.png",
+    "route": "campaign-edit",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_creatives_tablet.png",
+    "route": "creatives",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_placements_tablet.png",
+    "route": "placements",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reservations_tablet.png",
+    "route": "reservations",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reservation-new_tablet.png",
+    "route": "reservation-new",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_ad-rules_tablet.png",
+    "route": "ad-rules",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_analytics_tablet.png",
+    "route": "analytics",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_statements_tablet.png",
+    "route": "statements",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_revenue-import_tablet.png",
+    "route": "revenue-import",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_statement-detail_tablet.png",
+    "route": "statement-detail",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_payments_tablet.png",
+    "route": "payments",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reports_tablet.png",
+    "route": "reports",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_report-detail_tablet.png",
+    "route": "report-detail",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_staff_tablet.png",
+    "route": "staff",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_roles_tablet.png",
+    "route": "roles",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_login_tablet.png",
+    "route": "login",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_mfa_tablet.png",
+    "route": "mfa",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_recover_tablet.png",
+    "route": "recover",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_audit_tablet.png",
+    "route": "audit",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_jobs_tablet.png",
+    "route": "jobs",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_settings_tablet.png",
+    "route": "settings",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_backups_tablet.png",
+    "route": "backups",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_states_tablet.png",
+    "route": "states",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_components_tablet.png",
+    "route": "components",
+    "device": "tablet",
+    "width": 1024,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_dashboard_mobile.png",
+    "route": "dashboard",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_tasks_mobile.png",
+    "route": "tasks",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_movies_mobile.png",
+    "route": "movies",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_movie-edit_mobile.png",
+    "route": "movie-edit",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_movie-detail_mobile.png",
+    "route": "movie-detail",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_taxonomies_mobile.png",
+    "route": "taxonomies",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_assets_mobile.png",
+    "route": "assets",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_episodes_mobile.png",
+    "route": "episodes",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_providers_mobile.png",
+    "route": "providers",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_sources_mobile.png",
+    "route": "sources",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_capabilities_mobile.png",
+    "route": "capabilities",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reviews_mobile.png",
+    "route": "reviews",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_review-detail_mobile.png",
+    "route": "review-detail",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_publishing_mobile.png",
+    "route": "publishing",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_preview_mobile.png",
+    "route": "preview",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_site_mobile.png",
+    "route": "site",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_sections_mobile.png",
+    "route": "sections",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_pages_mobile.png",
+    "route": "pages",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_campaigns_mobile.png",
+    "route": "campaigns",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_campaign-edit_mobile.png",
+    "route": "campaign-edit",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_creatives_mobile.png",
+    "route": "creatives",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_placements_mobile.png",
+    "route": "placements",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reservations_mobile.png",
+    "route": "reservations",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reservation-new_mobile.png",
+    "route": "reservation-new",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_ad-rules_mobile.png",
+    "route": "ad-rules",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_analytics_mobile.png",
+    "route": "analytics",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_statements_mobile.png",
+    "route": "statements",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_revenue-import_mobile.png",
+    "route": "revenue-import",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_statement-detail_mobile.png",
+    "route": "statement-detail",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_payments_mobile.png",
+    "route": "payments",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reports_mobile.png",
+    "route": "reports",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_report-detail_mobile.png",
+    "route": "report-detail",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_staff_mobile.png",
+    "route": "staff",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_roles_mobile.png",
+    "route": "roles",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_login_mobile.png",
+    "route": "login",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_mfa_mobile.png",
+    "route": "mfa",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_recover_mobile.png",
+    "route": "recover",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_audit_mobile.png",
+    "route": "audit",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_jobs_mobile.png",
+    "route": "jobs",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_settings_mobile.png",
+    "route": "settings",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_backups_mobile.png",
+    "route": "backups",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_states_mobile.png",
+    "route": "states",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_components_mobile.png",
+    "route": "components",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_state-loading_desktop.png",
+    "route": "state-loading",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_state-empty_desktop.png",
+    "route": "state-empty",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_state-error_desktop.png",
+    "route": "state-error",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_state-forbidden_desktop.png",
+    "route": "state-forbidden",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_state-success_desktop.png",
+    "route": "state-success",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_reservation-conflict_desktop.png",
+    "route": "reservation-conflict",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_confirm-dialog_desktop.png",
+    "route": "confirm-dialog",
+    "device": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  },
+  {
+    "file": "rap-dem_cms-v2_navigation-drawer_mobile.png",
+    "route": "navigation-drawer",
+    "device": "mobile",
+    "width": 390,
+    "height": 844,
+    "type": "viewport PNG; deviceScaleFactor=1",
+    "synthetic": true
+  }
+]

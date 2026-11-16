@@ -1,0 +1,3321 @@
+{
+  "meta": {
+    "version": "2.0.0",
+    "date": "2026-11-16",
+    "status": "DESIGN_HANDOFF_NOT_PRODUCTION",
+    "viewerBaseline": "V18"
+  },
+  "default": "deny",
+  "actions": [
+    {
+      "id": "staff.list",
+      "method": "GET",
+      "path": "/admin/v2/staff",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-001",
+        "CMS-002",
+        "CMS-004"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "staff.read",
+      "method": "GET",
+      "path": "/admin/v2/staff/{id}",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-001",
+        "CMS-002",
+        "CMS-004"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "staff.create",
+      "method": "POST",
+      "path": "/admin/v2/staff",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-001",
+        "CMS-002",
+        "CMS-004"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "staff.invite",
+      "method": "POST",
+      "path": "/admin/v2/staff/{id}/invite",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-001",
+        "CMS-002",
+        "CMS-004"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "staff.lock",
+      "method": "POST",
+      "path": "/admin/v2/staff/{id}/lock",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-001",
+        "CMS-002",
+        "CMS-004"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "staff.unlock",
+      "method": "POST",
+      "path": "/admin/v2/staff/{id}/unlock",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-001",
+        "CMS-002",
+        "CMS-004"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "staff.revoke-sessions",
+      "method": "POST",
+      "path": "/admin/v2/staff/{id}/revoke-sessions",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-001",
+        "CMS-002",
+        "CMS-004"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "roles.list",
+      "method": "GET",
+      "path": "/admin/v2/roles",
+      "roles": [
+        "owner"
+      ],
+      "features": [
+        "CMS-003"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "roles.read",
+      "method": "GET",
+      "path": "/admin/v2/roles/{id}",
+      "roles": [
+        "owner"
+      ],
+      "features": [
+        "CMS-003"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "roles.create",
+      "method": "POST",
+      "path": "/admin/v2/roles",
+      "roles": [
+        "owner"
+      ],
+      "features": [
+        "CMS-003"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "roles.update",
+      "method": "PATCH",
+      "path": "/admin/v2/roles/{id}",
+      "roles": [
+        "owner"
+      ],
+      "features": [
+        "CMS-003"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "movies.list",
+      "method": "GET",
+      "path": "/admin/v2/movies",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-009",
+        "CMS-010",
+        "CMS-013",
+        "CMS-014",
+        "CMS-016",
+        "CMS-026"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "movies.read",
+      "method": "GET",
+      "path": "/admin/v2/movies/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-009",
+        "CMS-010",
+        "CMS-013",
+        "CMS-014",
+        "CMS-016",
+        "CMS-026"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "movies.create",
+      "method": "POST",
+      "path": "/admin/v2/movies",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-009",
+        "CMS-010",
+        "CMS-013",
+        "CMS-014",
+        "CMS-016",
+        "CMS-026"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "movies.update",
+      "method": "PATCH",
+      "path": "/admin/v2/movies/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-009",
+        "CMS-010",
+        "CMS-013",
+        "CMS-014",
+        "CMS-016",
+        "CMS-026"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "movies.submit",
+      "method": "POST",
+      "path": "/admin/v2/movies/{id}/submit",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-009",
+        "CMS-010",
+        "CMS-013",
+        "CMS-014",
+        "CMS-016",
+        "CMS-026"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "movies.verify-rights",
+      "method": "POST",
+      "path": "/admin/v2/movies/{id}/verify-rights",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-009",
+        "CMS-010",
+        "CMS-013",
+        "CMS-014",
+        "CMS-016",
+        "CMS-026"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "movies.withdraw",
+      "method": "POST",
+      "path": "/admin/v2/movies/{id}/withdraw",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-009",
+        "CMS-010",
+        "CMS-013",
+        "CMS-014",
+        "CMS-016",
+        "CMS-026"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "movies.restore",
+      "method": "POST",
+      "path": "/admin/v2/movies/{id}/restore",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-009",
+        "CMS-010",
+        "CMS-013",
+        "CMS-014",
+        "CMS-016",
+        "CMS-026"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "movies.archive",
+      "method": "POST",
+      "path": "/admin/v2/movies/{id}/archive",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-009",
+        "CMS-010",
+        "CMS-013",
+        "CMS-014",
+        "CMS-016",
+        "CMS-026"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "taxonomies.list",
+      "method": "GET",
+      "path": "/admin/v2/taxonomies",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-011"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "taxonomies.read",
+      "method": "GET",
+      "path": "/admin/v2/taxonomies/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-011"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "taxonomies.create",
+      "method": "POST",
+      "path": "/admin/v2/taxonomies",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-011"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "taxonomies.update",
+      "method": "PATCH",
+      "path": "/admin/v2/taxonomies/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-011"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "taxonomies.archive",
+      "method": "POST",
+      "path": "/admin/v2/taxonomies/{id}/archive",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-011"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "episodes.list",
+      "method": "GET",
+      "path": "/admin/v2/episodes",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-015"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "episodes.read",
+      "method": "GET",
+      "path": "/admin/v2/episodes/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-015"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "episodes.create",
+      "method": "POST",
+      "path": "/admin/v2/episodes",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-015"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "episodes.update",
+      "method": "PATCH",
+      "path": "/admin/v2/episodes/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-015"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "episodes.publish",
+      "method": "POST",
+      "path": "/admin/v2/episodes/{id}/publish",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-015"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "episodes.withdraw",
+      "method": "POST",
+      "path": "/admin/v2/episodes/{id}/withdraw",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-015"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "assets.list",
+      "method": "GET",
+      "path": "/admin/v2/assets",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads"
+      ],
+      "features": [
+        "CMS-017",
+        "CMS-018",
+        "CMS-019"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "assets.read",
+      "method": "GET",
+      "path": "/admin/v2/assets/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads"
+      ],
+      "features": [
+        "CMS-017",
+        "CMS-018",
+        "CMS-019"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "assets.update",
+      "method": "PATCH",
+      "path": "/admin/v2/assets/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads"
+      ],
+      "features": [
+        "CMS-017",
+        "CMS-018",
+        "CMS-019"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "assets.archive",
+      "method": "POST",
+      "path": "/admin/v2/assets/{id}/archive",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-017",
+        "CMS-018",
+        "CMS-019"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "assets.rebuild-variants",
+      "method": "POST",
+      "path": "/admin/v2/assets/{id}/rebuild-variants",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-017",
+        "CMS-018",
+        "CMS-019"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "providers.list",
+      "method": "GET",
+      "path": "/admin/v2/providers",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-020",
+        "CMS-022"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "providers.read",
+      "method": "GET",
+      "path": "/admin/v2/providers/{id}",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-020",
+        "CMS-022"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "providers.create",
+      "method": "POST",
+      "path": "/admin/v2/providers",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-020",
+        "CMS-022"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "providers.update",
+      "method": "PATCH",
+      "path": "/admin/v2/providers/{id}",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-020",
+        "CMS-022"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "providers.disable",
+      "method": "POST",
+      "path": "/admin/v2/providers/{id}/disable",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-020",
+        "CMS-022"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "sources.list",
+      "method": "GET",
+      "path": "/admin/v2/sources",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-021",
+        "CMS-023",
+        "CMS-024"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "sources.read",
+      "method": "GET",
+      "path": "/admin/v2/sources/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-021",
+        "CMS-023",
+        "CMS-024"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "sources.create",
+      "method": "POST",
+      "path": "/admin/v2/sources",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-021",
+        "CMS-023",
+        "CMS-024"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "sources.update",
+      "method": "PATCH",
+      "path": "/admin/v2/sources/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-021",
+        "CMS-023",
+        "CMS-024"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "sources.test",
+      "method": "POST",
+      "path": "/admin/v2/sources/{id}/test",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-021",
+        "CMS-023",
+        "CMS-024"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "sources.disable",
+      "method": "POST",
+      "path": "/admin/v2/sources/{id}/disable",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-021",
+        "CMS-023",
+        "CMS-024"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "reviews.list",
+      "method": "GET",
+      "path": "/admin/v2/reviews",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-027",
+        "CMS-028"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "reviews.read",
+      "method": "GET",
+      "path": "/admin/v2/reviews/{id}",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-027",
+        "CMS-028"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "reviews.approve",
+      "method": "POST",
+      "path": "/admin/v2/reviews/{id}/approve",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-027",
+        "CMS-028"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "reviews.reject",
+      "method": "POST",
+      "path": "/admin/v2/reviews/{id}/reject",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-027",
+        "CMS-028"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "releases.list",
+      "method": "GET",
+      "path": "/admin/v2/releases",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-029",
+        "CMS-030",
+        "CMS-031"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "releases.read",
+      "method": "GET",
+      "path": "/admin/v2/releases/{id}",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-029",
+        "CMS-030",
+        "CMS-031"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "releases.create",
+      "method": "POST",
+      "path": "/admin/v2/releases",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-029",
+        "CMS-030",
+        "CMS-031"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "releases.retry",
+      "method": "POST",
+      "path": "/admin/v2/releases/{id}/retry",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-029",
+        "CMS-030",
+        "CMS-031"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "releases.rollback",
+      "method": "POST",
+      "path": "/admin/v2/releases/{id}/rollback",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-029",
+        "CMS-030",
+        "CMS-031"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "releases.cancel",
+      "method": "POST",
+      "path": "/admin/v2/releases/{id}/cancel",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-029",
+        "CMS-030",
+        "CMS-031"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "home-sections.list",
+      "method": "GET",
+      "path": "/admin/v2/home-sections",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-032"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "home-sections.read",
+      "method": "GET",
+      "path": "/admin/v2/home-sections/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-032"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "home-sections.create",
+      "method": "POST",
+      "path": "/admin/v2/home-sections",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-032"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "home-sections.update",
+      "method": "PATCH",
+      "path": "/admin/v2/home-sections/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-032"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "home-sections.submit",
+      "method": "POST",
+      "path": "/admin/v2/home-sections/{id}/submit",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-032"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "home-sections.archive",
+      "method": "POST",
+      "path": "/admin/v2/home-sections/{id}/archive",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-032"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "site-configs.list",
+      "method": "GET",
+      "path": "/admin/v2/site-configs",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-033",
+        "CMS-034",
+        "CMS-035",
+        "CMS-065"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "site-configs.read",
+      "method": "GET",
+      "path": "/admin/v2/site-configs/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-033",
+        "CMS-034",
+        "CMS-035",
+        "CMS-065"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "site-configs.create",
+      "method": "POST",
+      "path": "/admin/v2/site-configs",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-033",
+        "CMS-034",
+        "CMS-035",
+        "CMS-065"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "site-configs.update",
+      "method": "PATCH",
+      "path": "/admin/v2/site-configs/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-033",
+        "CMS-034",
+        "CMS-035",
+        "CMS-065"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "site-configs.submit",
+      "method": "POST",
+      "path": "/admin/v2/site-configs/{id}/submit",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-033",
+        "CMS-034",
+        "CMS-035",
+        "CMS-065"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "pages.list",
+      "method": "GET",
+      "path": "/admin/v2/pages",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-036",
+        "CMS-037"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "pages.read",
+      "method": "GET",
+      "path": "/admin/v2/pages/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-036",
+        "CMS-037"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "pages.create",
+      "method": "POST",
+      "path": "/admin/v2/pages",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-036",
+        "CMS-037"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "pages.update",
+      "method": "PATCH",
+      "path": "/admin/v2/pages/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-036",
+        "CMS-037"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "pages.submit",
+      "method": "POST",
+      "path": "/admin/v2/pages/{id}/submit",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-036",
+        "CMS-037"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "pages.archive",
+      "method": "POST",
+      "path": "/admin/v2/pages/{id}/archive",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-036",
+        "CMS-037"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "ad-partners.list",
+      "method": "GET",
+      "path": "/admin/v2/ad-partners",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-042"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "ad-partners.read",
+      "method": "GET",
+      "path": "/admin/v2/ad-partners/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-042"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "ad-partners.create",
+      "method": "POST",
+      "path": "/admin/v2/ad-partners",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-042"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "ad-partners.update",
+      "method": "PATCH",
+      "path": "/admin/v2/ad-partners/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-042"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "ad-partners.deactivate",
+      "method": "POST",
+      "path": "/admin/v2/ad-partners/{id}/deactivate",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-042"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "campaigns.list",
+      "method": "GET",
+      "path": "/admin/v2/campaigns",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-043",
+        "CMS-046",
+        "CMS-051"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "campaigns.read",
+      "method": "GET",
+      "path": "/admin/v2/campaigns/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-043",
+        "CMS-046",
+        "CMS-051"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "campaigns.create",
+      "method": "POST",
+      "path": "/admin/v2/campaigns",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-043",
+        "CMS-046",
+        "CMS-051"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "campaigns.update",
+      "method": "PATCH",
+      "path": "/admin/v2/campaigns/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-043",
+        "CMS-046",
+        "CMS-051"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "campaigns.submit",
+      "method": "POST",
+      "path": "/admin/v2/campaigns/{id}/submit",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-043",
+        "CMS-046",
+        "CMS-051"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "campaigns.activate",
+      "method": "POST",
+      "path": "/admin/v2/campaigns/{id}/activate",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-043",
+        "CMS-046",
+        "CMS-051"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "campaigns.pause",
+      "method": "POST",
+      "path": "/admin/v2/campaigns/{id}/pause",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-043",
+        "CMS-046",
+        "CMS-051"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "campaigns.resume",
+      "method": "POST",
+      "path": "/admin/v2/campaigns/{id}/resume",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-043",
+        "CMS-046",
+        "CMS-051"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "campaigns.end",
+      "method": "POST",
+      "path": "/admin/v2/campaigns/{id}/end",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-043",
+        "CMS-046",
+        "CMS-051"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "campaigns.block",
+      "method": "POST",
+      "path": "/admin/v2/campaigns/{id}/block",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-043",
+        "CMS-046",
+        "CMS-051"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "creatives.list",
+      "method": "GET",
+      "path": "/admin/v2/creatives",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-044",
+        "CMS-050"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "creatives.read",
+      "method": "GET",
+      "path": "/admin/v2/creatives/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-044",
+        "CMS-050"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "creatives.create",
+      "method": "POST",
+      "path": "/admin/v2/creatives",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-044",
+        "CMS-050"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "creatives.update",
+      "method": "PATCH",
+      "path": "/admin/v2/creatives/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-044",
+        "CMS-050"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "creatives.submit",
+      "method": "POST",
+      "path": "/admin/v2/creatives/{id}/submit",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-044",
+        "CMS-050"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "creatives.block",
+      "method": "POST",
+      "path": "/admin/v2/creatives/{id}/block",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-044",
+        "CMS-050"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "placements.list",
+      "method": "GET",
+      "path": "/admin/v2/placements",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-045"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "placements.read",
+      "method": "GET",
+      "path": "/admin/v2/placements/{id}",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-045"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "placements.create",
+      "method": "POST",
+      "path": "/admin/v2/placements",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-045"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "placements.update",
+      "method": "PATCH",
+      "path": "/admin/v2/placements/{id}",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-045"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "placements.disable",
+      "method": "POST",
+      "path": "/admin/v2/placements/{id}/disable",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-045"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "reservations.list",
+      "method": "GET",
+      "path": "/admin/v2/reservations",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-078",
+        "CMS-079"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "reservations.read",
+      "method": "GET",
+      "path": "/admin/v2/reservations/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-078",
+        "CMS-079"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "reservations.create",
+      "method": "POST",
+      "path": "/admin/v2/reservations",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-078",
+        "CMS-079"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "reservations.update",
+      "method": "PATCH",
+      "path": "/admin/v2/reservations/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-078",
+        "CMS-079"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "reservations.confirm",
+      "method": "POST",
+      "path": "/admin/v2/reservations/{id}/confirm",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-078",
+        "CMS-079"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "reservations.cancel",
+      "method": "POST",
+      "path": "/admin/v2/reservations/{id}/cancel",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-078",
+        "CMS-079"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "assignments.list",
+      "method": "GET",
+      "path": "/admin/v2/assignments",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-046"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "assignments.read",
+      "method": "GET",
+      "path": "/admin/v2/assignments/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-046"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "assignments.create",
+      "method": "POST",
+      "path": "/admin/v2/assignments",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-046"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "assignments.update",
+      "method": "PATCH",
+      "path": "/admin/v2/assignments/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-046"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "assignments.disable",
+      "method": "POST",
+      "path": "/admin/v2/assignments/{id}/disable",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-046"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "ad-policies.list",
+      "method": "GET",
+      "path": "/admin/v2/ad-policies",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-047",
+        "CMS-048",
+        "CMS-049",
+        "CMS-052"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "ad-policies.read",
+      "method": "GET",
+      "path": "/admin/v2/ad-policies/{id}",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-047",
+        "CMS-048",
+        "CMS-049",
+        "CMS-052"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "ad-policies.create",
+      "method": "POST",
+      "path": "/admin/v2/ad-policies",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-047",
+        "CMS-048",
+        "CMS-049",
+        "CMS-052"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "ad-policies.update",
+      "method": "PATCH",
+      "path": "/admin/v2/ad-policies/{id}",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-047",
+        "CMS-048",
+        "CMS-049",
+        "CMS-052"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "ad-policies.submit",
+      "method": "POST",
+      "path": "/admin/v2/ad-policies/{id}/submit",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-047",
+        "CMS-048",
+        "CMS-049",
+        "CMS-052"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "ad-policies.disable",
+      "method": "POST",
+      "path": "/admin/v2/ad-policies/{id}/disable",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-047",
+        "CMS-048",
+        "CMS-049",
+        "CMS-052"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "reports.list",
+      "method": "GET",
+      "path": "/admin/v2/reports",
+      "roles": [
+        "owner",
+        "admin",
+        "support"
+      ],
+      "features": [
+        "CMS-062",
+        "CMS-063",
+        "CMS-064"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "reports.read",
+      "method": "GET",
+      "path": "/admin/v2/reports/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "support"
+      ],
+      "features": [
+        "CMS-062",
+        "CMS-063",
+        "CMS-064"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "reports.update",
+      "method": "PATCH",
+      "path": "/admin/v2/reports/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "support"
+      ],
+      "features": [
+        "CMS-062",
+        "CMS-063",
+        "CMS-064"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "reports.triage",
+      "method": "POST",
+      "path": "/admin/v2/reports/{id}/triage",
+      "roles": [
+        "owner",
+        "admin",
+        "support"
+      ],
+      "features": [
+        "CMS-062",
+        "CMS-063",
+        "CMS-064"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "reports.start",
+      "method": "POST",
+      "path": "/admin/v2/reports/{id}/start",
+      "roles": [
+        "owner",
+        "admin",
+        "support"
+      ],
+      "features": [
+        "CMS-062",
+        "CMS-063",
+        "CMS-064"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "reports.resolve",
+      "method": "POST",
+      "path": "/admin/v2/reports/{id}/resolve",
+      "roles": [
+        "owner",
+        "admin",
+        "support"
+      ],
+      "features": [
+        "CMS-062",
+        "CMS-063",
+        "CMS-064"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "reports.close",
+      "method": "POST",
+      "path": "/admin/v2/reports/{id}/close",
+      "roles": [
+        "owner",
+        "admin",
+        "support"
+      ],
+      "features": [
+        "CMS-062",
+        "CMS-063",
+        "CMS-064"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "reports.reopen",
+      "method": "POST",
+      "path": "/admin/v2/reports/{id}/reopen",
+      "roles": [
+        "owner",
+        "admin",
+        "support"
+      ],
+      "features": [
+        "CMS-062",
+        "CMS-063",
+        "CMS-064"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "revenue-imports.list",
+      "method": "GET",
+      "path": "/admin/v2/revenue-imports",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-057"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "revenue-imports.read",
+      "method": "GET",
+      "path": "/admin/v2/revenue-imports/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-057"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "revenue-imports.create",
+      "method": "POST",
+      "path": "/admin/v2/revenue-imports",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-057"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "revenue-imports.validate",
+      "method": "POST",
+      "path": "/admin/v2/revenue-imports/{id}/validate",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-057"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "revenue-imports.commit",
+      "method": "POST",
+      "path": "/admin/v2/revenue-imports/{id}/commit",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-057"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "revenue-imports.supersede",
+      "method": "POST",
+      "path": "/admin/v2/revenue-imports/{id}/supersede",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-057"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "statements.list",
+      "method": "GET",
+      "path": "/admin/v2/statements",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-058"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "statements.read",
+      "method": "GET",
+      "path": "/admin/v2/statements/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-058"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "statements.create",
+      "method": "POST",
+      "path": "/admin/v2/statements",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-058"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "statements.update",
+      "method": "PATCH",
+      "path": "/admin/v2/statements/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-058"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "statements.submit",
+      "method": "POST",
+      "path": "/admin/v2/statements/{id}/submit",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-058"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "statements.confirm",
+      "method": "POST",
+      "path": "/admin/v2/statements/{id}/confirm",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-058"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "statements.lock",
+      "method": "POST",
+      "path": "/admin/v2/statements/{id}/lock",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-058"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "payments.list",
+      "method": "GET",
+      "path": "/admin/v2/payments",
+      "roles": [
+        "owner",
+        "finance"
+      ],
+      "features": [
+        "CMS-059"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "payments.read",
+      "method": "GET",
+      "path": "/admin/v2/payments/{id}",
+      "roles": [
+        "owner",
+        "finance"
+      ],
+      "features": [
+        "CMS-059"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "payments.create",
+      "method": "POST",
+      "path": "/admin/v2/payments",
+      "roles": [
+        "owner",
+        "finance"
+      ],
+      "features": [
+        "CMS-059"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "payments.update",
+      "method": "PATCH",
+      "path": "/admin/v2/payments/{id}",
+      "roles": [
+        "owner",
+        "finance"
+      ],
+      "features": [
+        "CMS-059"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "payments.confirm",
+      "method": "POST",
+      "path": "/admin/v2/payments/{id}/confirm",
+      "roles": [
+        "owner"
+      ],
+      "features": [
+        "CMS-059"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "payments.reverse",
+      "method": "POST",
+      "path": "/admin/v2/payments/{id}/reverse",
+      "roles": [
+        "owner"
+      ],
+      "features": [
+        "CMS-059"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "jobs.list",
+      "method": "GET",
+      "path": "/admin/v2/jobs",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-067",
+        "CMS-068",
+        "CMS-069"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "jobs.read",
+      "method": "GET",
+      "path": "/admin/v2/jobs/{id}",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-067",
+        "CMS-068",
+        "CMS-069"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "jobs.retry",
+      "method": "POST",
+      "path": "/admin/v2/jobs/{id}/retry",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-067",
+        "CMS-068",
+        "CMS-069"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "If-Match bắt buộc; đúng trạng thái; audit reason.",
+        "Quy tắc chi tiết: docs/02-data-api.html và 03-ad-rules.html.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "audit-events.list",
+      "method": "GET",
+      "path": "/admin/v2/audit-events",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-005"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "audit-events.read",
+      "method": "GET",
+      "path": "/admin/v2/audit-events/{id}",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-005"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "auth.login",
+      "method": "POST",
+      "path": "/admin/v2/auth/login",
+      "roles": [],
+      "features": [
+        "CMS-001"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "auth.mfa",
+      "method": "POST",
+      "path": "/admin/v2/auth/mfa",
+      "roles": [],
+      "features": [
+        "CMS-001"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "auth.resetRequest",
+      "method": "POST",
+      "path": "/admin/v2/auth/reset-request",
+      "roles": [],
+      "features": [
+        "CMS-004"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "auth.resetComplete",
+      "method": "POST",
+      "path": "/admin/v2/auth/reset-complete",
+      "roles": [],
+      "features": [
+        "CMS-004"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "auth.logout",
+      "method": "POST",
+      "path": "/admin/v2/auth/logout",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads",
+        "finance",
+        "support"
+      ],
+      "features": [
+        "CMS-004"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "auth.me",
+      "method": "GET",
+      "path": "/admin/v2/auth/me",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads",
+        "finance",
+        "support"
+      ],
+      "features": [
+        "CMS-001",
+        "CMS-003"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "providers.verifyCapability",
+      "method": "POST",
+      "path": "/admin/v2/providers/{id}/verify-capability",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-022"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "providers.rotateSecret",
+      "method": "POST",
+      "path": "/admin/v2/providers/{id}/secret",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-072"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "reports.export",
+      "method": "POST",
+      "path": "/admin/v2/report-exports",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-060"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "analytics.read",
+      "method": "GET",
+      "path": "/admin/v2/analytics",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads",
+        "finance",
+        "support"
+      ],
+      "features": [
+        "CMS-006",
+        "CMS-054",
+        "CMS-055",
+        "CMS-056"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "Metric trả theo quyền. Editor/support không thấy tiền đối tác."
+      ]
+    },
+    {
+      "id": "system.killSwitch",
+      "method": "POST",
+      "path": "/admin/v2/kill-switch",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-031",
+        "CMS-051",
+        "CMS-065"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "assets.upload",
+      "method": "POST",
+      "path": "/admin/v2/assets/upload",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads"
+      ],
+      "features": [
+        "CMS-017"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "public.movies",
+      "method": "GET",
+      "path": "/api/v2/movies",
+      "roles": [],
+      "features": [
+        "CMS-039",
+        "CMS-041"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "public.movie",
+      "method": "GET",
+      "path": "/api/v2/movies/{id}",
+      "roles": [],
+      "features": [
+        "CMS-009",
+        "CMS-041"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "public.playback",
+      "method": "GET",
+      "path": "/api/v2/movies/{id}/playback",
+      "roles": [],
+      "features": [
+        "CMS-021",
+        "CMS-024"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "public.home",
+      "method": "GET",
+      "path": "/api/v2/home",
+      "roles": [],
+      "features": [
+        "CMS-032"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "public.siteConfig",
+      "method": "GET",
+      "path": "/api/v2/site-config",
+      "roles": [],
+      "features": [
+        "CMS-033",
+        "CMS-034",
+        "CMS-035"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "public.adDecision",
+      "method": "GET",
+      "path": "/api/v2/ads/eligible",
+      "roles": [],
+      "features": [
+        "CMS-046",
+        "CMS-047",
+        "CMS-048"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "public.adEvent",
+      "method": "POST",
+      "path": "/api/v2/ad-events",
+      "roles": [],
+      "features": [
+        "CMS-054"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "public.report",
+      "method": "POST",
+      "path": "/api/v2/reports",
+      "roles": [],
+      "features": [
+        "CMS-062"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "tasks.list",
+      "method": "GET",
+      "path": "/admin/v2/tasks",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads",
+        "finance",
+        "support"
+      ],
+      "features": [
+        "CMS-007"
+      ],
+      "scope": "assigned; admin may reassign",
+      "rules": []
+    },
+    {
+      "id": "tasks.update",
+      "method": "PATCH",
+      "path": "/admin/v2/tasks/{id}",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads",
+        "finance",
+        "support"
+      ],
+      "features": [
+        "CMS-007"
+      ],
+      "scope": "assigned; admin may reassign",
+      "rules": [
+        "Nhân sự chỉ cập nhật task được giao; đổi assignee cần admin.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "notifications.list",
+      "method": "GET",
+      "path": "/admin/v2/notifications",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads",
+        "finance",
+        "support"
+      ],
+      "features": [
+        "CMS-007"
+      ],
+      "scope": "own",
+      "rules": []
+    },
+    {
+      "id": "notifications.markRead",
+      "method": "POST",
+      "path": "/admin/v2/notifications/{id}/read",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads",
+        "finance",
+        "support"
+      ],
+      "features": [
+        "CMS-007"
+      ],
+      "scope": "own",
+      "rules": []
+    },
+    {
+      "id": "sessions.list",
+      "method": "GET",
+      "path": "/admin/v2/auth/sessions",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads",
+        "finance",
+        "support"
+      ],
+      "features": [
+        "CMS-004"
+      ],
+      "scope": "own",
+      "rules": []
+    },
+    {
+      "id": "sessions.revoke",
+      "method": "POST",
+      "path": "/admin/v2/auth/sessions/{id}/revoke",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads",
+        "finance",
+        "support"
+      ],
+      "features": [
+        "CMS-004"
+      ],
+      "scope": "own",
+      "rules": []
+    },
+    {
+      "id": "previews.create",
+      "method": "POST",
+      "path": "/admin/v2/previews",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads"
+      ],
+      "features": [
+        "CMS-028"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "takedowns.create",
+      "method": "POST",
+      "path": "/admin/v2/takedowns",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-064"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "backups.list",
+      "method": "GET",
+      "path": "/admin/v2/backups",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-069"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "backups.create",
+      "method": "POST",
+      "path": "/admin/v2/backups",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-069"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "restores.create",
+      "method": "POST",
+      "path": "/admin/v2/restores",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-069"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "Production cần approval hợp lệ + step-up; không tự restore production từ UI demo.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "system.settingsRead",
+      "method": "GET",
+      "path": "/admin/v2/system-settings",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-066",
+        "CMS-070",
+        "CMS-071"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "system.settingsUpdate",
+      "method": "PATCH",
+      "path": "/admin/v2/system-settings",
+      "roles": [
+        "owner"
+      ],
+      "features": [
+        "CMS-066",
+        "CMS-070"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "adAdapters.list",
+      "method": "GET",
+      "path": "/admin/v2/ad-adapters",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-052"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "adAdapters.verify",
+      "method": "POST",
+      "path": "/admin/v2/ad-adapters/{id}/verify",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-052"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "adAdapters.disable",
+      "method": "POST",
+      "path": "/admin/v2/ad-adapters/{id}/disable",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-052"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "redirects.list",
+      "method": "GET",
+      "path": "/admin/v2/redirects",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-037"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "privateFiles.upload",
+      "method": "POST",
+      "path": "/admin/v2/private-files/upload",
+      "roles": [
+        "owner",
+        "admin"
+      ],
+      "features": [
+        "CMS-013",
+        "CMS-022",
+        "CMS-042"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "revenueFiles.upload",
+      "method": "POST",
+      "path": "/admin/v2/revenue-files/upload",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-057"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "assets.privateAccess",
+      "method": "POST",
+      "path": "/admin/v2/assets/{id}/access",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-013",
+        "CMS-057"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "finance chỉ revenue_csv; owner/admin theo quyền mục đích; audit download; URL TTL đề xuất 5 phút.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "public.taxonomies",
+      "method": "GET",
+      "path": "/api/v2/taxonomies",
+      "roles": [],
+      "features": [
+        "CMS-011",
+        "CMS-034",
+        "CMS-039"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "reservations.check",
+      "method": "POST",
+      "path": "/admin/v2/reservation-conflicts",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-079"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "Không giữ chỗ. Confirm luôn kiểm tra lại trong transaction.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "assets.usage",
+      "method": "GET",
+      "path": "/admin/v2/assets/{id}/usage",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads"
+      ],
+      "features": [
+        "CMS-019"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "movies.versions",
+      "method": "GET",
+      "path": "/admin/v2/movies/{id}/versions",
+      "roles": [
+        "owner",
+        "admin",
+        "editor"
+      ],
+      "features": [
+        "CMS-026",
+        "CMS-030"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "takedownRequests.create",
+      "method": "POST",
+      "path": "/admin/v2/takedown-requests",
+      "roles": [
+        "owner",
+        "admin",
+        "support"
+      ],
+      "features": [
+        "CMS-064"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "Chỉ tạo yêu cầu, không gỡ trực tiếp; tạo task cho owner/admin.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "revenueImports.errors",
+      "method": "GET",
+      "path": "/admin/v2/revenue-imports/{id}/errors",
+      "roles": [
+        "owner",
+        "admin",
+        "finance"
+      ],
+      "features": [
+        "CMS-057"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    },
+    {
+      "id": "bulk.execute",
+      "method": "POST",
+      "path": "/admin/v2/bulk-actions",
+      "roles": [
+        "owner",
+        "admin",
+        "ads"
+      ],
+      "features": [
+        "CMS-008"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": [
+        "Kiểm quyền từng item và action; ads chỉ campaign_pause; revision từng item, giao dịch riêng từng item; trả mixed results, không publish bulk.",
+        "Role chưa đủ: kiểm object scope, state, revision, field-level và self-approval."
+      ]
+    },
+    {
+      "id": "auth.csrf",
+      "method": "GET",
+      "path": "/admin/v2/auth/csrf",
+      "roles": [
+        "owner",
+        "admin",
+        "editor",
+        "ads",
+        "finance",
+        "support"
+      ],
+      "features": [
+        "CMS-001",
+        "CMS-071"
+      ],
+      "scope": "object scope + role; see contract",
+      "rules": []
+    }
+  ]
+}

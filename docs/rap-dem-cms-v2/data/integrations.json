@@ -1,0 +1,134 @@
+[
+  {
+    "id": "INT-01",
+    "capability": "Phát nhúng",
+    "status": "unverified",
+    "evidence": "",
+    "adapterVersion": "",
+    "testedAt": "",
+    "testedBy": "",
+    "approvedBy": "",
+    "spec": "docs/04-partner.html"
+  },
+  {
+    "id": "INT-02",
+    "capability": "Events cross-origin",
+    "status": "unverified",
+    "evidence": "",
+    "adapterVersion": "",
+    "testedAt": "",
+    "testedBy": "",
+    "approvedBy": "",
+    "spec": "docs/04-partner.html"
+  },
+  {
+    "id": "INT-03",
+    "capability": "Preroll",
+    "status": "unverified",
+    "evidence": "",
+    "adapterVersion": "",
+    "testedAt": "",
+    "testedBy": "",
+    "approvedBy": "",
+    "spec": "docs/04-partner.html"
+  },
+  {
+    "id": "INT-04",
+    "capability": "Skip",
+    "status": "unverified",
+    "evidence": "",
+    "adapterVersion": "",
+    "testedAt": "",
+    "testedBy": "",
+    "approvedBy": "",
+    "spec": "docs/04-partner.html"
+  },
+  {
+    "id": "INT-05",
+    "capability": "Đổi nguồn",
+    "status": "unverified",
+    "evidence": "",
+    "adapterVersion": "",
+    "testedAt": "",
+    "testedBy": "",
+    "approvedBy": "",
+    "spec": "docs/04-partner.html"
+  },
+  {
+    "id": "INT-06",
+    "capability": "Seek",
+    "status": "unverified",
+    "evidence": "",
+    "adapterVersion": "",
+    "testedAt": "",
+    "testedBy": "",
+    "approvedBy": "",
+    "spec": "docs/04-partner.html"
+  },
+  {
+    "id": "INT-07",
+    "capability": "Chuyển tập",
+    "status": "unverified",
+    "evidence": "",
+    "adapterVersion": "",
+    "testedAt": "",
+    "testedBy": "",
+    "approvedBy": "",
+    "spec": "docs/04-partner.html"
+  },
+  {
+    "id": "INT-08",
+    "capability": "Fullscreen/layout",
+    "status": "unverified",
+    "evidence": "",
+    "adapterVersion": "",
+    "testedAt": "",
+    "testedBy": "",
+    "approvedBy": "",
+    "spec": "docs/04-partner.html"
+  },
+  {
+    "id": "INT-09",
+    "capability": "Host/CSP",
+    "status": "unverified",
+    "evidence": "",
+    "adapterVersion": "",
+    "testedAt": "",
+    "testedBy": "",
+    "approvedBy": "",
+    "spec": "docs/04-partner.html"
+  },
+  {
+    "id": "INT-10",
+    "capability": "Report metrics",
+    "status": "unverified",
+    "evidence": "",
+    "adapterVersion": "",
+    "testedAt": "",
+    "testedBy": "",
+    "approvedBy": "",
+    "spec": "docs/04-partner.html"
+  },
+  {
+    "id": "INT-11",
+    "capability": "Currency/timezone",
+    "status": "unverified",
+    "evidence": "",
+    "adapterVersion": "",
+    "testedAt": "",
+    "testedBy": "",
+    "approvedBy": "",
+    "spec": "docs/04-partner.html"
+  },
+  {
+    "id": "INT-12",
+    "capability": "Lỗi/hết hạn",
+    "status": "unverified",
+    "evidence": "",
+    "adapterVersion": "",
+    "testedAt": "",
+    "testedBy": "",
+    "approvedBy": "",
+    "spec": "docs/04-partner.html"
+  }
+]

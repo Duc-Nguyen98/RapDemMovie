@@ -1,0 +1,6 @@
+docs/rap-dem-cms-v2/** -text
+docs/web-v18/** -text
+*.rar binary
+*.zip binary
+*.png binary
+*.xlsx binary

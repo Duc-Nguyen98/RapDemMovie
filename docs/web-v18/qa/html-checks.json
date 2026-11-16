@@ -1,0 +1,35 @@
+[
+  {
+    "file": "index.html",
+    "title": "Bộ ảnh và contract bàn giao DEV",
+    "overflow": false,
+    "brokenImages": [],
+    "h2": 2,
+    "localLinks": 29,
+    "missing": [],
+    "mobileOverflow": false,
+    "errors": []
+  },
+  {
+    "file": "catalog-preview.html",
+    "title": "Danh mục và poster tham chiếu chuẩn",
+    "overflow": false,
+    "brokenImages": [],
+    "h2": 0,
+    "localLinks": 0,
+    "missing": [],
+    "mobileOverflow": false,
+    "errors": []
+  },
+  {
+    "file": "contract/DEV-CONTRACT-V18.html",
+    "title": "Contract triển khai — V18",
+    "overflow": false,
+    "brokenImages": [],
+    "h2": 19,
+    "localLinks": 0,
+    "missing": [],
+    "mobileOverflow": false,
+    "errors": []
+  }
+]

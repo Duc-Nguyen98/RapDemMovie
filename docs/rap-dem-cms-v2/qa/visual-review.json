@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-16",
+  "scope": "Local rendered artifact review, not production acceptance or accessibility certification",
+  "reviewed": {
+    "prototype": "All 43 routes across desktop/tablet/mobile through QA contact sheets; dashboard, edit movie, movie detail, ad calendar and four long forms inspected at larger size",
+    "diagrams": "Three 1600x1000 artboards inspected; increased card height to prevent text clipping and separated feedback arrows",
+    "workbook": "All six worksheets inspected via rendered ranges; required editable fields are amber and source/current status distinguished from approvals"
+  },
+  "fixes": [
+    "Corrected syntax errors in initial view templates before screenshots",
+    "Corrected inconsistent sample payment totals to paid 5000000 VND and due 6500000 VND",
+    "Replaced hardcoded reservation calendar with data-driven confirmed bookings",
+    "Fixed mobile grid overflow on revenue import",
+    "Kept required field markers on the same label line",
+    "Restored V18 shared footer link groups",
+    "Added object/state permission gates to simulated mutations and restricted views",
+    "Separated pending partner evidence from UI approval",
+    "Kept P1/P2 features out of claims of implemented MVP screens"
+  ],
+  "limitations": [
+    "Some secondary forms are illustrative, explicitly identified in screen coverage",
+    "No real device, native Excel, backend, security penetration, database race or partner integration testing",
+    "Viewport screenshots do not show all content below the fold; use the prototype to scroll"
+  ]
+}

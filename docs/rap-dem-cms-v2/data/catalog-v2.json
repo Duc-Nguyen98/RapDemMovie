@@ -1,0 +1,2407 @@
+{
+  "meta": {
+    "version": "2.0.0",
+    "date": "2026-11-16",
+    "status": "DESIGN_HANDOFF_NOT_PRODUCTION",
+    "viewerBaseline": "V18"
+  },
+  "features": [
+    {
+      "id": "CMS-001",
+      "module": "01. Tài khoản và phân quyền nội bộ",
+      "name": "Đăng nhập nhân sự + MFA",
+      "screen": "Đăng nhập CMS",
+      "business": "Xác thực nhân viên, không tạo tài khoản người xem. MFA bắt buộc cho quyền nhạy cảm.",
+      "parameters": "Email duy nhất; trạng thái invited/active/locked; giới hạn thử sai; không log mật khẩu.",
+      "roles": "Tất cả nhân sự",
+      "phase": "P0",
+      "notes": "Chọn cơ chế xác thực/SSO ở bước kỹ thuật; chưa chọn nhà cung cấp.",
+      "acceptance": "Khách bị chặn API admin; sai mật khẩu không lộ tài khoản tồn tại.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-035",
+        "UI-036"
+      ],
+      "apiOperations": [
+        "staff.list",
+        "staff.read",
+        "staff.create",
+        "staff.invite",
+        "staff.lock",
+        "staff.unlock",
+        "staff.revoke-sessions",
+        "auth.login",
+        "auth.mfa",
+        "auth.me",
+        "auth.csrf"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-002",
+      "module": "01. Tài khoản và phân quyền nội bộ",
+      "name": "Mời, khóa và thu hồi nhân sự",
+      "screen": "Nhân sự",
+      "business": "Mời nhân sự theo vai trò; khóa người nghỉ việc và thu hồi phiên đang hoạt động.",
+      "parameters": "Link mời một lần, hết hạn; không xóa chủ hệ thống cuối cùng.",
+      "roles": "Chủ hệ thống; Quản trị",
+      "phase": "P0",
+      "notes": "Quản trị không được tự nâng thành Chủ hệ thống.",
+      "acceptance": "Khóa tài khoản làm phiên cũ mất quyền ở request tiếp theo.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-033"
+      ],
+      "apiOperations": [
+        "staff.list",
+        "staff.read",
+        "staff.create",
+        "staff.invite",
+        "staff.lock",
+        "staff.unlock",
+        "staff.revoke-sessions"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-003",
+      "module": "01. Tài khoản và phân quyền nội bộ",
+      "name": "Phân quyền theo hành động",
+      "screen": "Vai trò & quyền",
+      "business": "Quyền xem, sửa, gửi duyệt, xuất bản, xuất báo cáo và quản lý cấu hình tách riêng.",
+      "parameters": "Mặc định từ chối; kiểm tra phía server theo action + resource; quyền mới mặc định tắt.",
+      "roles": "Chủ hệ thống",
+      "phase": "P0",
+      "notes": "Một người có thể nhiều vai trò; không suy quyền từ menu bị ẩn.",
+      "acceptance": "Gọi API trực tiếp bằng vai trò không hợp lệ nhận 403, không đổi dữ liệu.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-034"
+      ],
+      "apiOperations": [
+        "roles.list",
+        "roles.read",
+        "roles.create",
+        "roles.update",
+        "auth.me"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-004",
+      "module": "01. Tài khoản và phân quyền nội bộ",
+      "name": "Phiên và khôi phục truy cập",
+      "screen": "Tài khoản của tôi",
+      "business": "Đăng xuất, đổi mật khẩu, xem/thu hồi phiên; khôi phục MFA theo quy trình xác minh.",
+      "parameters": "Đề xuất idle 30 phút, tối đa 12 giờ; thao tác nhạy cảm yêu cầu xác thực lại.",
+      "roles": "Tất cả nhân sự; Chủ hệ thống",
+      "phase": "P0",
+      "notes": "Không gửi mật khẩu qua email; không có tài khoản dùng chung.",
+      "acceptance": "Reset mật khẩu/khóa người dùng thu hồi phiên; audit không chứa token.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-037"
+      ],
+      "apiOperations": [
+        "staff.list",
+        "staff.read",
+        "staff.create",
+        "staff.invite",
+        "staff.lock",
+        "staff.unlock",
+        "staff.revoke-sessions",
+        "auth.resetRequest",
+        "auth.resetComplete",
+        "auth.logout",
+        "sessions.list",
+        "sessions.revoke"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-005",
+      "module": "01. Tài khoản và phân quyền nội bộ",
+      "name": "Nhật ký kiểm toán",
+      "screen": "Nhật ký",
+      "business": "Lưu ai làm gì, thời điểm, trước/sau, lý do và correlationId cho thay đổi nhạy cảm.",
+      "parameters": "UTC; dữ liệu nhạy cảm che; append-only ở tầng ứng dụng; lọc entity/user/time.",
+      "roles": "Chủ hệ thống; Quản trị",
+      "phase": "P0",
+      "notes": "Nhật ký không phải bản sao toàn bộ secret hoặc thông tin riêng tư.",
+      "acceptance": "Publish, đổi quyền, đổi nguồn, tắt quảng cáo và xuất dữ liệu đều tra được tác nhân.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-038"
+      ],
+      "apiOperations": [
+        "audit-events.list",
+        "audit-events.read"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-006",
+      "module": "02. Tổng quan và công việc",
+      "name": "Dashboard vận hành",
+      "screen": "Tổng quan",
+      "business": "Hiển thị nội dung chờ duyệt, nguồn phát có cảnh báo, quảng cáo đang chạy, báo lỗi chưa xử lý.",
+      "parameters": "Khoảng ngày; thiết bị; thời gian cập nhật; trạng thái thiếu dữ liệu N/A.",
+      "roles": "Chủ hệ thống; Quản trị; vai trò theo phạm vi",
+      "phase": "P0",
+      "notes": "Chỉ số doanh thu dùng nguồn đối soát, không ước lượng từ lượt xem iframe.",
+      "acceptance": "Mỗi chỉ số mở được danh sách gốc; không thấy dữ liệu vượt quyền.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-001"
+      ],
+      "apiOperations": [
+        "analytics.read"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-007",
+      "module": "02. Tổng quan và công việc",
+      "name": "Hàng đợi và thông báo nội bộ",
+      "screen": "Công việc của tôi",
+      "business": "Giao người xử lý, hạn xử lý, đánh dấu ưu tiên; thông báo khi bị trả bài hoặc có lỗi xuất bản.",
+      "parameters": "Loại công việc; đối tượng; assignee; dueAt; open/in_progress/done.",
+      "roles": "Quản trị; Biên tập; Quảng cáo; Hỗ trợ",
+      "phase": "P0",
+      "notes": "Thông báo trong CMS là cơ sở; email/webhook cảnh báo có thể bổ sung.",
+      "acceptance": "Không mất công việc khi email gửi lỗi; xử lý có lịch sử.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-002"
+      ],
+      "apiOperations": [
+        "tasks.list",
+        "tasks.update",
+        "notifications.list",
+        "notifications.markRead"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-008",
+      "module": "02. Tổng quan và công việc",
+      "name": "Bộ lọc, tìm và thao tác hàng loạt",
+      "screen": "Các danh sách CMS",
+      "business": "Tìm theo mã/tên/trạng thái; phân trang; chọn nhiều bản ghi với preview tác động.",
+      "parameters": "Mặc định 25, tối đa 100 dòng/trang; thao tác bulk có giới hạn và idempotency.",
+      "roles": "Nhân sự theo quyền module",
+      "phase": "P0",
+      "notes": "Không cho bulk publish bỏ qua validation và quyền.",
+      "acceptance": "Lỗi một dòng được báo đúng dòng; không báo toàn bộ thành công giả.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-001"
+      ],
+      "apiOperations": [
+        "bulk.execute"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-009",
+      "module": "03. Phim và danh mục",
+      "name": "Danh sách và hồ sơ phim",
+      "screen": "Phim > Danh sách/Chi tiết",
+      "business": "Một hồ sơ chuẩn dùng chung cho home, search, saved, watch và báo cáo.",
+      "parameters": "movieId bất biến; slug duy nhất; tên, năm, thể loại, loại phim, tóm tắt, poster, trạng thái.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P0",
+      "notes": "Không nhập metadata riêng theo desktop/mobile.",
+      "acceptance": "Một movieId trả cùng tên/năm/thể loại/poster trên mọi màn.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-003",
+        "UI-004",
+        "UI-005"
+      ],
+      "apiOperations": [
+        "movies.list",
+        "movies.read",
+        "movies.create",
+        "movies.update",
+        "movies.submit",
+        "movies.verify-rights",
+        "movies.withdraw",
+        "movies.restore",
+        "movies.archive",
+        "public.movie"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-010",
+      "module": "03. Phim và danh mục",
+      "name": "Biên tập metadata và kiểm tra",
+      "screen": "Phim > Nội dung",
+      "business": "Thêm/sửa mô tả, tên gốc, thời lượng, ngôn ngữ, phụ đề và nhãn chất lượng có căn cứ.",
+      "parameters": "Đề xuất tên 1–200 ký tự, tóm tắt tối đa 5.000; năm 1888–năm hiện tại+5; thời lượng phút >0 hoặc bỏ trống.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P0",
+      "notes": "Giá trị chưa biết để null; không tự tạo điểm đánh giá hoặc số lượt xem.",
+      "acceptance": "Thiếu trường bắt buộc không gửi duyệt; lỗi có vị trí trường cụ thể.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-004"
+      ],
+      "apiOperations": [
+        "movies.list",
+        "movies.read",
+        "movies.create",
+        "movies.update",
+        "movies.submit",
+        "movies.verify-rights",
+        "movies.withdraw",
+        "movies.restore",
+        "movies.archive"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-011",
+      "module": "03. Phim và danh mục",
+      "name": "Thể loại, quốc gia, ngôn ngữ",
+      "screen": "Danh mục",
+      "business": "Tạo/sửa/sắp xếp danh mục và nhãn; giữ quan hệ với phim hiện có.",
+      "parameters": "ID, tên, slug, thứ tự, active; chuẩn hóa chống trùng.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P0",
+      "notes": "Xóa danh mục đang dùng phải đổi liên kết hoặc ngừng hoạt động.",
+      "acceptance": "Không làm mất thể loại trên phim đã xuất bản khi chỉnh tên danh mục.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-006"
+      ],
+      "apiOperations": [
+        "taxonomies.list",
+        "taxonomies.read",
+        "taxonomies.create",
+        "taxonomies.update",
+        "taxonomies.archive",
+        "public.taxonomies"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-012",
+      "module": "03. Phim và danh mục",
+      "name": "Diễn viên và đạo diễn",
+      "screen": "Danh mục > Nhân vật",
+      "business": "Quản lý hồ sơ và gán vai trò cho phim; dùng lại hồ sơ có sẵn.",
+      "parameters": "personId, tên, ảnh, vai trò; liên kết nhiều-nhiều.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P1",
+      "notes": "Chỉ cần khi giao diện công khai thực sự hiển thị thông tin này.",
+      "acceptance": "Một hồ sơ cập nhật phản ánh đúng các phim liên quan.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-013",
+      "module": "03. Phim và danh mục",
+      "name": "Quyền sử dụng và thời hạn phát",
+      "screen": "Phim > Quyền & khả dụng",
+      "business": "Ghi nguồn quyền, người kiểm tra, bằng chứng, thời gian và phạm vi được phát.",
+      "parameters": "rightsStatus pending/verified/expired/blocked; start/end; lãnh thổ nếu có; tài liệu riêng tư.",
+      "roles": "Biên tập; Quản trị; Chủ hệ thống",
+      "phase": "P0",
+      "notes": "Ghi trạng thái không đồng nghĩa tư vấn hay chứng nhận pháp lý; có gate duyệt.",
+      "acceptance": "Hết hạn/chưa xác nhận chặn xuất bản hoặc ngừng khả dụng theo cấu hình duyệt.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-004"
+      ],
+      "apiOperations": [
+        "movies.list",
+        "movies.read",
+        "movies.create",
+        "movies.update",
+        "movies.submit",
+        "movies.verify-rights",
+        "movies.withdraw",
+        "movies.restore",
+        "movies.archive",
+        "privateFiles.upload",
+        "assets.privateAccess"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-014",
+      "module": "03. Phim và danh mục",
+      "name": "Ngừng phát, lưu trữ, khôi phục",
+      "screen": "Phim > Trạng thái",
+      "business": "Unpublish khỏi public, lưu trữ hồ sơ và khôi phục có kiểm tra lại.",
+      "parameters": "Lý do bắt buộc; soft-delete; chặn xóa vật lý khi còn tham chiếu/báo cáo.",
+      "roles": "Quản trị",
+      "phase": "P0",
+      "notes": "Phim đã lưu ở trình duyệt hiển thị không khả dụng, không chuyển sang phim khác.",
+      "acceptance": "API công khai không phát nội dung ngừng hoạt động dù người dùng có URL cũ.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-004"
+      ],
+      "apiOperations": [
+        "movies.list",
+        "movies.read",
+        "movies.create",
+        "movies.update",
+        "movies.submit",
+        "movies.verify-rights",
+        "movies.withdraw",
+        "movies.restore",
+        "movies.archive"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-015",
+      "module": "03. Phim và danh mục",
+      "name": "Phim bộ và tập nội bộ",
+      "screen": "Phim > Tập",
+      "business": "Lưu tập, thứ tự và nguồn theo tập, nhưng chưa thêm bộ chọn tập vào web.",
+      "parameters": "seriesId/season/episodeId/order; không trùng thứ tự; số tập công khai từ dữ liệu thật.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P0-C",
+      "notes": "Cổng phát hành: đối tác có điều hướng tập hoặc chủ sản phẩm duyệt cách khác.",
+      "acceptance": "Không publish phim bộ nếu người xem không đến được tất cả tập đã phát hành.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-008"
+      ],
+      "apiOperations": [
+        "episodes.list",
+        "episodes.read",
+        "episodes.create",
+        "episodes.update",
+        "episodes.publish",
+        "episodes.withdraw"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-016",
+      "module": "03. Phim và danh mục",
+      "name": "Phim liên quan và bộ sưu tập",
+      "screen": "Phim > Gợi ý; Bộ sưu tập",
+      "business": "Chọn thủ công phim liên quan hoặc quy tắc theo thể loại; loại phim không khả dụng.",
+      "parameters": "Danh sách movieId có thứ tự; đề xuất tối đa 12; chống trùng và tự tham chiếu.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P0",
+      "notes": "Chưa làm cá nhân hóa theo tài khoản ở MVP.",
+      "acceptance": "Gỡ một phim không để card chết trong bộ sưu tập.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-004"
+      ],
+      "apiOperations": [
+        "movies.list",
+        "movies.read",
+        "movies.create",
+        "movies.update",
+        "movies.submit",
+        "movies.verify-rights",
+        "movies.withdraw",
+        "movies.restore",
+        "movies.archive"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-017",
+      "module": "04. Thư viện tài nguyên",
+      "name": "Upload và quản lý poster/banner",
+      "screen": "Thư viện",
+      "business": "Upload ảnh dùng chung, preview, alt text, ghi nguồn và trạng thái sử dụng.",
+      "parameters": "Đề xuất JPG/PNG/WebP ≤5 MB; kiểm tra MIME/signature/dimensions; key UUID.",
+      "roles": "Biên tập; Quảng cáo; Quản trị",
+      "phase": "P0",
+      "notes": "Không nhận HTML/SVG/script tùy ý ở MVP; không upload file video phim.",
+      "acceptance": "File giả ảnh hoặc vượt giới hạn bị từ chối; ảnh chưa an toàn không public.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-007"
+      ],
+      "apiOperations": [
+        "assets.list",
+        "assets.read",
+        "assets.update",
+        "assets.archive",
+        "assets.rebuild-variants",
+        "assets.upload"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-018",
+      "module": "04. Thư viện tài nguyên",
+      "name": "Biến thể ảnh và điểm cắt",
+      "screen": "Tài nguyên > Biến thể",
+      "business": "Sinh kích thước hiển thị theo component, giữ ảnh gốc và focal point.",
+      "parameters": "posterRef duy nhất; variant có width/height; quy tắc contain/crop theo slot.",
+      "roles": "Biên tập; Quảng cáo",
+      "phase": "P0",
+      "notes": "Kích thước export minh họa không thay cho thông số CSS; test ảnh production.",
+      "acceptance": "Ảnh trên mobile/desktop là cùng nguồn, không tự đổi poster.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-007"
+      ],
+      "apiOperations": [
+        "assets.list",
+        "assets.read",
+        "assets.update",
+        "assets.archive",
+        "assets.rebuild-variants"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-019",
+      "module": "04. Thư viện tài nguyên",
+      "name": "Theo dõi sử dụng và thay thế ảnh",
+      "screen": "Tài nguyên > Đang sử dụng",
+      "business": "Biết ảnh đang gắn phim/creative nào; thay phiên bản có kiểm soát cache.",
+      "parameters": "assetId/version/checksum; tham chiếu; soft-delete; quyền tải bản gốc.",
+      "roles": "Biên tập; Quảng cáo; Quản trị",
+      "phase": "P0",
+      "notes": "Không xóa ảnh đang dùng trên bản published; assets rights riêng nếu cần.",
+      "acceptance": "Thay poster có thể hoàn tác; URL bản cũ không bị ghi đè âm thầm.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-007"
+      ],
+      "apiOperations": [
+        "assets.list",
+        "assets.read",
+        "assets.update",
+        "assets.archive",
+        "assets.rebuild-variants",
+        "assets.usage"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-020",
+      "module": "05. Nguồn phát và đối tác",
+      "name": "Hồ sơ đối tác player",
+      "screen": "Tích hợp > Đối tác phát",
+      "business": "Quản lý liên hệ, domain được phép, môi trường, hợp đồng và tài liệu SDK/API.",
+      "parameters": "providerId; enabled; sandbox/prod; secretRef chỉ server; ngày xác minh.",
+      "roles": "Quản trị; Chủ hệ thống",
+      "phase": "P0",
+      "notes": "Chưa có tên đối tác; không kết luận iframe hỗ trợ điều khiển video.",
+      "acceptance": "Public API không trả secret; chỉ domain đã duyệt có thể nhúng.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-009"
+      ],
+      "apiOperations": [
+        "providers.list",
+        "providers.read",
+        "providers.create",
+        "providers.update",
+        "providers.disable"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-021",
+      "module": "05. Nguồn phát và đối tác",
+      "name": "Nguồn phát theo phim/tập",
+      "screen": "Phim > Nguồn phát",
+      "business": "Gắn URL/embed ID hợp lệ, nhãn server, độ ưu tiên và thời hạn cho đúng phim/tập.",
+      "parameters": "HTTPS; parser URL; allowlist host; không javascript: hoặc raw iframe HTML.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P0",
+      "notes": "Biên tập chỉ chọn đối tác có sẵn; thêm domain thuộc Quản trị.",
+      "acceptance": "Nguồn khác phim/tập không được coi là server thay thế.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-010"
+      ],
+      "apiOperations": [
+        "sources.list",
+        "sources.read",
+        "sources.create",
+        "sources.update",
+        "sources.test",
+        "sources.disable",
+        "public.playback"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-022",
+      "module": "05. Nguồn phát và đối tác",
+      "name": "Ma trận khả năng player",
+      "screen": "Tích hợp > Khả năng",
+      "business": "Lưu bằng chứng test cho preroll, skip, đổi server, lỗi phát, event, fullscreen và chuyển tập.",
+      "parameters": "Capability off/unverified/verified; ngày test; evidence; phiên bản adapter.",
+      "roles": "Quản trị",
+      "phase": "P0",
+      "notes": "Mọi capability mặc định off; giao diện ẩn nút không được hỗ trợ.",
+      "acceptance": "Không bật skip chỉ vì nút xuất hiện trong mockup.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-009",
+        "UI-011"
+      ],
+      "apiOperations": [
+        "providers.list",
+        "providers.read",
+        "providers.create",
+        "providers.update",
+        "providers.disable",
+        "providers.verifyCapability",
+        "privateFiles.upload"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-023",
+      "module": "05. Nguồn phát và đối tác",
+      "name": "Kiểm tra nhúng và cảnh báo nguồn",
+      "screen": "Tích hợp > Kiểm tra",
+      "business": "Kiểm tra URL/config và phát thử trên staging, ghi lỗi theo nguồn.",
+      "parameters": "Kiểm tra server chỉ đến allowlist; timeout; giới hạn redirect; không quét mạng nội bộ.",
+      "roles": "Quản trị; Hỗ trợ xem",
+      "phase": "P0",
+      "notes": "HTTP 200 không chứng minh phát được; callback ready không chứng minh video hoàn tất.",
+      "acceptance": "Phân biệt lỗi cấu hình, chưa sẵn sàng và lỗi video được đối tác xác nhận.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-010"
+      ],
+      "apiOperations": [
+        "sources.list",
+        "sources.read",
+        "sources.create",
+        "sources.update",
+        "sources.test",
+        "sources.disable"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-024",
+      "module": "05. Nguồn phát và đối tác",
+      "name": "Nguồn dự phòng và đổi server",
+      "screen": "Phim > Nguồn; Watch",
+      "business": "Cho đổi nguồn cùng nội dung khi có ít nhất hai nguồn hợp lệ.",
+      "parameters": "Thứ tự ưu tiên; active; mapping movieId/episodeId; kiểm tra capability.",
+      "roles": "Quản trị; Biên tập",
+      "phase": "P0-C",
+      "notes": "Nếu không seek được, thông báo có thể phát lại từ đầu; không đổi tự động vô hạn.",
+      "acceptance": "Không có nguồn thứ hai thì không hiện nút server giả.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-010"
+      ],
+      "apiOperations": [
+        "sources.list",
+        "sources.read",
+        "sources.create",
+        "sources.update",
+        "sources.test",
+        "sources.disable",
+        "public.playback"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-025",
+      "module": "05. Nguồn phát và đối tác",
+      "name": "Đồng bộ catalog đối tác",
+      "screen": "Tích hợp > Đồng bộ",
+      "business": "Nhập metadata/nguồn theo API có thỏa thuận, đưa về bản nháp để duyệt.",
+      "parameters": "External ID mapping; cursor; rate limit; checksum; dry-run; retry.",
+      "roles": "Quản trị",
+      "phase": "P1",
+      "notes": "Không tự scrape nguồn không được phép; không ghi đè thủ công nếu chưa chọn.",
+      "acceptance": "Chạy lại không tạo phim trùng và có báo cáo thay đổi.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-026",
+      "module": "06. Duyệt và xuất bản",
+      "name": "Lưu nháp và chống ghi đè",
+      "screen": "Biên tập các module",
+      "business": "Lưu bản nháp riêng, phát hiện hai người cùng sửa; hiển thị unsaved changes.",
+      "parameters": "revision/ETag; optimistic concurrency; thời điểm lưu; conflict có diff.",
+      "roles": "Biên tập; Quảng cáo; Quản trị",
+      "phase": "P0",
+      "notes": "Nháp không xuất hiện trong API công khai hoặc index tìm kiếm.",
+      "acceptance": "Sửa bản cũ nhận conflict thay vì ghi đè nội dung mới.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-005"
+      ],
+      "apiOperations": [
+        "movies.list",
+        "movies.read",
+        "movies.create",
+        "movies.update",
+        "movies.submit",
+        "movies.verify-rights",
+        "movies.withdraw",
+        "movies.restore",
+        "movies.archive",
+        "movies.versions"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-027",
+      "module": "06. Duyệt và xuất bản",
+      "name": "Gửi duyệt, trả sửa, phê duyệt",
+      "screen": "Hàng đợi duyệt",
+      "business": "Tách người soạn và người duyệt; ghi nhận nhận xét và checklist.",
+      "parameters": "draft → in_review → approved; rejected → draft; revision thay đổi làm mất duyệt cũ.",
+      "roles": "Biên tập/Quảng cáo gửi; Quản trị duyệt",
+      "phase": "P0",
+      "notes": "Chủ hệ thống có thể override khẩn cấp nhưng phải ghi lý do và audit.",
+      "acceptance": "Chỉ revision đã duyệt được publish; không dùng duyệt cũ cho nội dung mới.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-012",
+        "UI-013"
+      ],
+      "apiOperations": [
+        "reviews.list",
+        "reviews.read",
+        "reviews.approve",
+        "reviews.reject"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-028",
+      "module": "06. Duyệt và xuất bản",
+      "name": "Preview bảo vệ theo thiết bị",
+      "screen": "Xem trước",
+      "business": "Xem desktop/tablet/mobile với dữ liệu nháp và quảng cáo test.",
+      "parameters": "Token preview ngắn hạn; noindex; private/no-store; không phát sinh số liệu tiền thật.",
+      "roles": "Biên tập; Quảng cáo; Quản trị",
+      "phase": "P0",
+      "notes": "Preview không phải link public vĩnh viễn và không mở secret.",
+      "acceptance": "Người không có quyền không mở bản nháp dù biết URL.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-013",
+        "UI-015"
+      ],
+      "apiOperations": [
+        "reviews.list",
+        "reviews.read",
+        "reviews.approve",
+        "reviews.reject",
+        "previews.create"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-029",
+      "module": "06. Duyệt và xuất bản",
+      "name": "Xuất bản và hẹn giờ",
+      "screen": "Xuất bản",
+      "business": "Đưa snapshot đã duyệt ra public ngay hoặc theo thời điểm; cập nhật cache/search.",
+      "parameters": "UTC lưu trữ; Asia/Bangkok hiển thị; releaseId; job idempotent; kiểm tra lại tại giờ chạy.",
+      "roles": "Quản trị",
+      "phase": "P0",
+      "notes": "Xuất bản nội dung và bật chiến dịch có trạng thái riêng; không publish nửa bộ.",
+      "acceptance": "Lỗi cache/index báo degraded/failed, giữ bản tốt trước đó và cho retry.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-014"
+      ],
+      "apiOperations": [
+        "releases.list",
+        "releases.read",
+        "releases.create",
+        "releases.retry",
+        "releases.rollback",
+        "releases.cancel"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-030",
+      "module": "06. Duyệt và xuất bản",
+      "name": "Lịch sử phiên bản và rollback",
+      "screen": "Phiên bản",
+      "business": "So sánh bản nháp/published, xem tác nhân và quay về snapshot đã hợp lệ.",
+      "parameters": "Version bất biến; before/after; lý do; publish rollback là release mới.",
+      "roles": "Quản trị",
+      "phase": "P0",
+      "notes": "Rollback vẫn phải kiểm tra quyền phát hết hạn và nguồn bị chặn.",
+      "acceptance": "Không phục hồi nội dung bị takedown chỉ vì chọn snapshot cũ.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-014"
+      ],
+      "apiOperations": [
+        "releases.list",
+        "releases.read",
+        "releases.create",
+        "releases.retry",
+        "releases.rollback",
+        "releases.cancel",
+        "movies.versions"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-031",
+      "module": "06. Duyệt và xuất bản",
+      "name": "Gỡ khẩn cấp và công tắc an toàn",
+      "screen": "Sự cố > Hành động khẩn cấp",
+      "business": "Ngừng một phim/nguồn/campaign/loại quảng cáo mà không cần deploy lại frontend.",
+      "parameters": "Scope; lý do; confirm; disabledAt; denylist kiểm tra trước cache; audit.",
+      "roles": "Chủ hệ thống; Quản trị; Quảng cáo tạm dừng campaign",
+      "phase": "P0",
+      "notes": "Mục tiêu truyền cấu hình đề xuất ≤60 giây; phải đo staging; không đảm bảo thu hồi video đã tải trong iframe.",
+      "acceptance": "Lượt mở mới bị chặn; web đang mở làm mới cấu hình và dừng slot thuộc phạm vi kiểm soát.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-014"
+      ],
+      "apiOperations": [
+        "releases.list",
+        "releases.read",
+        "releases.create",
+        "releases.retry",
+        "releases.rollback",
+        "releases.cancel",
+        "system.killSwitch"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-032",
+      "module": "07. Trang chủ, điều hướng và nội dung tĩnh",
+      "name": "Cấu hình sáu section trang chủ",
+      "screen": "Giao diện > Trang chủ",
+      "business": "Chọn tiêu đề, danh sách/rule phim, thứ tự và bật/tắt section qua schema được phép.",
+      "parameters": "sectionId; movieIds hoặc rule; maxItems; ưu tiên thủ công; kiểm tra rỗng.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P0",
+      "notes": "Sáu section là baseline V18; không dựng page builder tự do ở MVP.",
+      "acceptance": "Section rỗng ẩn có chủ đích, không xuất khoảng trống quảng cáo giả.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-017"
+      ],
+      "apiOperations": [
+        "home-sections.list",
+        "home-sections.read",
+        "home-sections.create",
+        "home-sections.update",
+        "home-sections.submit",
+        "home-sections.archive",
+        "public.home"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-033",
+      "module": "07. Trang chủ, điều hướng và nội dung tĩnh",
+      "name": "Hero, tiêu đề và tìm kiếm",
+      "screen": "Giao diện > Hero",
+      "business": "Quản lý text “Tối nay xem gì?”, hướng dẫn, placeholder và ảnh nền chung.",
+      "parameters": "Copy key; locale vi; giới hạn theo component; preview nhiều độ rộng.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P0",
+      "notes": "Modal dùng cùng nền trang chủ; text là dữ liệu thật, không cắt chữ từ ảnh.",
+      "acceptance": "Thay text xuất hiện đồng nhất ở home và nền modal.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-016"
+      ],
+      "apiOperations": [
+        "site-configs.list",
+        "site-configs.read",
+        "site-configs.create",
+        "site-configs.update",
+        "site-configs.submit",
+        "public.siteConfig"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-034",
+      "module": "07. Trang chủ, điều hướng và nội dung tĩnh",
+      "name": "Menu và bộ lọc responsive",
+      "screen": "Giao diện > Điều hướng",
+      "business": "Một cấu hình cho desktop/mobile; chọn thứ tự filter và menu.",
+      "parameters": "Menu tree giới hạn 2 cấp; link nội bộ hợp lệ; chips cuộn ngang trên mobile.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P0",
+      "notes": "Không xóa Viễn tưởng/Phim bộ chỉ do hẹp; phim bộ chịu gate nguồn phát.",
+      "acceptance": "Mọi lựa chọn khả dụng đều đến được bằng bàn phím/chạm.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-016"
+      ],
+      "apiOperations": [
+        "site-configs.list",
+        "site-configs.read",
+        "site-configs.create",
+        "site-configs.update",
+        "site-configs.submit",
+        "public.siteConfig",
+        "public.taxonomies"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-035",
+      "module": "07. Trang chủ, điều hướng và nội dung tĩnh",
+      "name": "Footer dùng chung",
+      "screen": "Giao diện > Footer",
+      "business": "Quản lý một danh sách liên kết Khám phá/Hỗ trợ/Hợp tác, chỉ đổi cách xếp cột.",
+      "parameters": "Footer key/version; link label/url/type; kiểm tra link trống/hỏng.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P0",
+      "notes": "Không thêm Về đầu trang; không thêm login hội viên giai đoạn đầu.",
+      "acceptance": "Home/watch/responsive có cùng nội dung footer theo cấu hình published.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-016"
+      ],
+      "apiOperations": [
+        "site-configs.list",
+        "site-configs.read",
+        "site-configs.create",
+        "site-configs.update",
+        "site-configs.submit",
+        "public.siteConfig"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-036",
+      "module": "07. Trang chủ, điều hướng và nội dung tĩnh",
+      "name": "Trang thông tin, chính sách, liên hệ",
+      "screen": "Trang nội dung",
+      "business": "Soạn giới thiệu, trợ giúp, liên hệ, quyền riêng tư, điều khoản và quy trình báo quyền nội dung.",
+      "parameters": "Slug; title; nội dung đã sanitize; effectiveAt; version; người duyệt.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P0",
+      "notes": "Nội dung chính sách cần chủ sản phẩm rà soát chuyên môn; không dùng mẫu làm chứng nhận.",
+      "acceptance": "Không chạy script từ rich text; có lịch sử chính sách.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-018"
+      ],
+      "apiOperations": [
+        "pages.list",
+        "pages.read",
+        "pages.create",
+        "pages.update",
+        "pages.submit",
+        "pages.archive"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-037",
+      "module": "07. Trang chủ, điều hướng và nội dung tĩnh",
+      "name": "SEO và liên kết",
+      "screen": "Phim/Trang > SEO",
+      "business": "Title/meta/canonical, chia sẻ social, sitemap và redirect khi đổi slug.",
+      "parameters": "Không trùng slug; canonical nội bộ; draft noindex; redirect tránh vòng lặp.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P0",
+      "notes": "Không cam kết thứ hạng; dữ liệu có cấu trúc chỉ phản ánh thông tin thật.",
+      "acceptance": "Nội dung gỡ biến mất khỏi sitemap; URL cũ chuyển đúng hoặc trả trạng thái hợp lý.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-018"
+      ],
+      "apiOperations": [
+        "pages.list",
+        "pages.read",
+        "pages.create",
+        "pages.update",
+        "pages.submit",
+        "pages.archive",
+        "redirects.list"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-038",
+      "module": "07. Trang chủ, điều hướng và nội dung tĩnh",
+      "name": "Quản lý nội dung Góc điện ảnh",
+      "screen": "Bài viết",
+      "business": "Biên tập bài viết, ảnh, danh mục, liên kết phim và lịch đăng.",
+      "parameters": "Title/slug/excerpt/body/author; sanitize; trạng thái dùng workflow chung.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P1",
+      "notes": "Nếu MVP chỉ là banner, quản lý link đích tĩnh ở giao diện là đủ.",
+      "acceptance": "Không có nút dẫn đến bài viết chưa xuất bản.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-039",
+      "module": "08. Tìm kiếm và dữ liệu công khai",
+      "name": "Cấu hình tìm kiếm và lọc",
+      "screen": "Tìm kiếm > Cấu hình",
+      "business": "Tra tên có/không dấu và kết hợp thể loại/loại phim; chỉ dùng phim published, khả dụng.",
+      "parameters": "Query giới hạn; pagination ≤24 theo V18; chuẩn hóa tiếng Việt; sort ổn định.",
+      "roles": "Quản trị; Biên tập xem",
+      "phase": "P0",
+      "notes": "Có thể dùng DB search cho MVP; chưa cần dịch vụ search riêng.",
+      "acceptance": "Không kết quả khác lỗi API; không rò phim nháp qua autocomplete.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [
+        "public.movies",
+        "public.taxonomies"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-040",
+      "module": "08. Tìm kiếm và dữ liệu công khai",
+      "name": "Từ đồng nghĩa và thống kê từ khóa",
+      "screen": "Tìm kiếm > Tối ưu",
+      "business": "Quản lý tên thay thế, từ khóa không có kết quả; cải thiện khám phá nội dung.",
+      "parameters": "Synonym; khoảng ngày; số tổng hợp; không lưu dữ liệu nhạy cảm người dùng nhập.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P1",
+      "notes": "Không tự tạo kết quả phim khác với ý định tìm để tăng click.",
+      "acceptance": "Rule có preview và rollback, không đổi slug gốc.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-041",
+      "module": "08. Tìm kiếm và dữ liệu công khai",
+      "name": "Hỗ trợ Lưu phim cục bộ",
+      "screen": "Cấu hình web; trang Phim đã lưu",
+      "business": "CMS cung cấp metadata/availability cho movieId; trình duyệt lưu lựa chọn của khách.",
+      "parameters": "Theo V18: tối đa 200 ID, savedAt; không token, không đồng bộ đa thiết bị.",
+      "roles": "Quản trị cấu hình; khách trên web",
+      "phase": "P0",
+      "notes": "Không có bảng tài khoản/favorites cá nhân trong CMS ở MVP.",
+      "acceptance": "Phim gỡ vẫn có thông báo không khả dụng; API không trả secret để khôi phục.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [
+        "public.movies",
+        "public.movie"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-042",
+      "module": "09. Đối tác và chiến dịch quảng cáo",
+      "name": "Hồ sơ đối tác quảng cáo",
+      "screen": "Quảng cáo > Đối tác",
+      "business": "Quản lý đầu mối, thỏa thuận, kỳ báo cáo và nguồn dữ liệu đối soát.",
+      "parameters": "partnerId; trạng thái; currency; timezone; mô hình CPM/CPC/flat theo hợp đồng.",
+      "roles": "Quảng cáo; Báo cáo; Quản trị",
+      "phase": "P0",
+      "notes": "Không có portal đăng nhập cho đối tác ở MVP; dữ liệu hợp đồng giới hạn quyền.",
+      "acceptance": "Đối tác ngừng hoạt động không nhận chiến dịch mới.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [
+        "ad-partners.list",
+        "ad-partners.read",
+        "ad-partners.create",
+        "ad-partners.update",
+        "ad-partners.deactivate",
+        "privateFiles.upload"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-043",
+      "module": "09. Đối tác và chiến dịch quảng cáo",
+      "name": "Vòng đời chiến dịch",
+      "screen": "Quảng cáo > Chiến dịch",
+      "business": "Tạo campaign, lịch, mục tiêu vị trí/thiết bị, creative; duyệt rồi active/pause/end.",
+      "parameters": "draft → review → approved/scheduled → active → paused/ended; start<end; priority.",
+      "roles": "Quảng cáo soạn; Quản trị duyệt",
+      "phase": "P0",
+      "notes": "Budget nếu có là kế hoạch nội bộ, không phải tiền đã thu hay đảm bảo phân phối.",
+      "acceptance": "Chiến dịch hết hạn/tạm dừng không trả creative cho request mới.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-019",
+        "UI-020"
+      ],
+      "apiOperations": [
+        "campaigns.list",
+        "campaigns.read",
+        "campaigns.create",
+        "campaigns.update",
+        "campaigns.submit",
+        "campaigns.activate",
+        "campaigns.pause",
+        "campaigns.resume",
+        "campaigns.end",
+        "campaigns.block"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-044",
+      "module": "09. Đối tác và chiến dịch quảng cáo",
+      "name": "Creative và URL đích",
+      "screen": "Quảng cáo > Creative",
+      "business": "Quản lý ảnh, nhãn tài trợ, click URL và phiên bản cho từng kích thước.",
+      "parameters": "HTTPS; domain đích; assetRef; alt; start/end; xét duyệt nội dung; không URL hệ thống giả.",
+      "roles": "Quảng cáo; Quản trị",
+      "phase": "P0",
+      "notes": "Không overlay click lên play/X; không tự mở popunder; đối tác đổi URL phải duyệt lại.",
+      "acceptance": "Click X chỉ đóng; click quảng cáo mới mở đích đã duyệt.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-021"
+      ],
+      "apiOperations": [
+        "creatives.list",
+        "creatives.read",
+        "creatives.create",
+        "creatives.update",
+        "creatives.submit",
+        "creatives.block"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-045",
+      "module": "09. Đối tác và chiến dịch quảng cáo",
+      "name": "Danh mục vị trí quảng cáo",
+      "screen": "Quảng cáo > Vị trí",
+      "business": "Định nghĩa slotId bền vững theo route/device; rail, inline, modal, floating, preroll riêng.",
+      "parameters": "Slot schema: format, width/height constraints, breakpoint, maxCount, fallback, allowed creative.",
+      "roles": "Quản trị; Quảng cáo xem/gán",
+      "phase": "P0",
+      "notes": "Thay đổi cấu trúc slot phải khớp frontend; CMS không tự sinh CSS tùy ý.",
+      "acceptance": "Request slot không tồn tại bị từ chối; nội dung không bị ép hẹp để đủ rail.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-022"
+      ],
+      "apiOperations": [
+        "placements.list",
+        "placements.read",
+        "placements.create",
+        "placements.update",
+        "placements.disable"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-046",
+      "module": "09. Đối tác và chiến dịch quảng cáo",
+      "name": "Gán chiến dịch và phân phối",
+      "screen": "Quảng cáo > Phân phối",
+      "business": "Chọn chiến dịch đủ điều kiện theo lịch/slot/device, ưu tiên và trọng số đã duyệt.",
+      "parameters": "Deterministic tie-break; no-fill fallback; không auto-refresh mặc định; version config.",
+      "roles": "Quảng cáo; Quản trị",
+      "phase": "P0",
+      "notes": "Tách eligibility server và frequency guard client; không vượt cap vì đổi campaign.",
+      "acceptance": "Không có campaign phù hợp trả no_fill, không chặn xem phim.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-019"
+      ],
+      "apiOperations": [
+        "campaigns.list",
+        "campaigns.read",
+        "campaigns.create",
+        "campaigns.update",
+        "campaigns.submit",
+        "campaigns.activate",
+        "campaigns.pause",
+        "campaigns.resume",
+        "campaigns.end",
+        "campaigns.block",
+        "assignments.list",
+        "assignments.read",
+        "assignments.create",
+        "assignments.update",
+        "assignments.disable",
+        "public.adDecision"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-047",
+      "module": "09. Đối tác và chiến dịch quảng cáo",
+      "name": "Modal trang chủ và tần suất",
+      "screen": "Quảng cáo > Quy tắc modal",
+      "business": "Cấu hình modal chỉ ở HOME; chỉ mở sau creative tải được; đóng ngay.",
+      "parameters": "Đề xuất V18: 1 lần/24h + 1 lần/session; thử sau 2s; timeout 3s; storage lỗi thì tắt.",
+      "roles": "Quảng cáo đề xuất; Quản trị duyệt",
+      "phase": "P0-C",
+      "notes": "Chưa duyệt thông số; default production off; không hiện cùng floating.",
+      "acceptance": "Đóng rồi refresh/back không bật lại trong cap; không modal trên WATCH.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-025"
+      ],
+      "apiOperations": [
+        "ad-policies.list",
+        "ad-policies.read",
+        "ad-policies.create",
+        "ad-policies.update",
+        "ad-policies.submit",
+        "ad-policies.disable",
+        "public.adDecision"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-048",
+      "module": "09. Đối tác và chiến dịch quảng cáo",
+      "name": "Quảng cáo nổi theo viewport",
+      "screen": "Quảng cáo > Quy tắc floating",
+      "business": "Quản lý slot nổi theo thiết bị, ẩn khi giao cắt player/footer hoặc có modal/menu/keyboard.",
+      "parameters": "Baseline V18: ≥8s và cuộn ≥25%; đóng nghỉ 24h; kích thước theo slot; max count theo device.",
+      "roles": "Quảng cáo đề xuất; Quản trị duyệt",
+      "phase": "P0-C",
+      "notes": "Tablet/mobile không tự nhồi rail; cần preview theo khung nhìn thật; production off trước duyệt.",
+      "acceptance": "Không che CTA/player/footer; không tạo khoảng trắng dài sau footer.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-025"
+      ],
+      "apiOperations": [
+        "ad-policies.list",
+        "ad-policies.read",
+        "ad-policies.create",
+        "ad-policies.update",
+        "ad-policies.submit",
+        "ad-policies.disable",
+        "public.adDecision"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-049",
+      "module": "09. Đối tác và chiến dịch quảng cáo",
+      "name": "Quảng cáo trước phim qua đối tác",
+      "screen": "Quảng cáo > Preroll",
+      "business": "Gắn cấu hình chiến dịch hoặc adapter chính thức nếu đối tác cho phép.",
+      "parameters": "Capability verified; ad start/end/error; skip offset lấy từ đối tác nếu hỗ trợ.",
+      "roles": "Quản trị; Quảng cáo",
+      "phase": "P0-C",
+      "notes": "Không vẽ skip giả, không chồng hai preroll; mô hình doanh thu này phụ thuộc hợp đồng.",
+      "acceptance": "Không có tích hợp thì hiện chưa hỗ trợ, không báo đã chạy/đã thu tiền.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-025"
+      ],
+      "apiOperations": [
+        "ad-policies.list",
+        "ad-policies.read",
+        "ad-policies.create",
+        "ad-policies.update",
+        "ad-policies.submit",
+        "ad-policies.disable"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-050",
+      "module": "09. Đối tác và chiến dịch quảng cáo",
+      "name": "Kiểm tra và phê duyệt quảng cáo",
+      "screen": "Quảng cáo > Preview & duyệt",
+      "business": "Mô phỏng loaded/no-fill/error, responsive, cap và xung đột giữa các slot trước kích hoạt.",
+      "parameters": "Creative test; rule validation; screenshot evidence; reviewer; version.",
+      "roles": "Quảng cáo; Quản trị",
+      "phase": "P0",
+      "notes": "Không test bằng click vào quảng cáo live để tạo doanh thu.",
+      "acceptance": "Thay creative/rule đã duyệt làm campaign về trạng thái cần duyệt lại.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-021"
+      ],
+      "apiOperations": [
+        "creatives.list",
+        "creatives.read",
+        "creatives.create",
+        "creatives.update",
+        "creatives.submit",
+        "creatives.block"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-051",
+      "module": "09. Đối tác và chiến dịch quảng cáo",
+      "name": "Tắt nhanh và lịch sử chiến dịch",
+      "screen": "Quảng cáo > An toàn",
+      "business": "Tạm dừng campaign lỗi, tắt format hoặc toàn bộ quảng cáo; xem lý do và rollback an toàn.",
+      "parameters": "Kill switch độc lập deploy; người bật lại phải có quyền duyệt; audit.",
+      "roles": "Quảng cáo pause campaign; Quản trị toàn cục",
+      "phase": "P0",
+      "notes": "Bản đã chặn không tự chạy lại do hết TTL cache.",
+      "acceptance": "Tắt ads không làm hỏng nội dung/phát phim; có log phạm vi tác động.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-019"
+      ],
+      "apiOperations": [
+        "campaigns.list",
+        "campaigns.read",
+        "campaigns.create",
+        "campaigns.update",
+        "campaigns.submit",
+        "campaigns.activate",
+        "campaigns.pause",
+        "campaigns.resume",
+        "campaigns.end",
+        "campaigns.block",
+        "system.killSwitch"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-052",
+      "module": "09. Đối tác và chiến dịch quảng cáo",
+      "name": "Mã mạng quảng cáo được kiểm duyệt",
+      "screen": "Tích hợp > Mạng quảng cáo",
+      "business": "Thêm adapter/snippet nhà cung cấp qua quy trình kỹ thuật, không cho dán JavaScript bất kỳ.",
+      "parameters": "Allowlist script/iframe; CSP; version; kiểm tra staging; secret server-side.",
+      "roles": "Quản trị kỹ thuật; Chủ hệ thống duyệt",
+      "phase": "P0-C",
+      "notes": "Creative ảnh/link có thể MVP độc lập; snippet tùy thuộc đối tác và chính sách.",
+      "acceptance": "Script ngoài allowlist bị chặn; có phương án tắt adapter ngay khi sự cố.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-025"
+      ],
+      "apiOperations": [
+        "ad-policies.list",
+        "ad-policies.read",
+        "ad-policies.create",
+        "ad-policies.update",
+        "ad-policies.submit",
+        "ad-policies.disable",
+        "adAdapters.list",
+        "adAdapters.verify",
+        "adAdapters.disable"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-053",
+      "module": "09. Đối tác và chiến dịch quảng cáo",
+      "name": "Thử nghiệm vị trí và tối ưu",
+      "screen": "Quảng cáo > Thử nghiệm",
+      "business": "So sánh doanh thu/phiên cùng tỷ lệ rời trang, lỗi và trải nghiệm, không chỉ số slot.",
+      "parameters": "Experiment ID; allocation; holdout; thời gian; cap an toàn; sample-size review.",
+      "roles": "Quảng cáo; Báo cáo; Quản trị",
+      "phase": "P1",
+      "notes": "Không cam kết thêm 2–3 ads làm tăng tiền; giữ UX guardrail.",
+      "acceptance": "Báo cáo tách nhóm đúng, có điều kiện dừng và khôi phục cấu hình.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-054",
+      "module": "10. Thống kê và đối soát doanh thu",
+      "name": "Hợp đồng sự kiện và thu thập",
+      "screen": "Thống kê > Sự kiện",
+      "business": "Nhận sự kiện web hợp lệ, chống trùng và lạm dụng; quản lý schema version.",
+      "parameters": "eventId/type/time/movieId/slotId/campaignId/device; UTC; dedup; giới hạn payload.",
+      "roles": "Quản trị; Báo cáo xem",
+      "phase": "P0",
+      "notes": "Không nhận giá trị doanh thu do client gửi; không hứa đếm tuyệt đối khi adblock/offline.",
+      "acceptance": "Gửi cùng eventId hai lần chỉ tính một; thời gian bất hợp lý được đánh dấu.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-026"
+      ],
+      "apiOperations": [
+        "analytics.read",
+        "public.adEvent"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-055",
+      "module": "10. Thống kê và đối soát doanh thu",
+      "name": "Hiệu quả nội dung",
+      "screen": "Thống kê > Nội dung",
+      "business": "Xem pageview, click xem, tìm kiếm và báo lỗi theo phim, nguồn, thiết bị.",
+      "parameters": "Ngày; movieId; device; source; freshness; tỷ lệ với mẫu số rõ.",
+      "roles": "Biên tập; Quản trị; Báo cáo",
+      "phase": "P0",
+      "notes": "Click xem không phải lượt phát; video_start/watch_time chỉ có khi callback xác minh.",
+      "acceptance": "Không có player events thì N/A cho thời lượng xem, không suy từ iframe loaded.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-026"
+      ],
+      "apiOperations": [
+        "analytics.read"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-056",
+      "module": "10. Thống kê và đối soát doanh thu",
+      "name": "Hiệu quả quảng cáo",
+      "screen": "Thống kê > Quảng cáo",
+      "business": "Tách request, fill/loaded, visible nội bộ, click, close và error theo slot/campaign.",
+      "parameters": "Định nghĩa metric version; dedup; timezone; route/device; lọc test/bot khi nhận diện được.",
+      "roles": "Quảng cáo; Báo cáo; Quản trị",
+      "phase": "P0",
+      "notes": "Visible nội bộ theo V18 không mặc nhiên là billable impression; không có dữ liệu ghi N/A.",
+      "acceptance": "Tổng hợp drill-down được về nguồn và khoảng thời gian, không trộn metric khác nghĩa.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-026"
+      ],
+      "apiOperations": [
+        "analytics.read"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-057",
+      "module": "10. Thống kê và đối soát doanh thu",
+      "name": "Nhập báo cáo đối tác",
+      "screen": "Doanh thu > Nhập đối soát",
+      "business": "Nhập file được duyệt, map cột, preview lỗi và giữ bản gốc phục vụ truy vết.",
+      "parameters": "partner/period/currency/timezone/sourceFile/checksum/importId; idempotent.",
+      "roles": "Báo cáo; Quản trị",
+      "phase": "P0",
+      "notes": "Ưu tiên CSV theo mẫu; API tự động là P1; không coi số liệu nhập là tiền thực nhận.",
+      "acceptance": "Nhập lại cùng file không cộng đôi; lỗi dòng không biến thành 0.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-028"
+      ],
+      "apiOperations": [
+        "revenue-imports.list",
+        "revenue-imports.read",
+        "revenue-imports.create",
+        "revenue-imports.validate",
+        "revenue-imports.commit",
+        "revenue-imports.supersede",
+        "revenueFiles.upload",
+        "assets.privateAccess",
+        "revenueImports.errors"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-058",
+      "module": "10. Thống kê và đối soát doanh thu",
+      "name": "Đối soát và khóa kỳ",
+      "screen": "Doanh thu > Kỳ đối soát",
+      "business": "So sánh số liệu nội bộ/đối tác, giải trình chênh lệch và chốt số được xác nhận.",
+      "parameters": "draft → reviewed → confirmed → locked; gross/adjustment/net theo hợp đồng; currency rõ.",
+      "roles": "Báo cáo soạn; Chủ hệ thống/Quản trị duyệt",
+      "phase": "P0",
+      "notes": "Không cộng khác tiền tệ khi chưa có tỷ giá/nguồn; sửa kỳ khóa qua adjustment có audit.",
+      "acceptance": "Báo cáo tách ước tính, đối tác xác nhận và thực nhận; tổng truy vết được.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-027",
+        "UI-029"
+      ],
+      "apiOperations": [
+        "statements.list",
+        "statements.read",
+        "statements.create",
+        "statements.update",
+        "statements.submit",
+        "statements.confirm",
+        "statements.lock"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-059",
+      "module": "10. Thống kê và đối soát doanh thu",
+      "name": "Theo dõi khoản đã nhận",
+      "screen": "Doanh thu > Thanh toán",
+      "business": "Ghi khoản đối tác trả và phân bổ vào kỳ đã xác nhận, hỗ trợ nhận từng phần.",
+      "parameters": "paymentId/date/amount/currency/reference; không lưu thông tin ngân hàng nhạy cảm không cần thiết.",
+      "roles": "Báo cáo; Chủ hệ thống",
+      "phase": "P0",
+      "notes": "Đây là sổ theo dõi vận hành, không thay hệ thống kế toán/thuế.",
+      "acceptance": "Paid không vượt số phân bổ không giải trình; còn phải thu tính từ kỳ xác nhận.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-030"
+      ],
+      "apiOperations": [
+        "payments.list",
+        "payments.read",
+        "payments.create",
+        "payments.update",
+        "payments.confirm",
+        "payments.reverse"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-060",
+      "module": "10. Thống kê và đối soát doanh thu",
+      "name": "Xuất báo cáo gửi đối tác",
+      "screen": "Báo cáo > Xuất",
+      "business": "Xuất CSV/XLSX theo đối tác/kỳ/slot, định nghĩa số liệu và watermark trạng thái.",
+      "parameters": "Scope permission; generatedAt; timezone; dataThrough; version; audit export.",
+      "roles": "Báo cáo; Quản trị",
+      "phase": "P0",
+      "notes": "Admin gửi bên ngoài; không tự email khi chưa có danh sách duyệt; không IP/PII thô.",
+      "acceptance": "Đối tác A không có dữ liệu B; công thức CSV injection được vô hiệu hóa.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [
+        "reports.export"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-061",
+      "module": "10. Thống kê và đối soát doanh thu",
+      "name": "API đối soát tự động và cảnh báo",
+      "screen": "Doanh thu > Kết nối",
+      "business": "Nhận số liệu đối tác định kỳ, cảnh báo lệch số và dữ liệu trễ.",
+      "parameters": "Signed webhook/API; cursor; retry/backoff; reconciliation version; duplicate guard.",
+      "roles": "Quản trị; Báo cáo",
+      "phase": "P1",
+      "notes": "Chỉ thực hiện nếu đối tác cung cấp API và quyền truy cập.",
+      "acceptance": "Webhook lặp không tăng tiền; lỗi sync không thay dữ liệu bằng 0.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-062",
+      "module": "11. Hỗ trợ và sự cố nội dung",
+      "name": "Tiếp nhận báo lỗi từ web",
+      "screen": "Hỗ trợ > Báo lỗi",
+      "business": "Khách gửi lỗi không cần tài khoản; CMS tiếp nhận movie/source/device/context tối thiểu.",
+      "parameters": "Loại lỗi; mô tả 0–500, Khác bắt buộc mô tả; reportId; rate limit đề xuất 5/10 phút.",
+      "roles": "Hỗ trợ; Quản trị",
+      "phase": "P0",
+      "notes": "Không bắt email; không gửi raw embed token/IP trong file báo cáo.",
+      "acceptance": "Double-click không tạo trùng; lỗi mạng không mất nội dung đã nhập.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-031"
+      ],
+      "apiOperations": [
+        "reports.list",
+        "reports.read",
+        "reports.update",
+        "reports.triage",
+        "reports.start",
+        "reports.resolve",
+        "reports.close",
+        "reports.reopen",
+        "public.report"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-063",
+      "module": "11. Hỗ trợ và sự cố nội dung",
+      "name": "Phân loại và xử lý ticket",
+      "screen": "Hỗ trợ > Ticket",
+      "business": "Gộp trùng, giao người xử lý, ghi chú nội bộ, liên kết phiên bản sửa.",
+      "parameters": "new → triaged → in_progress → resolved → closed; reopen; severity; assignee.",
+      "roles": "Hỗ trợ; Quản trị; Biên tập theo nhiệm vụ",
+      "phase": "P0",
+      "notes": "Không có tài khoản/email khách thì không hứa phản hồi cá nhân hoặc lịch sử ticket của khách.",
+      "acceptance": "Resolved cần lý do/bằng chứng test; có thể reopen khi lỗi tái diễn.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-031",
+        "UI-032"
+      ],
+      "apiOperations": [
+        "reports.list",
+        "reports.read",
+        "reports.update",
+        "reports.triage",
+        "reports.start",
+        "reports.resolve",
+        "reports.close",
+        "reports.reopen"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-064",
+      "module": "11. Hỗ trợ và sự cố nội dung",
+      "name": "Yêu cầu gỡ và nội dung vi phạm",
+      "screen": "Hỗ trợ > Yêu cầu gỡ",
+      "business": "Tiếp nhận thông tin quyền nội dung, chuyển người có thẩm quyền và áp dụng takedown.",
+      "parameters": "Evidence private; thời gian; scope; reason; trạng thái; audit.",
+      "roles": "Hỗ trợ tiếp nhận; Chủ hệ thống/Quản trị xử lý",
+      "phase": "P0",
+      "notes": "Không công khai thông tin người báo; thời hạn xử lý phải chốt theo chính sách và tư vấn phù hợp.",
+      "acceptance": "Nội dung bị chặn không tự khôi phục bởi import hoặc rollback.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-032"
+      ],
+      "apiOperations": [
+        "reports.list",
+        "reports.read",
+        "reports.update",
+        "reports.triage",
+        "reports.start",
+        "reports.resolve",
+        "reports.close",
+        "reports.reopen",
+        "takedowns.create",
+        "takedownRequests.create"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-065",
+      "module": "12. Hệ thống và vận hành kỹ thuật",
+      "name": "Cấu hình site có phiên bản",
+      "screen": "Hệ thống > Cấu hình",
+      "business": "Quản lý branding/copy/contact/feature flag, tách cấu hình public và private.",
+      "parameters": "Schema validation; version; env; preview/diff; rollback; không secret trong public JSON.",
+      "roles": "Quản trị; Chủ hệ thống",
+      "phase": "P0",
+      "notes": "Cấu hình đã chốt không cho vai trò quảng cáo vượt ngưỡng an toàn.",
+      "acceptance": "Frontend dùng bản config hợp lệ gần nhất và từ chối field sai schema.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-016"
+      ],
+      "apiOperations": [
+        "site-configs.list",
+        "site-configs.read",
+        "site-configs.create",
+        "site-configs.update",
+        "site-configs.submit",
+        "system.killSwitch"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-066",
+      "module": "12. Hệ thống và vận hành kỹ thuật",
+      "name": "Môi trường staging/production",
+      "screen": "Hệ thống > Môi trường",
+      "business": "Tách dữ liệu, credentials, domain và quảng cáo thử; promotion có người phê duyệt.",
+      "parameters": "Env badges rõ; không dùng dữ liệu nhạy cảm live để demo; noindex staging + auth.",
+      "roles": "Quản trị kỹ thuật",
+      "phase": "P0",
+      "notes": "Noindex không thay xác thực; không sao chép secret từ staging ra client.",
+      "acceptance": "Test không ghi vào thống kê doanh thu production.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-040"
+      ],
+      "apiOperations": [
+        "system.settingsRead",
+        "system.settingsUpdate"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-067",
+      "module": "12. Hệ thống và vận hành kỹ thuật",
+      "name": "Hàng đợi tác vụ và retry",
+      "screen": "Vận hành > Tác vụ",
+      "business": "Theo dõi publish, ảnh, cache, import và tổng hợp báo cáo; retry có giới hạn.",
+      "parameters": "JobId; status; attempts; backoff; idempotency; dead-letter; correlationId.",
+      "roles": "Quản trị kỹ thuật",
+      "phase": "P0",
+      "notes": "Job thất bại phải có cảnh báo; không thông báo thành công khi chỉ mới vào queue.",
+      "acceptance": "Retry cùng publish/import không tạo bản trùng hoặc cộng đôi số liệu.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-039"
+      ],
+      "apiOperations": [
+        "jobs.list",
+        "jobs.read",
+        "jobs.retry"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-068",
+      "module": "12. Hệ thống và vận hành kỹ thuật",
+      "name": "Giám sát lỗi và cảnh báo",
+      "screen": "Vận hành > Sức khỏe",
+      "business": "Quan sát API, cache, nguồn, lỗi quảng cáo, job và độ trễ dữ liệu; liên kết runbook.",
+      "parameters": "Health/degraded/down; ngưỡng cấu hình; mute có hạn; severity; người trực.",
+      "roles": "Quản trị; Hỗ trợ xem theo quyền",
+      "phase": "P0",
+      "notes": "Status kiểm tra URL không chứng minh chất lượng video; log đã che dữ liệu nhạy cảm.",
+      "acceptance": "Lỗi trọng yếu tạo cảnh báo có tác nhân chịu trách nhiệm và không spam lặp vô hạn.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-039"
+      ],
+      "apiOperations": [
+        "jobs.list",
+        "jobs.read",
+        "jobs.retry"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-069",
+      "module": "12. Hệ thống và vận hành kỹ thuật",
+      "name": "Sao lưu và phục hồi",
+      "screen": "Vận hành > Sao lưu",
+      "business": "Backup DB/assets/config; kiểm tra integrity; diễn tập phục hồi vào môi trường riêng.",
+      "parameters": "Đề xuất hằng ngày, giữ 30 ngày; RPO≤24h/RTO≤8h cần duyệt theo ngân sách; mã hóa.",
+      "roles": "Quản trị kỹ thuật; Chủ hệ thống duyệt restore",
+      "phase": "P0",
+      "notes": "Mục tiêu chưa được đo; log backup thành công không thay test restore.",
+      "acceptance": "Khôi phục thử đọc được phim/config/quyền; không phát chiến dịch live từ bản thử.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-041"
+      ],
+      "apiOperations": [
+        "jobs.list",
+        "jobs.read",
+        "jobs.retry",
+        "backups.list",
+        "backups.create",
+        "restores.create"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-070",
+      "module": "12. Hệ thống và vận hành kỹ thuật",
+      "name": "Retention và bảo vệ dữ liệu",
+      "screen": "Hệ thống > Dữ liệu",
+      "business": "Quản lý thời hạn lưu event/log/report, xuất và xóa theo phạm vi được duyệt.",
+      "parameters": "Đề xuất event thô 30 ngày, tổng hợp 13 tháng, audit 180 ngày; retention job có log.",
+      "roles": "Chủ hệ thống; Quản trị",
+      "phase": "P0",
+      "notes": "Mốc lưu là đề xuất sản phẩm, không kết luận tuân thủ pháp luật; cần xác định thị trường.",
+      "acceptance": "Dữ liệu quá hạn được xử lý cả backup theo vòng đời; legal hold nếu được yêu cầu.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-040"
+      ],
+      "apiOperations": [
+        "system.settingsRead",
+        "system.settingsUpdate"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-071",
+      "module": "12. Hệ thống và vận hành kỹ thuật",
+      "name": "Bảo vệ API và nội dung nhập",
+      "screen": "Hệ thống; mọi API",
+      "business": "TLS, chống CSRF/XSS, kiểm quyền, rate limit, validate đầu vào và kiểm tra dependencies.",
+      "parameters": "Cookie HttpOnly/Secure/SameSite phù hợp; CSP theo đối tác; upload allowlist; không arbitrary fetch.",
+      "roles": "Quản trị kỹ thuật",
+      "phase": "P0",
+      "notes": "Cần kiểm thử an ninh thực tế; có checklist không đồng nghĩa an toàn đã xác nhận.",
+      "acceptance": "Test truy cập chéo quyền, script upload, SSRF, request giả đều không đổi dữ liệu trái phép.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-040"
+      ],
+      "apiOperations": [
+        "system.settingsRead",
+        "auth.csrf"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-072",
+      "module": "12. Hệ thống và vận hành kỹ thuật",
+      "name": "Quản lý secret và kết nối",
+      "screen": "Hệ thống > Tích hợp",
+      "business": "Lưu tham chiếu secret ở server, xoay khóa, kiểm thử kết nối và theo dõi người thay đổi.",
+      "parameters": "Mask UI; không đọc lại secret plaintext; scope tối thiểu; revoke/rotate; audit.",
+      "roles": "Chủ hệ thống; Quản trị kỹ thuật được ủy quyền",
+      "phase": "P0",
+      "notes": "Không đưa token vào URL public, report, screenshot hoặc log.",
+      "acceptance": "Xoay khóa không lộ bản cũ; public snapshot kiểm tra không có secret.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [
+        "UI-040"
+      ],
+      "apiOperations": [
+        "providers.rotateSecret"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-073",
+      "module": "13. Nhập liệu và mở rộng",
+      "name": "Import phim bằng mẫu",
+      "screen": "Dữ liệu > Import",
+      "business": "Nhập theo template; dry-run; map taxonomy; báo lỗi từng dòng; lưu vào nháp.",
+      "parameters": "Template version; externalId; file limit; batch; duplicate strategy create/update/skip.",
+      "roles": "Biên tập; Quản trị",
+      "phase": "P1",
+      "notes": "Nhập thủ công được dùng ở P0; không auto publish hoặc ghi đè ảnh không hỏi.",
+      "acceptance": "Có báo cáo số tạo/sửa/bỏ qua/lỗi; chạy lại an toàn.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-074",
+      "module": "13. Nhập liệu và mở rộng",
+      "name": "Xuất và di chuyển dữ liệu",
+      "screen": "Dữ liệu > Export",
+      "business": "Xuất catalog/config theo schema để chuyển môi trường hoặc nhà cung cấp.",
+      "parameters": "Version; scope; checksum; asset mapping; không secret mặc định.",
+      "roles": "Quản trị; Chủ hệ thống",
+      "phase": "P1",
+      "notes": "Không lẫn export backup toàn hệ thống với báo cáo đối tác.",
+      "acceptance": "Import vào staging kiểm tra quan hệ ID, không mất liên kết poster/nguồn.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-075",
+      "module": "13. Nhập liệu và mở rộng",
+      "name": "Portal đối tác quảng cáo",
+      "screen": "Mở rộng > Đối tác",
+      "business": "Đối tác có tài khoản riêng xem báo cáo đúng phạm vi của mình.",
+      "parameters": "Tenant scope; invitation; audit; row-level authorization.",
+      "roles": "Đối tác tương lai",
+      "phase": "P2",
+      "notes": "Ngoài MVP theo xác nhận của chủ sản phẩm.",
+      "acceptance": "Chỉ thực hiện sau duyệt mới; không cấp quyền admin cho đối tác.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-076",
+      "module": "13. Nhập liệu và mở rộng",
+      "name": "Hội viên và đồng bộ phim đã lưu",
+      "screen": "Mở rộng > Hội viên",
+      "business": "Đăng ký/đăng nhập khách và đồng bộ danh sách giữa thiết bị.",
+      "parameters": "Consent; merge local data có xác nhận; privacy/deletion; identity model.",
+      "roles": "Khách/hội viên tương lai",
+      "phase": "P2",
+      "notes": "Ngoài MVP; không xuất hiện nút đăng nhập khách ở bản đầu.",
+      "acceptance": "Không tự chuyển local favorites thành hồ sơ theo dõi người dùng.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-077",
+      "module": "13. Nhập liệu và mở rộng",
+      "name": "Gói trả phí và thanh toán",
+      "screen": "Mở rộng > Thương mại",
+      "business": "Quản lý subscription, thanh toán và entitlement nếu mô hình kinh doanh thay đổi.",
+      "parameters": "Billing provider; webhook idempotent; refund; tax/legal review; quyền nội dung.",
+      "roles": "Vai trò thương mại tương lai",
+      "phase": "P2",
+      "notes": "Ngoài MVP; quảng cáo là doanh thu duy nhất hiện tại.",
+      "acceptance": "Không triển khai hoặc quảng bá Premium có thu phí khi chưa được duyệt.",
+      "approval": "Kế thừa V1; chưa phê duyệt riêng từng dòng",
+      "owner": "",
+      "screenIds": [],
+      "apiOperations": [],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-078",
+      "module": "08. Quảng cáo và lịch đặt chỗ",
+      "name": "Đặt chỗ quảng cáo độc quyền",
+      "screen": "Lịch / form đặt chỗ",
+      "business": "Giữ vị trí theo thời gian và thiết bị. Tạm dừng campaign không giải phóng đặt chỗ.",
+      "parameters": "[start,end); campaign exclusive; slot cụ thể; confirm/cancel có lý do.",
+      "roles": "Chủ; Quản trị; Quảng cáo soạn",
+      "phase": "P0",
+      "notes": "Không tự lấy shared thay quảng cáo độc quyền lỗi.",
+      "acceptance": "Xác nhận hợp lệ; hủy giải phóng lịch và lưu audit.",
+      "approval": "Hướng xử lý được duyệt; thông số chi tiết cần chốt",
+      "owner": "",
+      "screenIds": [
+        "UI-023",
+        "UI-024"
+      ],
+      "apiOperations": [
+        "reservations.list",
+        "reservations.read",
+        "reservations.create",
+        "reservations.update",
+        "reservations.confirm",
+        "reservations.cancel"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    },
+    {
+      "id": "CMS-079",
+      "module": "08. Quảng cáo và lịch đặt chỗ",
+      "name": "Kiểm tra trùng lịch và đồng thời",
+      "screen": "Lịch / kiểm tra xung đột",
+      "business": "Ngăn hai chiến dịch độc quyền chiếm một slot cùng thời gian.",
+      "parameters": "Atomic lock/constraint theo slot và khoảng thời gian.",
+      "roles": "Chủ; Quản trị; Quảng cáo soạn",
+      "phase": "P0",
+      "notes": "Preview check không thay transaction khi commit.",
+      "acceptance": "Hai request đồng thời chỉ một xác nhận; request kia 409.",
+      "approval": "Hướng xử lý được duyệt; thông số chi tiết cần chốt",
+      "owner": "",
+      "screenIds": [
+        "UI-023",
+        "UI-024"
+      ],
+      "apiOperations": [
+        "reservations.list",
+        "reservations.read",
+        "reservations.create",
+        "reservations.update",
+        "reservations.confirm",
+        "reservations.cancel",
+        "reservations.check"
+      ],
+      "implementation": "Chưa triển khai backend; xem coverage màn và UAT"
+    }
+  ],
+  "roles": [
+    "Chủ hệ thống",
+    "Quản trị",
+    "Biên tập",
+    "Quảng cáo",
+    "Báo cáo",
+    "Hỗ trợ"
+  ],
+  "permissions": [
+    [
+      "Nhân sự và vai trò",
+      "D",
+      "S (không cấp Chủ)",
+      "—",
+      "—",
+      "—",
+      "—",
+      "Không tự nâng quyền; bảo vệ chủ cuối cùng."
+    ],
+    [
+      "Secret/allowlist/tích hợp",
+      "D",
+      "S (ủy quyền)",
+      "—",
+      "—",
+      "—",
+      "—",
+      "Không đọc lại secret plaintext."
+    ],
+    [
+      "Metadata phim/danh mục",
+      "D",
+      "D",
+      "S",
+      "—",
+      "X",
+      "X",
+      "Biên tập chỉ tạo nháp và gửi duyệt."
+    ],
+    [
+      "Nguồn phát trong allowlist",
+      "D",
+      "D",
+      "S",
+      "—",
+      "—",
+      "X",
+      "Biên tập không thêm domain mới."
+    ],
+    [
+      "Tài liệu quyền phát",
+      "D",
+      "D",
+      "S",
+      "—",
+      "—",
+      "X (hạn chế)",
+      "Tài liệu nhạy cảm có quyền riêng."
+    ],
+    [
+      "Trang chủ/footer/trang tĩnh",
+      "D",
+      "D",
+      "S",
+      "—",
+      "—",
+      "—",
+      "Dùng workflow duyệt chung."
+    ],
+    [
+      "Upload tài nguyên",
+      "D",
+      "D",
+      "S (nội dung)",
+      "S (creative)",
+      "—",
+      "—",
+      "Không file thực thi; giới hạn theo module."
+    ],
+    [
+      "Duyệt/xuất bản nội dung",
+      "D",
+      "D",
+      "—",
+      "—",
+      "—",
+      "—",
+      "Người soạn không tự duyệt trừ override có log của Chủ."
+    ],
+    [
+      "Gỡ khẩn phim/nguồn",
+      "D",
+      "D",
+      "—",
+      "—",
+      "—",
+      "—",
+      "Hỗ trợ tạo ticket khẩn."
+    ],
+    [
+      "Campaign/creative",
+      "D",
+      "D",
+      "—",
+      "S",
+      "X",
+      "—",
+      "Sửa sau duyệt cần duyệt lại."
+    ],
+    [
+      "Duyệt/kích hoạt quảng cáo",
+      "D",
+      "D",
+      "—",
+      "—",
+      "—",
+      "—",
+      "Tách khỏi quyền soạn campaign."
+    ],
+    [
+      "Tạm dừng campaign",
+      "D",
+      "D",
+      "—",
+      "T",
+      "—",
+      "—",
+      "Quảng cáo không tự bật lại bản bị chặn."
+    ],
+    [
+      "Slot schema/cap toàn cục",
+      "D",
+      "D",
+      "—",
+      "X/đề xuất",
+      "—",
+      "—",
+      "Thay layout cần phối hợp DEV."
+    ],
+    [
+      "Kill switch toàn cục",
+      "D",
+      "D",
+      "—",
+      "—",
+      "—",
+      "—",
+      "Bật lại cần duyệt và test."
+    ],
+    [
+      "Thống kê nội dung",
+      "X",
+      "X",
+      "X",
+      "—",
+      "X",
+      "X (lỗi)",
+      "Không dữ liệu vượt phạm vi."
+    ],
+    [
+      "Thống kê quảng cáo",
+      "X",
+      "X",
+      "—",
+      "X",
+      "X",
+      "—",
+      "Tách số liệu nội bộ/đối tác."
+    ],
+    [
+      "Nhập đối soát",
+      "D",
+      "D",
+      "—",
+      "X",
+      "S",
+      "—",
+      "Không cộng trùng file."
+    ],
+    [
+      "Chốt/khóa kỳ",
+      "D",
+      "D",
+      "—",
+      "—",
+      "S (gửi duyệt)",
+      "—",
+      "Người nhập không tự chốt trừ Chủ override."
+    ],
+    [
+      "Ghi khoản thực nhận",
+      "D",
+      "—",
+      "—",
+      "—",
+      "S",
+      "—",
+      "Chủ xác nhận; không chuyển tiền qua CMS."
+    ],
+    [
+      "Xuất báo cáo đối tác",
+      "D",
+      "D",
+      "—",
+      "—",
+      "S",
+      "—",
+      "Ghi audit; tách dữ liệu từng đối tác."
+    ],
+    [
+      "Ticket hỗ trợ",
+      "D",
+      "D",
+      "S (được giao)",
+      "—",
+      "—",
+      "S",
+      "Không quyền gỡ trực tiếp cho hỗ trợ."
+    ],
+    [
+      "Audit log",
+      "X",
+      "X",
+      "—",
+      "—",
+      "—",
+      "—",
+      "Không sửa/xóa từ CMS."
+    ],
+    [
+      "Jobs/backup/restore",
+      "D",
+      "S (kỹ thuật)",
+      "—",
+      "—",
+      "—",
+      "X (sức khỏe)",
+      "Restore production cần Chủ phê duyệt."
+    ],
+    [
+      "Retention/xuất dữ liệu lớn",
+      "D",
+      "S (được duyệt)",
+      "—",
+      "—",
+      "—",
+      "—",
+      "Có phạm vi và lý do."
+    ]
+  ],
+  "decisions": [
+    [
+      "D01",
+      "Phạm vi khách hàng",
+      "Đã xác nhận",
+      "Không login khách; không bán gói; không portal quảng cáo",
+      "Chủ sản phẩm",
+      "Không dựng module hội viên/thanh toán trong P0",
+      "Chỉ thay đổi khi có yêu cầu mới"
+    ],
+    [
+      "D02",
+      "Đối tác player",
+      "Cần xác nhận",
+      "Tên đối tác, embed test, tài liệu và quyền sử dụng",
+      "Chủ sản phẩm + đối tác",
+      "Chặn tích hợp player thật và preroll",
+      "Không giả khả năng SDK"
+    ],
+    [
+      "D03",
+      "Phim bộ/chuyển tập",
+      "Cần quyết định",
+      "Ưu tiên điều hướng native; nếu không có cần duyệt phim-lẻ-only hoặc luồng khác",
+      "Chủ sản phẩm",
+      "Chặn publish phim bộ khi không có luồng chuyển tập",
+      "Không tự thêm bộ chọn tập"
+    ],
+    [
+      "D04",
+      "Modal trang chủ",
+      "Đề xuất, chưa duyệt",
+      "1 lần/24h + 1 lần/session; thử sau 2s; timeout 3s; X đóng ngay",
+      "Chủ sản phẩm",
+      "Flag off production trước duyệt",
+      "Kế thừa đề xuất V18; không modal trên WATCH"
+    ],
+    [
+      "D05",
+      "Floating",
+      "Đề xuất, chưa duyệt",
+      "≥8s + cuộn ≥25%; đóng nghỉ 24h; ẩn khi modal/player/footer/menu/keyboard",
+      "Chủ sản phẩm",
+      "Flag off production trước duyệt",
+      "Theo slot V18; không coi là cam kết tăng tiền"
+    ],
+    [
+      "D06",
+      "Preroll/skip/events",
+      "Cần đối tác xác minh",
+      "Capability chỉ bật sau test; skip offset theo SDK; không chạy 2 preroll chồng nhau",
+      "Đối tác + DEV",
+      "Chặn doanh thu preroll, không chặn banner ảnh/link",
+      "Không có bằng chứng thì N/A/off"
+    ],
+    [
+      "D07",
+      "Số slot và kích thước",
+      "Cần duyệt inventory",
+      "Dùng slot ID và thông số V18; rails chỉ desktop đủ rộng; CMS không tùy ý tăng slot",
+      "Chủ sản phẩm + DEV",
+      "Cần chốt trước nghiệm thu responsive/ads",
+      "Không đồng nhất inventory với ads hiện đồng thời"
+    ],
+    [
+      "D08",
+      "Phân vai và duyệt",
+      "Đề xuất",
+      "6 nhóm quyền; maker-checker; Chủ override có lý do",
+      "Chủ sản phẩm",
+      "Cần danh sách nhân sự trước cấp quyền",
+      "Một người có thể nhiều vai trò; API vẫn kiểm tra"
+    ],
+    [
+      "D09",
+      "Phiên đăng nhập CMS",
+      "Đề xuất",
+      "Idle 30 phút; tối đa 12 giờ; MFA quyền nhạy cảm",
+      "Chủ sản phẩm + DEV",
+      "Cấu hình trước UAT",
+      "Cân bằng an ninh/vận hành; không tài khoản dùng chung"
+    ],
+    [
+      "D10",
+      "Giới hạn nội dung/ảnh",
+      "Đề xuất",
+      "Tên 200; mô tả 5.000; JPG/PNG/WebP 5 MB; trang CMS 25–100 dòng",
+      "Biên tập + DEV",
+      "Cần xác nhận qua dữ liệu thật",
+      "Giới hạn mới không âm thầm cắt dữ liệu"
+    ],
+    [
+      "D11",
+      "Lưu phim trên thiết bị",
+      "Đề xuất V18",
+      "Tối đa 200 movieId; không sync, không CMS profile",
+      "Chủ sản phẩm",
+      "Chốt text và limit trước UAT",
+      "Storage bị xóa/chặn có thể mất danh sách"
+    ],
+    [
+      "D12",
+      "Tiền tệ/kỳ đối soát",
+      "Cần xác nhận",
+      "Mô hình thanh toán, kỳ, currency, timezone, gross/net, ngày nhận",
+      "Chủ sản phẩm + đối tác",
+      "Chặn report tiền chính thức",
+      "Không cộng tiền khác currency không có tỷ giá"
+    ],
+    [
+      "D13",
+      "Múi giờ",
+      "Đề xuất",
+      "DB lưu UTC; UI/báo cáo Asia/Bangkok UTC+7; file đối tác giữ timezone nguồn",
+      "Chủ sản phẩm + DEV",
+      "Chốt để tránh lệch ngày đối soát",
+      "15/11/2026 là ngày lập đề xuất, không ngày triển khai"
+    ],
+    [
+      "D14",
+      "Mục tiêu xuất bản/tắt nhanh",
+      "Đề xuất",
+      "Publish thường ≤60s và kill-switch ≤60s cho config thuộc website",
+      "DEV + chủ sản phẩm",
+      "Đo trong staging; không SLA đã cam kết",
+      "Không thu hồi được byte video đối tác đã tải"
+    ],
+    [
+      "D15",
+      "Sao lưu và phục hồi",
+      "Đề xuất",
+      "Hằng ngày; giữ 30 ngày; RPO≤24h; RTO≤8h; diễn tập trước launch",
+      "DEV + chủ sản phẩm",
+      "Cần ngân sách/hạ tầng và test phục hồi",
+      "Giảm RPO cần giải pháp log/continuous backup"
+    ],
+    [
+      "D16",
+      "Retention",
+      "Đề xuất cần rà soát",
+      "Event thô 30 ngày; tổng hợp 13 tháng; audit 180 ngày",
+      "Chủ sản phẩm + phụ trách pháp lý",
+      "Chốt theo thị trường, hợp đồng và dữ liệu thu thập",
+      "Không dùng như kết luận tuân thủ"
+    ],
+    [
+      "D17",
+      "Quyền nội dung & thị trường",
+      "Cần xác nhận",
+      "Nguồn phim/poster, lãnh thổ, hạn sử dụng, chính sách quảng cáo phù hợp",
+      "Chủ sản phẩm",
+      "Gate production nội dung/đối tác",
+      "CMS lưu chứng cứ, không chứng nhận tính hợp pháp"
+    ],
+    [
+      "D18",
+      "Stack và tải hệ thống",
+      "Cần khảo sát",
+      "DAU/concurrent/peak traffic, số phim, events/ngày, ngân sách, đội DEV",
+      "Chủ sản phẩm + DEV",
+      "Chưa chốt stack/cost/timeline hay dung lượng server",
+      "Kiến trúc modular monolith là đề xuất khởi đầu"
+    ],
+    [
+      "D19",
+      "Báo lỗi và SLA hỗ trợ",
+      "Đề xuất",
+      "5 báo cáo/10 phút; mô tả ≤500; severity; người trực và hạn xử lý cần chốt",
+      "Vận hành + DEV",
+      "Rate limit test; không bắt email khách",
+      "Không hứa phản hồi cá nhân khi không có contact"
+    ],
+    [
+      "D20",
+      "Quy tắc đo nội bộ",
+      "Đề xuất V18",
+      "Visible ≥50% vùng creative trong 1s liên tục; document visible; không bị overlay che",
+      "Quảng cáo + DEV",
+      "Cần test đo lường và đối soát metric",
+      "Không phải mặc nhiên chuẩn tính tiền của đối tác"
+    ]
+  ]
+}

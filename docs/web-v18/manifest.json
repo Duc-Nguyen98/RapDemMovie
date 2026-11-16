@@ -1,0 +1,88 @@
+{
+  "release": "V18-draft.1",
+  "date": "2026-11-14",
+  "imageTool": "built-in ImageGen",
+  "websiteUpdated": false,
+  "productionReady": false,
+  "movieCount": 20,
+  "images": [
+    {
+      "file": "images/rap-dem_ads_desktop_viewports_v18.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2000105,
+      "sha256": "d37f460c9e16359170050c6fb4ca5c7a3a98dbb52fdd482c85e9c408cd57b380"
+    },
+    {
+      "file": "images/rap-dem_ads_responsive_viewports_v18.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1998000,
+      "sha256": "9a08aef7226328e3fa33444864c82233429261fbf787a660929b595d930fb0e0"
+    },
+    {
+      "file": "images/rap-dem_home_desktop_v18.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2088955,
+      "sha256": "d80f3a0e07747513389c6d86f9d6978ee57b094b497f5ca41affd2deaa25ab9a"
+    },
+    {
+      "file": "images/rap-dem_home_modal-responsive_v18.png",
+      "width": 1619,
+      "height": 971,
+      "bytes": 1994880,
+      "sha256": "10c31cd0df0c6745c85e5af3bab74efc20673305a72ce187762847b41b3fdac0"
+    },
+    {
+      "file": "images/rap-dem_home_tablet-mobile_v18.png",
+      "width": 1013,
+      "height": 1552,
+      "bytes": 2148941,
+      "sha256": "575d9d7e6477ac2186c89647606e230dd94cd00f99270d0aa44e3c51e79ae79b"
+    },
+    {
+      "file": "images/rap-dem_states_saved-player_v18.png",
+      "width": 1199,
+      "height": 1312,
+      "bytes": 1740973,
+      "sha256": "e8d3d625b4a5b2800052fdae2a4df02d8bdd3e4fd943fa996b646e2cfc7dafea"
+    },
+    {
+      "file": "images/rap-dem_states_search-navigation_v18.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1812168,
+      "sha256": "3449fc7fec3082ab2d8371eb90c80b3b7d4d5ae835671722c66b8a8a1acd686c"
+    },
+    {
+      "file": "images/rap-dem_watch_desktop_v18.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1935833,
+      "sha256": "ebc598629a170c53e52edd6e6231b57931319bf0770f554b25103cb756298391"
+    },
+    {
+      "file": "images/rap-dem_watch_tablet-mobile_v18.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2052733,
+      "sha256": "a042a968d8433c5ef6cd1a8b098f84f22a1da2ebee8ddd29aad2241249b7d6b2"
+    }
+  ],
+  "checks": {
+    "uniqueIds": true,
+    "sectionReferences": true,
+    "footerLinks": true,
+    "quickFilters": true,
+    "heroTitle": true,
+    "cropBounds": true
+  },
+  "pending": [
+    "Owner approval of D02/D03",
+    "Partner capabilities P01",
+    "Episode strategy D05",
+    "Production posters",
+    "Staging acceptance tests"
+  ]
+}

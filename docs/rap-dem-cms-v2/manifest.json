@@ -1,0 +1,967 @@
+{
+  "version": "CMS V2",
+  "date": "2026-11-16",
+  "type": "DESIGN_HANDOFF_NOT_PRODUCTION",
+  "files": [
+    {
+      "path": "api/openapi.json",
+      "bytes": 1217768,
+      "sha256": "1820fbd19aa62915cc3500eb493bec042c63d368f6700cc04b7e85e8ac89a78e"
+    },
+    {
+      "path": "data/catalog-v2.json",
+      "bytes": 98028,
+      "sha256": "ae5fb6a748eeec20ed31c4a3e8026355643fe7f6fab38504b3ccb2416577bd8e"
+    },
+    {
+      "path": "data/data-dictionary.json",
+      "bytes": 372527,
+      "sha256": "d556b3b45e191af8965e07b63954b6f62336ed5237085bdaa1f8f503c33482ce"
+    },
+    {
+      "path": "data/decisions-v2.json",
+      "bytes": 5744,
+      "sha256": "8d46637d77498a04b95c1ee10448c0eef9a2bd775c360e35ac9dcb63bfdbf953"
+    },
+    {
+      "path": "data/demo-fixtures.json",
+      "bytes": 22889,
+      "sha256": "22e5b1debe33468dd9977f538eb992c68bc206f929a8b0c29dd63ca04550808a"
+    },
+    {
+      "path": "data/feature-coverage.json",
+      "bytes": 32241,
+      "sha256": "fab8ce4b9c96d354b18c40210cae6f2b9394f05ee0dea7f915feedcb5bda5aba"
+    },
+    {
+      "path": "data/integrations.json",
+      "bytes": 2813,
+      "sha256": "98314339ec3568b1104830dcdfb5a513e633bcc877454dda082286eeda48cf28"
+    },
+    {
+      "path": "data/permission-actions.json",
+      "bytes": 77888,
+      "sha256": "39c33c92e76db2cfa79f86a722885b9ac5b71bd0a33c21d61dbd4cbf7fb761ef"
+    },
+    {
+      "path": "data/revenue-import.sample.csv",
+      "bytes": 372,
+      "sha256": "4ff77c87027490ea36b0024c94e59f190fcbe3dfc33bd88371d4d8438486395b"
+    },
+    {
+      "path": "data/screens.json",
+      "bytes": 18428,
+      "sha256": "117bfb3a555aca3721eba9affcd9d865304ba4d01e94336ee87a1d8104e49393"
+    },
+    {
+      "path": "data/state-machines.json",
+      "bytes": 1616,
+      "sha256": "fe1d407a15109e6980dfc21a7784f256df576144636614d5160196e0f9b96e24"
+    },
+    {
+      "path": "data/uat-cases.json",
+      "bytes": 45559,
+      "sha256": "38480156cc97342d233a26c8a783fd14583e101ea77e7e982ecc28e40c9135a6"
+    },
+    {
+      "path": "data/ui-copy.vi.json",
+      "bytes": 1445,
+      "sha256": "6898d4508b52908399fcba4027858f249787eb9e86fa9890db9184408f0d196e"
+    },
+    {
+      "path": "docs/00-pham-vi.html",
+      "bytes": 9341,
+      "sha256": "31be15d0a8f15b34caa89d96207ad334da4d6ddc41b115763d2b979a6bd10dc0"
+    },
+    {
+      "path": "docs/00-pham-vi.md",
+      "bytes": 5705,
+      "sha256": "9f14c3bdf456ff9e2d0883090dd59e55e1175812f8609fa21e256548fa5658c7"
+    },
+    {
+      "path": "docs/01-ui.html",
+      "bytes": 9398,
+      "sha256": "41f276004a70f1c3df79bbbd3dcc4e36c5e733991beb5779e2cbd3eb930b9dd5"
+    },
+    {
+      "path": "docs/01-ui.md",
+      "bytes": 5473,
+      "sha256": "b3b0ae7c280798d856d2ed6eea8506529e8a87b3620e0c01035cc247f59f9d5a"
+    },
+    {
+      "path": "docs/01-viewer-flow.html",
+      "bytes": 4573,
+      "sha256": "a13bcb55f7f17b55e8e287b7795b9ee11f620ea20e36dd11232d294e8f10a486"
+    },
+    {
+      "path": "docs/02-cms-flow.html",
+      "bytes": 4629,
+      "sha256": "0c3f3ca6971fd12395fc7faa3a24ec06d41defe36477c85b10b8eae802d86b7c"
+    },
+    {
+      "path": "docs/02-data-api.html",
+      "bytes": 18745,
+      "sha256": "c5011592f74ea0bf69bd7b42d6b675189c868f0b881fbbb4068f6fd1297585f0"
+    },
+    {
+      "path": "docs/02-data-api.md",
+      "bytes": 13941,
+      "sha256": "77d5b56de6b7721dc21f4f5236b5201e425bace986b4a87195d35c42fa9a913f"
+    },
+    {
+      "path": "docs/03-ad-rules.html",
+      "bytes": 12413,
+      "sha256": "e4df38c34ebe202ac0441c885f6109960c12882af1a18d65081388a119e78aee"
+    },
+    {
+      "path": "docs/03-ad-rules.md",
+      "bytes": 8346,
+      "sha256": "680641cfff7cd670180f966024e7a2f68ad951be8fc229aa9d2945cb9345e15f"
+    },
+    {
+      "path": "docs/03-combined-flow.html",
+      "bytes": 4790,
+      "sha256": "b4c64f1490fdf5aad943f1c5c610fd782af2bba873dd8e1516bff337d0ef6715"
+    },
+    {
+      "path": "docs/04-partner.html",
+      "bytes": 8332,
+      "sha256": "c6bd14c8d5f03c3d2d9665fd676ccc9bc5845722e3ad866e764ee1a76db19878"
+    },
+    {
+      "path": "docs/04-partner.md",
+      "bytes": 4464,
+      "sha256": "8a50dbc3a459fa446ea5bf4f69f41382ec46bc2cb19b7bea1c529ae0a0dc9f73"
+    },
+    {
+      "path": "docs/05-uat-operations.html",
+      "bytes": 10956,
+      "sha256": "b58e5657e5da4aab25c1108807d41d5a0fb063a5d4479cfab6d8e0b7dc7597ac"
+    },
+    {
+      "path": "docs/05-uat-operations.md",
+      "bytes": 7256,
+      "sha256": "7f1504b972ba8fa30c5978b6bf4ae8b51b68a0e475f13ee01751582eb775c1b4"
+    },
+    {
+      "path": "docs/06-feature-catalog.html",
+      "bytes": 46146,
+      "sha256": "be7354007ce68a476dcc3b3f8593eb4cc09c3265e6f4f1400c6b4ef43c10fb37"
+    },
+    {
+      "path": "docs/07-screens.html",
+      "bytes": 9096,
+      "sha256": "acc7bf988d5fc703ce248a9f129109718729acec830bace5b1855aeff1255e19"
+    },
+    {
+      "path": "docs/08-data-dictionary.html",
+      "bytes": 316936,
+      "sha256": "24b2aff87627c5d9e3247d3e784956e92302fb8cf262a742af54675cdd167737"
+    },
+    {
+      "path": "docs/09-api-permissions.html",
+      "bytes": 48384,
+      "sha256": "4b0cc30891579528c1c6a00333d153463e5ee7779a8d8c098c3434fa6be45607"
+    },
+    {
+      "path": "docs/10-uat.html",
+      "bytes": 21418,
+      "sha256": "df93ebc42fbcf9af8bd5b013085aa3b820a96d7ce8d6103b888506d0129285ae"
+    },
+    {
+      "path": "docs/11-decisions.html",
+      "bytes": 8266,
+      "sha256": "372bdfa6b070fd2d252ebde53f0c37d4dff6b4866de21b8a181cf4396dd5ecbd"
+    },
+    {
+      "path": "images/diagrams-manifest.json",
+      "bytes": 421,
+      "sha256": "bf6334a0822df114174f4343873313ae2a4bd44524778ce35ec3e4fc3596dc83"
+    },
+    {
+      "path": "images/manifest.json",
+      "bytes": 30112,
+      "sha256": "958f32a72952a8f40cde184bf56bef8c4e62ba5680db7e73d605169d00ab74ad"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_01-viewer-flow.png",
+      "bytes": 84283,
+      "sha256": "6438d5a994c09a0074b1af891fcba2d26b5aedce1afbc346f82ac5aef4cb61c9"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_02-cms-flow.png",
+      "bytes": 89877,
+      "sha256": "719af193f104ad262c0d4ca63bfe703bc8818a152744e54c6483e36bddf65564"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_03-combined-flow.png",
+      "bytes": 101041,
+      "sha256": "f53efaab1c3940c4d51586eec0dd94470a4eecdc4838276bd42c4f0f45fab9c9"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_ad-rules_desktop.png",
+      "bytes": 122949,
+      "sha256": "3b2ff1a1f23a57754f3196c5e24f4bfa3f07ea85a33220d0c1aeb31b8cb1f81d"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_ad-rules_mobile.png",
+      "bytes": 54626,
+      "sha256": "b68fcb62cd5cec75ac303ea575f7111b3631032eb4718ae76bd8fda6f77a4d74"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_ad-rules_tablet.png",
+      "bytes": 120790,
+      "sha256": "a08c39aaf00e9dfa3f03871ddd12969d86d405103d63cad5f7259087698c07e1"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_analytics_desktop.png",
+      "bytes": 108861,
+      "sha256": "be363f57aa399226e05e74369feb7b29ffabf16d0d4ed1c2c75f018b4420e631"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_analytics_mobile.png",
+      "bytes": 50815,
+      "sha256": "49eca8aa6a2b2b090da0f2330187b265612750d0a1c5705fe9d7dc7022f296c0"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_analytics_tablet.png",
+      "bytes": 106693,
+      "sha256": "2e5961266ab171dfc534457b8f382e6cc63e592f7a181b5f94a5d2c414a70736"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_assets_desktop.png",
+      "bytes": 203137,
+      "sha256": "a199f5ff4c2fc28bff153e329a59277ac7019cc674beecd7a53e6e2fa413c659"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_assets_mobile.png",
+      "bytes": 79714,
+      "sha256": "866daae860baef020548145404e8ad6fbc81e941419153878cfe6e29aede3ad7"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_assets_tablet.png",
+      "bytes": 205092,
+      "sha256": "172292209e4ad0171bc068486060bd63b232e3d2ddb0b2da9e62299cde31b20d"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_audit_desktop.png",
+      "bytes": 79663,
+      "sha256": "ea2a4771748a43aaadb4313c75a7f5e04ce0676aaf63c9f31072af9408485b63"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_audit_mobile.png",
+      "bytes": 42074,
+      "sha256": "f9e892e2374ea7124974e906ee2dc73ff00f0fcc8f6f9ed448674f24bf335712"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_audit_tablet.png",
+      "bytes": 78003,
+      "sha256": "7ebccfa8794fafebc108ed0e47a749f93d143a417ebaa22292370c2ae0d9c247"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_backups_desktop.png",
+      "bytes": 91523,
+      "sha256": "5a32c8326315f1df6aef594561351d4c8a1cf3bd9108ab1d24e1ea3c4b30069a"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_backups_mobile.png",
+      "bytes": 49289,
+      "sha256": "65fa16a1b22f4f8eb73b2cddbc9081db066b72e2c263b25171fcd80e18216346"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_backups_tablet.png",
+      "bytes": 89944,
+      "sha256": "1cf71c57619abc4ba872b40a77b59692d45768e3e402c35b9a61f5eb729c3be2"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_campaign-edit_desktop.png",
+      "bytes": 112704,
+      "sha256": "dde8bc4c15285791825c90e5377de57b96c3282ebfc87ca15f3d41530faac288"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_campaign-edit_mobile.png",
+      "bytes": 41673,
+      "sha256": "b1aca63a74d6ca1c02960e1eacc2bd730f2ef6a13554b1ab03c4e62c7cbc7003"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_campaign-edit_tablet.png",
+      "bytes": 106334,
+      "sha256": "d18204726d23de796b6c91e4e4375534a1ed73b45776a57877d2e275a7083a92"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_campaigns_desktop.png",
+      "bytes": 115804,
+      "sha256": "a555b8b061220bf0886f45fc9caab14d16dd0b527fcaf69160d91a1e4a6d3eb2"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_campaigns_mobile.png",
+      "bytes": 47519,
+      "sha256": "b24dda0d4e55b30cbf2412b05c54c185a98335df734f062f91146abbac190ab4"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_campaigns_tablet.png",
+      "bytes": 113802,
+      "sha256": "b55d29baaf780b9f2c6281cc352085473d3074c79a13960729a1f5e6319315c6"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_capabilities_desktop.png",
+      "bytes": 103902,
+      "sha256": "59a29cf2603d0585ed3f25ef88f005d6c294373bb19090d3b38c6abfefa798fa"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_capabilities_mobile.png",
+      "bytes": 52856,
+      "sha256": "901d289d872ea1291932309bb77daa5458cbc34dc5a4b2822773b74715caeb66"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_capabilities_tablet.png",
+      "bytes": 101603,
+      "sha256": "8b039b74a07c20e42460317cd744ac6adfb0f95ac1d380ed6941aab28775bf69"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_components_desktop.png",
+      "bytes": 95867,
+      "sha256": "ed428f4b5e05aaed03e2132dcae5caf4feacc2755d102d05001bad7755423318"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_components_mobile.png",
+      "bytes": 40807,
+      "sha256": "16714e4408b307fb8304532104b29eef377c893ea065722eb309d802fe2eeda2"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_components_tablet.png",
+      "bytes": 91680,
+      "sha256": "c30be372132f199007403891c22e393396616e6df88fd47d1a6d5e6d1d22d3cc"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_confirm-dialog_desktop.png",
+      "bytes": 125251,
+      "sha256": "886c234018aea0583b7f6acea48f39575ffbb908878adadef696d1c3ebf395d5"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_creatives_desktop.png",
+      "bytes": 92564,
+      "sha256": "ee89a3b7082e6863abe1b9a09bdc92693afa4283859f14720c919b576e5bc20c"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_creatives_mobile.png",
+      "bytes": 49598,
+      "sha256": "761306d86c43ccf135dbe60a46e5c796c095462e3ce407472286e04edd1bd716"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_creatives_tablet.png",
+      "bytes": 91207,
+      "sha256": "96fd694fa07d27cb0b6ae8671fbbff2d1857dac88d370ba1f46ba22666b6d4dc"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_dashboard_desktop.png",
+      "bytes": 130122,
+      "sha256": "a0c70ee4c417c3b41e5f637d1af3052122dff77aaacc4372c69e2694ef9007c9"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_dashboard_mobile.png",
+      "bytes": 46021,
+      "sha256": "0f6721a139325971eb6397ab745471055b64bd375a303d581f6c3b82addad867"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_dashboard_tablet.png",
+      "bytes": 124156,
+      "sha256": "6c86935dc943090a756295235e4637f97507f8993f323d12bb292983c7264b42"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_episodes_desktop.png",
+      "bytes": 86561,
+      "sha256": "c483b1c3c3704a9ee14106a1df459dd0ba4dae8df4bd184563bc3033e0f7a89c"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_episodes_mobile.png",
+      "bytes": 45477,
+      "sha256": "b8e0756494bee5d7059f9728cfd23215e5f1af29b1edf101e5f58ebebd566af6"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_episodes_tablet.png",
+      "bytes": 85386,
+      "sha256": "41735742bc6e4e05f15d7f5b8c385010be2f3465093b16ba039049ee305b081e"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_jobs_desktop.png",
+      "bytes": 87608,
+      "sha256": "6d21f556258625d13fdf7cf1d971fcc5f360a9557f73274f5196c449602a37a8"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_jobs_mobile.png",
+      "bytes": 45660,
+      "sha256": "bae88f90b5a319fff61bcd64ed77142c6b68264656312e5bea05be0646a10290"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_jobs_tablet.png",
+      "bytes": 85535,
+      "sha256": "324f9792bcee29854d26b4de54161e80c194fa36efe1d04e6f2cd84889f3b430"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_login_desktop.png",
+      "bytes": 70950,
+      "sha256": "c12b5afc6ee784ebffbff94ee0ea915d061f5ab0c9b1ea2c98be5ea643b4cde8"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_login_mobile.png",
+      "bytes": 34450,
+      "sha256": "32acd35d070783b6339972d500ed1a52ce92d76a72f14614d9af60a4ef526dbe"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_login_tablet.png",
+      "bytes": 68297,
+      "sha256": "2e9599c5ab5e678f00024812b9e6788dae953981c5995c8a2653b1c9456a6106"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_mfa_desktop.png",
+      "bytes": 66311,
+      "sha256": "2658db126031165454c2ae0e247b02a2a810bb8f7b226b676bd8493134444d85"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_mfa_mobile.png",
+      "bytes": 30386,
+      "sha256": "87da509f5f3d98994b142251feb041566a69a200ddffd339af4d9e1e7c754797"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_mfa_tablet.png",
+      "bytes": 63937,
+      "sha256": "d4e3fe33ba2b47ad05c3b002a5e924e080d739853b4269831178092d1ebda62a"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_movie-detail_desktop.png",
+      "bytes": 132517,
+      "sha256": "200d7c5d8f0c4127209bfbd8e5ae1a6aa2249557c1a1cc39e1555af376016f57"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_movie-detail_mobile.png",
+      "bytes": 50756,
+      "sha256": "4fe085ef737a3f4280ae58e99531d226aa10aa99bbd0ddaed190ae9ed2192200"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_movie-detail_tablet.png",
+      "bytes": 125769,
+      "sha256": "4a0ff99d7c6c92e8d535f5ca441fc30bf67bebe7ae3cc7e4cea9c78c0d3c5161"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_movie-edit_desktop.png",
+      "bytes": 125334,
+      "sha256": "735957956869a3caca0e859fc81956d0bc434e09a07dd2ec2eb5bbf99198fd01"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_movie-edit_mobile.png",
+      "bytes": 47609,
+      "sha256": "5db67ef5a522c8bfcd35b223019a364cc38bdba9e513e1a67db06e5a938f6d06"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_movie-edit_tablet.png",
+      "bytes": 120751,
+      "sha256": "a860ed897099f196816837a74c5f2a2d11944b9606902c01ee09fd916e119d4f"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_movies_desktop.png",
+      "bytes": 147820,
+      "sha256": "ab1188ead0adc335a684b87f08f64dfeaeacc1e4b72d5991ba9acc4b4f5fcf49"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_movies_mobile.png",
+      "bytes": 43939,
+      "sha256": "779c6e41939f279f3b7084edd64e990eaf6c3cf552daa8b58c0c9c7f81f54afd"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_movies_tablet.png",
+      "bytes": 126479,
+      "sha256": "e509f4438289b293075576c6e4a9444264bcd06fbffdd0ff4b739857225fc92e"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_navigation-drawer_mobile.png",
+      "bytes": 37225,
+      "sha256": "0f65d475e2ca400c60af44b2f3f1d3c2bd14e1ab8d285f4f7eee7f4a97586d49"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_pages_desktop.png",
+      "bytes": 84910,
+      "sha256": "9b8cd06131ea047a293a9b7e10acd4ef9fbf5391eb33b59aa75f8766976968df"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_pages_mobile.png",
+      "bytes": 46154,
+      "sha256": "74cccf13002b64df58448ac6088efc2795e1cde35c80674f0fd40c291248dd36"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_pages_tablet.png",
+      "bytes": 82902,
+      "sha256": "59f5c6073c88acbc468693abddfe6d0e615cbd6370618bd0dab390fbab898417"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_payments_desktop.png",
+      "bytes": 81900,
+      "sha256": "4c1e750299598402e624f413e259f95d345adc150751ab6ce7a654699db2d608"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_payments_mobile.png",
+      "bytes": 40956,
+      "sha256": "5348bfc60ab76a9879adc1657dde7e82d1199dff0e1173328a5ef9dd9644c48a"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_payments_tablet.png",
+      "bytes": 80219,
+      "sha256": "ff038f75885286952abca5d0a364250f293cd5679dc63b9cae2757972e516f53"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_placements_desktop.png",
+      "bytes": 106399,
+      "sha256": "aba30b35186b67b9a349b1e3bc4d238bf7407ba82dda8fcca60c96bd76bfc0ee"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_placements_mobile.png",
+      "bytes": 41741,
+      "sha256": "02efda81d174e97ec926038485370a498cd70501a74292bb3482db1c8a5555e3"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_placements_tablet.png",
+      "bytes": 104464,
+      "sha256": "c26539a1f5930493b738ccb3061f5b0b6c600b9aad8bc5a56b40bb39a0e4f4eb"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_preview_desktop.png",
+      "bytes": 89140,
+      "sha256": "c8708734f584309d15bbbeaaf0bf2dae47763b0b48f1682980e2d9616450bc21"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_preview_mobile.png",
+      "bytes": 44718,
+      "sha256": "8f7c9d9f09368cf235b50d9177b69a2cba94066f26eeb32a8a2dded52a3ef08c"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_preview_tablet.png",
+      "bytes": 86777,
+      "sha256": "07e3f48b3dddb42a219e3114de5f4f6072d1c56c7788149b4bc4e016b9305a96"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_providers_desktop.png",
+      "bytes": 107062,
+      "sha256": "8571152ac14dedab280331784b940adcc196ba57d64f65239fdf7daf8c5e6f9c"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_providers_mobile.png",
+      "bytes": 53241,
+      "sha256": "a302840d83826400e47e6e0a9c99f69042a9774df395f59f5af19ce8309dc347"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_providers_tablet.png",
+      "bytes": 104786,
+      "sha256": "955f22bd6accb3075acba47b09e48192b73a9f94439887ea74868ec706be30ed"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_publishing_desktop.png",
+      "bytes": 106238,
+      "sha256": "3843493ec2005736b4925d4c85ad686a076f23a3a22d1d23dbddaf31ac2a063d"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_publishing_mobile.png",
+      "bytes": 47572,
+      "sha256": "9163141b86b0e9fff22a00cc54460557e7aa19489eb6992c57065e27bb567047"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_publishing_tablet.png",
+      "bytes": 104115,
+      "sha256": "8e4fe2870ded1c540d53ba5ed4281c2abfd27f75f5d300ee3777e643b44deff9"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_recover_desktop.png",
+      "bytes": 67969,
+      "sha256": "8553163f3bd3e7a16812fda4f8992ae0935f653adcde9bceebedbd9544e68f5a"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_recover_mobile.png",
+      "bytes": 32230,
+      "sha256": "51d1870630f2cca40b9f56caaa71f18317be010b01daf86e18c92e6343edf73f"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_recover_tablet.png",
+      "bytes": 65490,
+      "sha256": "0c474e418dab9fcf7fe8d783d79e7ad4833fc3cbc67ec71fdc4ab0257af97bb1"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_report-detail_desktop.png",
+      "bytes": 106188,
+      "sha256": "f1d7b5f7334b649f49040827c46d7876580d18ea04ed9f0644b22103afadd11a"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_report-detail_mobile.png",
+      "bytes": 46891,
+      "sha256": "09fd1471333d707473a68f80ec3e7516c598b3dd519f6d1ea36801360780570b"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_report-detail_tablet.png",
+      "bytes": 104093,
+      "sha256": "0981108c97857a327f1f6ff53e19000eaca2bf5923c93dd2f59bc02b0e6020ba"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reports_desktop.png",
+      "bytes": 98605,
+      "sha256": "15e15bde16282836a31930a7b21d5d6c9a1d0873b08d591f4e6798420745ceca"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reports_mobile.png",
+      "bytes": 48236,
+      "sha256": "6ed6c82035f85c9e90df842dccfc7a0fdcd0b72c9b7bf428299bbdf460f25768"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reports_tablet.png",
+      "bytes": 95726,
+      "sha256": "39449c6a3669aca42d7402150d11518e8496d63d5fca55729667068973ac3569"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reservation-conflict_desktop.png",
+      "bytes": 115761,
+      "sha256": "2d9a62f0b1d5a41d6bd6d5e6febbe8b40ae426096b75d3a7aa9d3053b25aac00"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reservation-new_desktop.png",
+      "bytes": 114968,
+      "sha256": "b75db2fc05ba5c74e695664cf87008a6b085953d34d4786861587e4304f1b01c"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reservation-new_mobile.png",
+      "bytes": 45361,
+      "sha256": "28b0fc1115c84009cc708b60c06c0c9fdb10751639ff842ef20bd6d8de0d5eb7"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reservation-new_tablet.png",
+      "bytes": 112514,
+      "sha256": "ec70e9ef2b27178bfb407e1a0717e23cda42463d56206d4679eb862a10716795"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reservations_desktop.png",
+      "bytes": 108138,
+      "sha256": "f36003e5a771953164f99554fb55d76b9e8abf366891234898f969c1395e6361"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reservations_mobile.png",
+      "bytes": 46743,
+      "sha256": "fb382681fa75111453bb1e495e6c8be1c86a914834459ec3b50595f551671f3e"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reservations_tablet.png",
+      "bytes": 108156,
+      "sha256": "190581f6f6824c4f8401058d400febf570088272c538a5a227290196f9b2165c"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_revenue-import_desktop.png",
+      "bytes": 112764,
+      "sha256": "12638bb891aba35553cc76ce5df4352e1f24f072e3751356037ea5ef9b84b20a"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_revenue-import_mobile.png",
+      "bytes": 40255,
+      "sha256": "c61bf3c4e9d136032e5733912817d814d3069f87304393576ee3b3f602ad51c1"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_revenue-import_tablet.png",
+      "bytes": 105946,
+      "sha256": "95a066eb72422feb34b0ba1c220232e79defe3a25bbbf08fff4360a19d21c916"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_review-detail_desktop.png",
+      "bytes": 120630,
+      "sha256": "cb1c6b19d5246d91f4154f41dc41db399eeda00c9540194461591566cbb35b99"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_review-detail_mobile.png",
+      "bytes": 47512,
+      "sha256": "8ab859caacda99fa185287cd55305c5cd103497306ce2f973a0ca73dc46c0391"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_review-detail_tablet.png",
+      "bytes": 113232,
+      "sha256": "fcf1e92305e3a40fbaebb539fd0af1f92f64cfc3d94b3ba23795abcbdd16de82"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reviews_desktop.png",
+      "bytes": 99823,
+      "sha256": "de0407a5f5e41f5d43ca8c781ea61a491cc191b54a305f7efc3efb10c6d13c4f"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reviews_mobile.png",
+      "bytes": 52180,
+      "sha256": "0265e74f32a2b2eb33c75796a5ee13d19a13534feba36e983b69c093d87bd880"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_reviews_tablet.png",
+      "bytes": 97805,
+      "sha256": "3e45db56f45c7818f484f88590fc08a38bb59e350b089994071cb11d96dabc2c"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_roles_desktop.png",
+      "bytes": 90624,
+      "sha256": "7faf867fc82f4b482b9dc509504bd350d03b0a78f3ff794c8796994f6fbe6bbb"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_roles_mobile.png",
+      "bytes": 36172,
+      "sha256": "792a97f866d4886f069661e43a5475bec1f3192e07e64e45952944d1c5a3f2db"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_roles_tablet.png",
+      "bytes": 89461,
+      "sha256": "51bb61b2f5ba7918f0d5b780d5b313319892622fe24c81246f45ebb6e1df63b5"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_sections_desktop.png",
+      "bytes": 95626,
+      "sha256": "4b16e1843fa1e6fc018fec004514ef74c4bb3d11f7a4521919984328ff4490ea"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_sections_mobile.png",
+      "bytes": 46258,
+      "sha256": "14c8f8dcdd04f8d0b6e0ecc635e802b1b3bdaa29dc9886f1839c421dd2bd9047"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_sections_tablet.png",
+      "bytes": 93945,
+      "sha256": "b89dae129f3450b568cb97c283c1a93f9d0465c3febbcf45634c016cbfe4ee1a"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_settings_desktop.png",
+      "bytes": 89192,
+      "sha256": "028f9c46ad11c198c6175b454696020544346222a9c348da923e15c341b9109e"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_settings_mobile.png",
+      "bytes": 48924,
+      "sha256": "d8d6c8524ab0e5cf0acddcb06ea670098f69e4869458c8ce4cfeacf755c1ea32"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_settings_tablet.png",
+      "bytes": 87128,
+      "sha256": "cd757fb1b38b7c30d7882671ee9805233ce1e823e04727fb4bed7d60dfc19cd8"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_site_desktop.png",
+      "bytes": 116770,
+      "sha256": "75386581575f6cd84bd89d30b9b2babfd981af5363622a6a87a88c7275ca02b5"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_site_mobile.png",
+      "bytes": 45499,
+      "sha256": "ff05139c08ebe39193a6daa1588670cc9a246303e95f836c671df7cec72f5353"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_site_tablet.png",
+      "bytes": 112711,
+      "sha256": "b45aabc787830529834918652a77fa8c9e2425f1a49566ed72a99fe2c220e681"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_sources_desktop.png",
+      "bytes": 88184,
+      "sha256": "a103667d4016f3ad4165fd36818023f5a0c8b234c64b3eeeaa85e35e63851c0c"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_sources_mobile.png",
+      "bytes": 48931,
+      "sha256": "7bee3cbac37723bf49c0371676f050e59cb120c633f4661a72fd7eb972e0559f"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_sources_tablet.png",
+      "bytes": 86295,
+      "sha256": "e0dc15724c95cfd0ba324e383c1116031dbf82a2101ad2a7ac2f305c6e6420cb"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_staff_desktop.png",
+      "bytes": 101309,
+      "sha256": "648675e84401a94ccb4d5c8dc5e5f7ca373a9d50bcd5c5324b69404572f4ddfc"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_staff_mobile.png",
+      "bytes": 55061,
+      "sha256": "d0171e69f860e7af7459008251351d81b970e2e094f152885177c61572fedb1b"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_staff_tablet.png",
+      "bytes": 98683,
+      "sha256": "8070d031e7111c1852d503b6a902903a003bd75f5890e50e2f1164f3a17fad41"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_state-empty_desktop.png",
+      "bytes": 72215,
+      "sha256": "3dd34f259409a6203a2130b4d5a852a3e532f3d72a0f348e42c33fb3243a876a"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_state-error_desktop.png",
+      "bytes": 72938,
+      "sha256": "290a3408199e32c8bfcbf82e98d972a596c988713cc5deddf87cc13f3de17e40"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_state-forbidden_desktop.png",
+      "bytes": 78352,
+      "sha256": "b53a70d3c2f3d6d6de834966b12e8648168e5a1f0e99351ce06fdda69b9d2722"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_state-loading_desktop.png",
+      "bytes": 66819,
+      "sha256": "b3ee7d101754c9d23d8d2c17906f41301efa29e328d8963496dc26e06aa60973"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_state-success_desktop.png",
+      "bytes": 127279,
+      "sha256": "6885b571a61639a5a2c78acedc6b72360ae85cc469c23a5dcfebd78c9fa91389"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_statement-detail_desktop.png",
+      "bytes": 112235,
+      "sha256": "e4a50e752a2e1affbd72c0131f6651f282c32902281582c7e8ee16041da1966e"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_statement-detail_mobile.png",
+      "bytes": 44645,
+      "sha256": "df895b41e0d8fb36a23202a38804558629c3409dfe31e19f2b0469c6e6cb9b67"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_statement-detail_tablet.png",
+      "bytes": 108880,
+      "sha256": "37f5111f9a705f09969358573be5bdd211c5cdec472d2871829abe18607b672e"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_statements_desktop.png",
+      "bytes": 107109,
+      "sha256": "f79893c5f7774c28c8783635c87bc0d302504bd21236055467d00f98f372bdd6"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_statements_mobile.png",
+      "bytes": 52624,
+      "sha256": "0e3ff5ced48826570d5ebebfa04f7edb32182ff41730e585b2088eed5d99aca4"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_statements_tablet.png",
+      "bytes": 103933,
+      "sha256": "032fca122349b7ae3f614ad6b23cb7f6be727a4d49dfde02993972ffcc13e7f6"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_states_desktop.png",
+      "bytes": 85582,
+      "sha256": "ddf29d8aa415016760dad6affe8d0f381139b9d2273e83d32a73bdf50fc1ae9d"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_states_mobile.png",
+      "bytes": 35158,
+      "sha256": "707f0448b6a9eba6633a40da87bedb7896e386e89ef74c03aacf9b67ec0f3d0e"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_states_tablet.png",
+      "bytes": 84116,
+      "sha256": "452be46554762e514866fc3dd1218d635966aa6cdded9668b170282d3db08e62"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_tasks_desktop.png",
+      "bytes": 83276,
+      "sha256": "85254aaa1dd87e7993f336d1530a93adca3742ffc2bf766a9319ff7442b6cd8a"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_tasks_mobile.png",
+      "bytes": 46123,
+      "sha256": "e64bd3b4a8a4809f471156b1f3da82ed911aef629f38919622e2fa5d59f5e3ae"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_tasks_tablet.png",
+      "bytes": 81652,
+      "sha256": "beb67baea96838ddec21f436aa025eb9412b8d501545637805c65b7c94e5a3b8"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_taxonomies_desktop.png",
+      "bytes": 89383,
+      "sha256": "de46b98f680950e17973e2bf7a80dae83c8f348b6f203dea4d2b54707ba262e0"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_taxonomies_mobile.png",
+      "bytes": 48423,
+      "sha256": "15c08ac321c35add2ef98994f018065f4d00e1782aca33d048f8b571818394bb"
+    },
+    {
+      "path": "images/rap-dem_cms-v2_taxonomies_tablet.png",
+      "bytes": 86883,
+      "sha256": "5aca36ee3025d6c91068c844a68e90f0add5aa2e41e073909acaf23b2fa94a76"
+    },
+    {
+      "path": "prototype/app.js",
+      "bytes": 45946,
+      "sha256": "ad86ae07dc5f8f73078ad18e9e62a62749bf83526aaea20e17e9ba2f5c7e7269"
+    },
+    {
+      "path": "prototype/demo-data.js",
+      "bytes": 31480,
+      "sha256": "feb577e2fba8f5e73cd8f7514a34cc87a84d9837621dfd66c3e3353cda42ae31"
+    },
+    {
+      "path": "prototype/index.html",
+      "bytes": 568,
+      "sha256": "8f5419d3c64a319e03d18f5015e295ffbcf23ecae18d1b199d14dc95b1091eb9"
+    },
+    {
+      "path": "prototype/interaction.js",
+      "bytes": 29790,
+      "sha256": "bf574ab4fd430ae91df62dfd0c173aa8583fd82b751acedf6e6c8594ac5ef215"
+    },
+    {
+      "path": "prototype/refinements.css",
+      "bytes": 1006,
+      "sha256": "3f400fffa40e986273d22e481edc7e882b21bd100366d2b33f332e833b7d238d"
+    },
+    {
+      "path": "prototype/rules.js",
+      "bytes": 3097,
+      "sha256": "96e368e135af2234b607b2ac48c42827597ed5cf1057d3b96474fb0142e17661"
+    },
+    {
+      "path": "prototype/styles.css",
+      "bytes": 16452,
+      "sha256": "b0c609f55e88771ca674644093a76dfbcf658dc2c70518c00aad49c71ca2ba91"
+    },
+    {
+      "path": "index.html",
+      "bytes": 7934,
+      "sha256": "e3f29aa8265766e376745ae2066b87e4ebe75f8af044c588018d50b0736bd8ea"
+    },
+    {
+      "path": "gallery.html",
+      "bytes": 66042,
+      "sha256": "0eded5d7dedcf9a5f717441d652731e87154e765a6001da31378e566b88fdcf3"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1905,
+      "sha256": "b70f59f0998f0907a72a6ef827d9f388d9889100ddfd5b5d1fe674b574185901"
+    },
+    {
+      "path": "rap-dem_cms-v2_trien-khai-va-nghiem-thu.xlsx",
+      "bytes": 57693,
+      "sha256": "ca2b92de98cae486147a0ffba7656ed2426495dd7a72eba120056785d4c60c2a"
+    },
+    {
+      "path": "qa/prototype-results.json",
+      "bytes": 21239,
+      "sha256": "de7ac30c16648041fd3158c345e87dfe66e1585f2883b7a49c3b8832854de8ae"
+    },
+    {
+      "path": "qa/contract-checks.json",
+      "bytes": 1135,
+      "sha256": "a31becd9af847bc2ab3c2ad98e7bb2c03d704f438ed49cf38b1aefe4b2bc6eda"
+    },
+    {
+      "path": "qa/delivery-checks.json",
+      "bytes": 571,
+      "sha256": "0cdfdfec5396d30584e5ea0fcf3325263de0a1ab971f332edae319417b82b21d"
+    },
+    {
+      "path": "qa/workbook-export-checks.json",
+      "bytes": 187,
+      "sha256": "388d2e24110a1109b91a14e1670f4c21600ecbf1607076d04e5f7bf54fc26955"
+    },
+    {
+      "path": "qa/visual-review.json",
+      "bytes": 1583,
+      "sha256": "aa7bae6b81c169750379f8e7d15b2699d541a590fee1c15c344a3b357a27ff02"
+    }
+  ]
+}

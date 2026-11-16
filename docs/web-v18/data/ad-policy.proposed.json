@@ -1,0 +1,93 @@
+{
+  "version": "v18",
+  "status": "PROPOSED_NOT_APPROVED",
+  "productionFlags": {
+    "homeModal": false,
+    "floating": false,
+    "customPreroll": false,
+    "seriesPlayback": false
+  },
+  "modal": {
+    "routes": [
+      "HOME"
+    ],
+    "minRouteReadyMs": 2000,
+    "creativeTimeoutMs": 3000,
+    "capHours": 24,
+    "sessionAttemptLimit": 1,
+    "sessionShowLimit": 1,
+    "capScope": "placement-browser-not-campaign",
+    "storageFailure": "disable",
+    "closeImmediately": true
+  },
+  "floating": {
+    "routes": [
+      "HOME",
+      "WATCH"
+    ],
+    "minRouteMs": 8000,
+    "minScrollFraction": 0.25,
+    "closeCapHoursPerSlot": 24,
+    "minViewportHeight": 600,
+    "storageFailure": "disable",
+    "hideWhen": [
+      "modal",
+      "drawer",
+      "report",
+      "keyboard",
+      "fullscreen",
+      "picture-in-picture",
+      "lights-off",
+      "document-hidden",
+      "player-or-controls-in-viewport",
+      "home-hero-in-viewport",
+      "footer-in-viewport",
+      "collision-with-protected-action"
+    ],
+    "desktop": {
+      "count": 2,
+      "width": 300,
+      "height": 90,
+      "sideGap": 16,
+      "bottomGap": 16
+    },
+    "tablet": {
+      "count": 2,
+      "width": 240,
+      "height": 72,
+      "sideGap": 16,
+      "bottomGap": 12
+    },
+    "mobile": {
+      "count": 1,
+      "widthMax": 320,
+      "viewportMinus": 32,
+      "height": 50,
+      "bottomGap": 8
+    },
+    "safeArea": true
+  },
+  "rail": {
+    "breakpoint": 1536,
+    "countPerSide": 3,
+    "width": 160,
+    "height": 300,
+    "position": "document-flow",
+    "hideWhenInsufficientSpace": true
+  },
+  "internalVisibleMetric": {
+    "areaRatio": 0.5,
+    "continuousMs": 1000,
+    "requiresVisibleDocument": true,
+    "billingStandard": false
+  },
+  "providerCapabilities": {
+    "preroll": false,
+    "skip": false,
+    "events": false,
+    "switchSource": false,
+    "seek": false,
+    "fullscreenEvents": false,
+    "episodeNavigation": false
+  }
+}

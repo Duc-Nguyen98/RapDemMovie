@@ -1,0 +1,66 @@
+{
+  "version": "v18",
+  "responsivePolicy": "Giữ cùng nguồn/thứ tự; desktop hiển thị4, tablet3, mobile2 ở hàng đầu; Xem tất cả mở danh sách đầy đủ.",
+  "sections": [
+    {
+      "id": "new",
+      "title": "Mới cập nhật",
+      "movieIds": [
+        "sai-gon-0000",
+        "dau-vet-mua",
+        "phia-bac-vuc-sau",
+        "mua-ha-o-lai"
+      ]
+    },
+    {
+      "id": "curated",
+      "title": "Rạp Đêm tuyển chọn",
+      "movieIds": [
+        "quy-dao-cuoi",
+        "nguoi-giu-den",
+        "bong-toi-so",
+        "thanh-pho-ngu-quen"
+      ]
+    },
+    {
+      "id": "featured",
+      "title": "Phim lẻ nổi bật",
+      "movieIds": [
+        "nhung-ngay-mua-ha",
+        "dua-em-ve-sai-gon",
+        "vong-lap-24h",
+        "bong-tren-song"
+      ]
+    },
+    {
+      "id": "series",
+      "title": "Phim bộ đang cập nhật",
+      "movieIds": [
+        "hanh-trinh-gio",
+        "duoi-tan-rung",
+        "bien-gioi-xanh",
+        "noi-may-dung-lai"
+      ]
+    },
+    {
+      "id": "action-scifi",
+      "title": "Hành động & viễn tưởng",
+      "movieIds": [
+        "dau-an-vu-tru",
+        "ke-du-hanh",
+        "quy-dao-cuoi",
+        "bong-toi-so"
+      ]
+    },
+    {
+      "id": "romance-drama",
+      "title": "Tình cảm & tâm lý",
+      "movieIds": [
+        "loi-ve-trong-suong",
+        "den-khuya",
+        "nhung-ngay-mua-ha",
+        "thanh-pho-ngu-quen"
+      ]
+    }
+  ]
+}
