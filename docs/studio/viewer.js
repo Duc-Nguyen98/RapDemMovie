@@ -4,6 +4,15 @@ const surface = el("surface");
 const steps = [.1,.16,.25,.33,.5,.67,.85,1,1.25,1.5,2,3,4];
 let active, device, sceneIndex=0, interactive=false, frameWidth=1, frameHeight=1;
 let level=1, autoFit=true, opener;
+let comparePng=false, typeset=false, currentPhoto, rasterScroll, rasterDensity=1;
+
+function sourceScale() {
+  if (!currentPhoto || interactive || typeset) return 1;
+  const [,,w,h]=currentPhoto.rect || [0,0,currentPhoto.width,currentPhoto.height];
+  const contain=currentPhoto.rect && ["ads","modal"].includes(active.family);
+  const ratio=contain ? Math.min(frameWidth/w,frameHeight/h) : frameWidth/w;
+  return rasterDensity/(ratio*(window.devicePixelRatio || 1));
+}
 
 function fitScale() {
   return Math.min(1,Math.max(.01,(stage.clientWidth-24)/frameWidth),
@@ -12,15 +21,26 @@ function fitScale() {
 function resize() {
   if (!dialog.open || !active) return;
   if (autoFit) level=fitScale();
-  const w=Math.round(frameWidth*level), h=Math.round(frameHeight*level);
+  // A fractional physical CSS width can shift an iframe breakpoint by 1px.
+  const layoutZoom=interactive || typeset;
+  const visualLevel=layoutZoom ? Math.round(frameWidth*level)/frameWidth : level;
+  const dpr=window.devicePixelRatio || 1;
+  const w=Math.round(frameWidth*visualLevel*dpr)/dpr, h=Math.round(frameHeight*visualLevel*dpr)/dpr;
   el("work-area").style.width=w+"px";
   el("work-area").style.paddingTop=Math.max(10,(stage.clientHeight-h)/2)+"px";
   el("sheet").style.width=w+"px"; el("sheet").style.height=h+"px";
-  surface.style.width=frameWidth+"px"; surface.style.height=frameHeight+"px";
-  surface.style.transform="scale("+level+")";
+  // Text is laid out at browser zoom. The raster path samples the original directly
+  // at the final display size, with no transformed intermediate screenshot layer.
+  const oldWidth=rasterScroll?.clientWidth;
+  const sourceOffset=oldWidth ? rasterScroll.scrollTop/oldWidth : 0;
+  surface.style.zoom=layoutZoom ? String(visualLevel) : "1";
+  surface.style.width=(layoutZoom?frameWidth:w)+"px"; surface.style.height=(layoutZoom?frameHeight:h)+"px";
+  if (oldWidth && rasterScroll.clientWidth!==oldWidth) rasterScroll.scrollTop=sourceOffset*rasterScroll.clientWidth;
   el("percent").textContent=Math.round(level*100)+"%";
   el("minus").disabled=level<=Math.min(steps[0],fitScale())+.001;
   el("plus").disabled=level>=steps.at(-1);
+  el("native-size").textContent=layoutZoom?"100%":"1:1";
+  el("native-size").title=layoutZoom?"Tỷ lệ bố cục 100%":"Mỗi pixel của ảnh đang xem tương ứng một pixel màn hình";
 }
 function magnify(up, point) {
   const choices=[...steps,fitScale()].sort((a,b)=>a-b);
@@ -38,24 +58,33 @@ function fit() { autoFit=true; resize(); stage.scrollTo(0,0); }
 function drawImage(photo) {
   const scroll=document.createElement("div");
   scroll.className="device-scroll";
+  rasterScroll=scroll;
   const rect=photo.rect || [0,0,photo.width,photo.height];
   const [left,top,w,h]=rect;
   const snapshot=!!photo.rect && ["ads","modal"].includes(active.family);
-  const ratio=snapshot ? Math.min(frameWidth/w,frameHeight/h) : frameWidth/w;
   const slice=document.createElement("div");
-  slice.className="slice"; slice.style.width=w*ratio+"px"; slice.style.height=h*ratio+"px";
-  if (snapshot) slice.style.margin=Math.max(0,(frameHeight-h*ratio)/2)+"px auto 0";
+  slice.className="slice"; slice.style.aspectRatio=w+"/"+h;
+  slice.style.width=snapshot ? Math.min(100,100*frameHeight*w/(h*frameWidth))+"%" : "100%";
+  if (snapshot) scroll.classList.add("snapshot");
   const img=new Image();
   img.alt=active.title+" · "+labels[device]; img.draggable=false;
-  img.style.width=photo.width*ratio+"px"; img.style.left=-left*ratio+"px"; img.style.top=-top*ratio+"px";
-  img.onerror=()=>{el("view-info").textContent="Không tải được ảnh. Dùng Tải PNG để mở tệp gốc.";};
-  img.src=photo.src;
+  img.style.width=100*photo.width/w+"%"; img.style.left=-100*left/w+"%"; img.style.top=-100*top/h+"%";
+  const hd=active.group==="cms"?active.route+"_"+device:active.group==="flows"?active.id:null;
+  rasterDensity=hd?3:1;
+  img.onerror=()=>{
+    if (!img.isConnected) return;
+    if (hd && img.getAttribute("src")!==photo.src) {
+      rasterDensity=1;img.src=photo.src;el("view-info").textContent="Đang dùng PNG gốc · "+photo.width+" × "+photo.height;
+    } else el("view-info").textContent="Không tải được ảnh. Dùng Tải PNG để mở tệp gốc.";
+  };
+  img.src=hd?"studio/hd/"+hd+".webp":photo.src;
   slice.append(img); scroll.append(slice); surface.replaceChildren(scroll);
 }
 function syncUrl(method="replaceState") {
   const url=new URL(location.href);
   url.searchParams.set("view",active.id); url.searchParams.set("device",device);
   if (interactive) url.searchParams.set("mode","live"); else url.searchParams.delete("mode");
+  if (comparePng && active.group==="web") url.searchParams.set("mode","png");
   if (active.family==="ads" && sceneIndex) url.searchParams.set("scene",sceneIndex);
   else url.searchParams.delete("scene");
   url.hash=active.group;
@@ -68,13 +97,16 @@ function syncUrl(method="replaceState") {
 }
 function paint() {
   const photo=previewFor(active,device,sceneIndex);
+  currentPhoto=photo; rasterScroll=null;
   const webFrame=active.group==="web" && device!=="original";
+  const canTypeset=active.group==="web" && (webFrame || !active.family);
+  typeset=canTypeset && !comparePng;
   [frameWidth,frameHeight]=webFrame ? {desktop:[1440,900],tablet:[834,1112],mobile:[390,844]}[device] : [photo.width,photo.height];
   el("view-title").textContent=active.title;
   el("view-group").textContent=groups[active.group];
   const devices=el("devices");
   devices.replaceChildren(...active.devices.map(key=>{
-    const button=document.createElement("button");button.textContent=labels[key];
+    const button=document.createElement("button");button.textContent=typeset && key==="original" && !active.family?"Bảng trạng thái":labels[key];
     button.dataset.device=key; button.setAttribute("aria-pressed",String(key===device));
     button.onclick=()=>{
       device=key; paint();syncUrl();
@@ -89,6 +121,8 @@ function paint() {
   el("live").hidden=!active.live;
   el("live").textContent=interactive ? "Quay về ảnh" : "Thử tương tác";
   el("live").setAttribute("aria-pressed",String(interactive));
+  el("proof").hidden=!canTypeset;
+  el("proof").textContent=typeset?"Đối chiếu PNG":"Xem bản chữ nét";
   if (interactive) {
     const src=cmsRoot+"prototype/index.html#"+active.route;
     let iframe=surface.querySelector("iframe");
@@ -96,8 +130,9 @@ function paint() {
       iframe=document.createElement("iframe");iframe.title="Prototype CMS · "+active.title;iframe.src=src;
       surface.replaceChildren(iframe);
     }
-  } else drawImage(photo);
-  const kind=interactive ? "Prototype" : webFrame ? "Mô phỏng từ ảnh" : "Ảnh gốc";
+  } else if (typeset) surface.replaceChildren(nativeWebProof(active,device,sceneIndex));
+  else drawImage(photo);
+  const kind=interactive ? "Prototype" : typeset ? "Bản dựng chữ nét" : active.group!=="web" ? "Ảnh dựng 3×" : photo.rect ? "PNG gốc · vùng "+photo.rect[2]+" × "+photo.rect[3]+" px" : "PNG gốc";
   el("view-info").textContent=kind+" · "+frameWidth+" × "+frameHeight+(webFrame && ["home","watch"].includes(active.family) ? " · Cuộn trong khung" : "");
   fit();
 }
@@ -108,6 +143,7 @@ function openItem(item,options={}) {
     el("close").focus({preventScroll:true});
   }
   active=item;
+  comparePng=!!options.png;
   device=item.devices.includes(options.device) ? options.device : item.device;
   interactive=!!(item.live && options.live);
   sceneIndex=item.family==="ads" && [1,2].includes(Number(options.scene)) ? Number(options.scene) : 0;
@@ -155,7 +191,7 @@ function restore() {
   const item=byId.get(params.get("view"));
   if (item) {
     if (group!==item.group) setGroup(item.group);
-    openItem(item,{device:params.get("device"),live:params.get("mode")==="live",scene:params.get("scene")});
+    openItem(item,{device:params.get("device"),live:params.get("mode")==="live",png:params.get("mode")==="png",scene:params.get("scene")});
   } else dismiss();
 }
 document.addEventListener("click",e=>{
@@ -168,6 +204,8 @@ document.addEventListener("click",e=>{
 el("scene").replaceChildren(...scrollStates.map((name,index)=>new Option(name,index)));
 el("scene").onchange=()=>{sceneIndex=Number(el("scene").value);paint();syncUrl();};
 el("live").onclick=()=>{interactive=!interactive;paint();syncUrl();};
+el("proof").onclick=()=>{comparePng=!comparePng;paint();syncUrl();};
+el("native-size").onclick=()=>{autoFit=false;level=sourceScale();resize();};
 el("prev").onclick=()=>walk(-1);el("next").onclick=()=>walk(1);
 el("plus").onclick=()=>magnify(true);el("minus").onclick=()=>magnify(false);el("fit").onclick=fit;
 el("full").onclick=fullscreen;el("close").onclick=closeViewer;
@@ -185,7 +223,7 @@ stage.addEventListener("pointermove",e=>{
   stage.scrollLeft=drag.left+drag.x-e.clientX;
   const dy=drag.y-e.clientY;
   stage.scrollTop=drag.top+dy;
-  if (drag.inner) drag.inner.scrollTop=drag.inside+(dy-(stage.scrollTop-drag.top))/level;
+  if (drag.inner) drag.inner.scrollTop=drag.inside+(dy-(stage.scrollTop-drag.top))/(typeset?level:1);
 });
 stage.addEventListener("lostpointercapture",()=>{drag=null;});
 window.addEventListener("keydown",e=>{

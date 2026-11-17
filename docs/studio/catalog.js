@@ -18,7 +18,7 @@ const panels = {
   home: {
     desktop: ["home-desktop",[30,48,965,1170]],
     tablet: ["home-responsive",[54,86,566,1225]],
-    mobile: ["home-responsive",[660,108,304,1170]]
+    mobile: ["home-responsive",[660,81,304,1222]]
   },
   watch: {
     desktop: ["watch-desktop",[45,40,930,1226]],

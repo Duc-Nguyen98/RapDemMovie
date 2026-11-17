@@ -6,9 +6,12 @@
   <meta name="theme-color" content="#171917">
   <title>Rạp Đêm Studio · Thư viện thiết kế</title>
   <link rel="stylesheet" href="handoff.css">
+  <link rel="stylesheet" href="studio/web-proof.css">
   <script defer src="studio/cms-index.js"></script>
   <script defer src="studio/catalog.js"></script>
   <script defer src="studio/library.js"></script>
+  <script defer src="studio/web-art/sample.js"></script>
+  <script defer src="studio/web-proof.js"></script>
   <script defer src="studio/viewer.js"></script>
 </head>
 <body>
@@ -53,10 +56,11 @@
     <div class="view-options"><div class="devices" id="devices" role="group" aria-label="Khung xem"></div>
       <label id="scene-label" hidden>Trạng thái <select id="scene"></select></label>
       <button id="live" aria-pressed="false" hidden>Thử tương tác</button>
+      <button id="proof" hidden>Đối chiếu PNG</button>
     </div>
     <div id="stage" tabindex="0" aria-label="Vùng xem thiết kế, cuộn để xem chi tiết"><div id="work-area"><div id="sheet"><div id="surface"></div></div></div></div>
     <div class="view-foot">
-      <div class="zoom" role="group" aria-label="Độ phóng đại"><button id="minus" class="icon-button" aria-label="Thu nhỏ" title="Thu nhỏ (−)">−</button><output id="percent"></output><button id="plus" class="icon-button" aria-label="Phóng to" title="Phóng to (+)">+</button><button id="fit" title="Vừa khung (0)">Vừa khung</button></div>
+      <div class="zoom" role="group" aria-label="Độ phóng đại"><button id="minus" class="icon-button" aria-label="Thu nhỏ" title="Thu nhỏ (−)">−</button><output id="percent"></output><button id="plus" class="icon-button" aria-label="Phóng to" title="Phóng to (+)">+</button><button id="native-size" title="Xem ở kích thước chuẩn">100%</button><button id="fit" title="Vừa khung (0)">Vừa khung</button></div>
       <span id="view-info"></span>
       <div class="actions"><a id="original" download>Tải PNG</a><button id="prev" class="icon-button" aria-label="Màn trước" title="Màn trước">‹</button><button id="next" class="icon-button" aria-label="Màn sau" title="Màn sau">›</button></div>
     </div>

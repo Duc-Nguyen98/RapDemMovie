@@ -92,10 +92,14 @@ body:has(#viewer[open]) { overflow: hidden; }
 #stage { overflow: auto; position: relative; overscroll-behavior: contain; background-color: #111512; background-image: radial-gradient(#333a32 .8px,transparent .9px); background-size: 15px 15px; }
 #work-area { box-sizing: content-box; padding: 10px; margin: auto; }
 #sheet { position: relative; background: #151715; outline: 1px solid #5d6558; }
-#surface { position: absolute; left: 0; top: 0; transform-origin: 0 0; overflow: hidden; }
-.device-scroll { width: 100%; height: 100%; overflow: auto; scrollbar-width: thin; }
+#surface { position: absolute; left: 0; top: 0; overflow: hidden; }
+.device-scroll { width: 100%; height: 100%; overflow: hidden auto; scrollbar-width: none; }
+.device-scroll::-webkit-scrollbar { display: none; }
+.device-scroll.snapshot { display: grid; place-items: center; }
 .slice { position: relative; overflow: hidden; background: #101210; }
 .slice img { position: absolute; max-width: none; user-select: none; }
+#proof { margin-left: auto; }
+.view-foot { align-items: center; }
 #surface iframe { width: 100%; height: 100%; border: 0; background: white; display: block; }
 .view-foot { flex-wrap: wrap; border-top: 1px solid #3d443c; }
 .zoom output { min-width: 42px; text-align: center; font: 13px ui-monospace,monospace; }

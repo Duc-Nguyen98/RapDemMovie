@@ -1,0 +1,6 @@
+{
+  "name": "rap-dem-design-assets",
+  "private": true,
+  "scripts": { "hd": "node render-hd.cjs", "web-art": "node prepare-web-art.cjs" },
+  "devDependencies": { "playwright": "1.62.1", "sharp": "0.35.5" }
+}

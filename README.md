@@ -12,3 +12,7 @@ Bộ thiết kế tạm duyệt dành cho DEV và Designer gồm web xem phim V1
 | Triển khai và nghiệm thu | [Bảng Excel](docs/rap-dem-cms-v2/rap-dem_cms-v2_trien-khai-va-nghiem-thu.xlsx) · [Bộ CMS ngoại tuyến](docs/downloads/) |
 
 Prototype chạy trong trình duyệt bằng dữ liệu mẫu. Các hạng mục cần xác nhận với đối tác và kết quả nghiệm thu thực tế được theo dõi trong hồ sơ CMS.
+
+Trong trình xem web V18, **Bản dựng chữ nét** sử dụng nội dung trong đặc tả và hình cắt từ mẫu duyệt. Chọn **Đối chiếu PNG** để kiểm tra bố cục cùng kích thước thiết bị, hoặc **Ảnh gốc** để xem cả bảng thiết kế. Nút **1:1** đặt mỗi pixel ảnh đang xem vào một pixel vật lý của màn hình.
+
+Ảnh xem CMS và sơ đồ trong `docs/studio/hd` được chụp từ HTML ở mật độ 3×. Để cập nhật sau khi sửa nguồn, chạy `npm install` trong `tools`, sau đó `npx playwright install chromium` và `npm run hd`. Lệnh `npm run web-art` đồng bộ chữ và hình tham chiếu cho bản dựng V18.
