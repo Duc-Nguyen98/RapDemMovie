@@ -920,13 +920,13 @@
     },
     {
       "path": "index.html",
-      "bytes": 7934,
-      "sha256": "e3f29aa8265766e376745ae2066b87e4ebe75f8af044c588018d50b0736bd8ea"
+      "bytes": 7991,
+      "sha256": "0f4beee837d4fea50a7059bfe2001354ae35694ff39eac10c31382948c1111fe"
     },
     {
       "path": "gallery.html",
-      "bytes": 66042,
-      "sha256": "0eded5d7dedcf9a5f717441d652731e87154e765a6001da31378e566b88fdcf3"
+      "bytes": 67686,
+      "sha256": "eabb3830746918ff1f37f1b850bd9a0794a8017f7266e760cb099276ba10df89"
     },
     {
       "path": "README.md",

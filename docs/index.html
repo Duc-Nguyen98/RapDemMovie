@@ -2,67 +2,66 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#181613">
-  <title>Rạp Đêm · Thư viện thiết kế</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#171917">
+  <title>Rạp Đêm Studio · Thư viện thiết kế</title>
   <link rel="stylesheet" href="handoff.css">
+  <script defer src="studio/cms-index.js"></script>
+  <script defer src="studio/catalog.js"></script>
+  <script defer src="studio/library.js"></script>
+  <script defer src="studio/viewer.js"></script>
 </head>
 <body>
-  <header>
-    <div class="wrap masthead">
-      <a class="brand" href="#top">RẠP ĐÊM</a>
-      <nav aria-label="Điều hướng chính"><a href="#web">Web xem phim</a><a href="#flows">Sơ đồ</a><a href="#cms">CMS</a></nav>
-    </div>
-  </header>
-  <main id="top" class="wrap">
-    <section class="intro">
-      <h1>Thư viện thiết kế Rạp Đêm</h1>
-      <p>Bản tạm duyệt cho DEV và Designer. Xem giao diện theo thiết bị, theo dõi luồng phát hành phim từ CMS và thử các thao tác bằng dữ liệu mẫu.</p>
-    </section>
-    <section id="web">
-      <h2>Web xem phim <small>V18</small></h2>
-      <div class="cards">
-        <article>
-          <a class="cover" href="web-v18/images/rap-dem_home_desktop_v18.png"><img src="web-v18/images/rap-dem_home_desktop_v18.png" alt="Mở ảnh gốc trang chủ desktop"></a>
-          <h3>Trang chủ và modal</h3>
-          <ul><li><a href="web-v18/images/rap-dem_home_desktop_v18.png">Trang chủ desktop</a></li><li><a href="web-v18/images/rap-dem_home_tablet-mobile_v18.png">Trang chủ tablet và điện thoại</a></li><li><a href="web-v18/images/rap-dem_home_modal-responsive_v18.png">Modal trên ba thiết bị</a></li></ul>
-        </article>
-        <article>
-          <a class="cover" href="web-v18/images/rap-dem_watch_desktop_v18.png"><img src="web-v18/images/rap-dem_watch_desktop_v18.png" alt="Mở ảnh gốc màn xem phim desktop"></a>
-          <h3>Xem phim và quảng cáo</h3>
-          <ul><li><a href="web-v18/images/rap-dem_watch_desktop_v18.png">Xem phim desktop</a></li><li><a href="web-v18/images/rap-dem_watch_tablet-mobile_v18.png">Xem phim tablet và điện thoại</a></li><li><a href="web-v18/images/rap-dem_ads_desktop_viewports_v18.png">Quảng cáo khi cuộn trên desktop</a></li><li><a href="web-v18/images/rap-dem_ads_responsive_viewports_v18.png">Quảng cáo khi cuộn trên tablet và điện thoại</a></li></ul>
-        </article>
-        <article>
-          <a class="cover" href="web-v18/images/rap-dem_states_search-navigation_v18.png"><img src="web-v18/images/rap-dem_states_search-navigation_v18.png" alt="Mở ảnh kết quả tìm kiếm, danh sách thể loại và menu"></a>
-          <h3>Điều hướng và trạng thái</h3>
-          <ul><li><a href="web-v18/images/rap-dem_states_search-navigation_v18.png">Tìm kiếm, thể loại và menu</a></li><li><a href="web-v18/images/rap-dem_states_saved-player_v18.png">Phim đã lưu, đang tải và báo lỗi</a></li></ul>
-        </article>
+  <header class="mast"><div class="wrap mast-inner">
+    <a class="brand" href="./index.html" aria-label="Rạp Đêm Studio, trang đầu"><span class="brand-mark" aria-hidden="true">◧</span> Rạp Đêm <span class="studio-word">Studio</span></a>
+    <nav aria-label="Điều hướng"><a href="#web">Thư viện</a><a href="#downloads">Tài liệu bàn giao</a></nav>
+  </div></header>
+  <main>
+    <section class="hero"><div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> WEB V18 &nbsp;/&nbsp; CMS V2</p>
+        <h1>Thư viện thiết kế<br><em>Rạp Đêm.</em></h1>
+        <p class="lead">Duyệt giao diện web xem phim, đối chiếu thiết kế theo thiết bị và trải nghiệm bản mẫu CMS.</p>
+        <a class="primary" href="?view=home-desktop">Mở thiết kế trang chủ <b aria-hidden="true">↗</b></a>
       </div>
-      <div class="links"><a href="web-v18/index.html">Thư viện 9 ảnh gốc</a><a href="web-v18/contract/DEV-CONTRACT-V18.html">Đặc tả hành vi web</a><a href="web-v18/catalog-preview.html">Danh mục phim mẫu</a></div>
+      <a class="hero-art" href="?view=home-desktop" aria-label="Xem thiết kế trang chủ Rạp Đêm">
+        <div class="art-window"><div class="browser-bar"><i></i><i></i><i></i><span>rapdem / trang-chu</span></div><img alt="" src="studio/thumbs/home-desktop.webp"></div>
+        <div class="art-phone"><img alt="" src="studio/thumbs/home-phone.webp"></div>
+      </a>
+    </div></section>
+    <section class="wrap library" id="library" aria-labelledby="lib-title">
+      <div class="section-head"><h2 id="lib-title">Bộ thiết kế</h2><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" aria-label="Tìm màn hình trong bộ đang chọn" placeholder="Tìm màn hình…"></label></div>
+      <nav class="tabs" aria-label="Chọn bộ thiết kế"><a href="#web" data-group="web">Web xem phim</a><a href="#cms" data-group="cms">CMS quản trị</a><a href="#flows" data-group="flows">Sơ đồ luồng</a></nav>
+      <p class="sr" role="status" id="count"></p><div class="grid" id="cards"></div>
+      <button id="more" class="more" hidden>Xem thêm màn hình</button>
+      <noscript><p><a href="web-v18/index.html">Bộ ảnh web V18</a> · <a href="rap-dem-cms-v2/gallery.html">Bộ ảnh CMS</a> · <a href="rap-dem-cms-v2/index.html">Hồ sơ và sơ đồ</a></p></noscript>
     </section>
-    <section id="flows">
-      <h2>Sơ đồ vận hành</h2>
-      <div class="flow">
-        <a href="rap-dem-cms-v2/images/rap-dem_cms-v2_03-combined-flow.png"><img loading="lazy" src="rap-dem-cms-v2/images/rap-dem_cms-v2_03-combined-flow.png" alt="Mở sơ đồ tổng thể CMS, phát hành, web xem phim và báo cáo"></a>
-        <div><h3>Từ CMS đến người xem</h3><p>Theo dõi bản phim từ lúc biên tập và duyệt đến khi xuất hiện trên web. Sơ đồ tổng thể cũng thể hiện đường đi của dữ liệu quảng cáo và báo cáo đối tác.</p>
-          <ul><li><a href="rap-dem-cms-v2/images/rap-dem_cms-v2_01-viewer-flow.png">Luồng người xem</a></li><li><a href="rap-dem-cms-v2/images/rap-dem_cms-v2_02-cms-flow.png">Luồng công việc trong CMS</a></li><li><a href="rap-dem-cms-v2/images/rap-dem_cms-v2_03-combined-flow.png">Luồng kết nối CMS và web</a></li></ul>
-        </div>
+    <section id="downloads" class="wrap resources">
+      <h2>Tài liệu bàn giao</h2><div class="resource-grid">
+        <div><h3>Web xem phim</h3><a href="web-v18/contract/DEV-CONTRACT-V18.html">Đặc tả hành vi</a><a href="web-v18/catalog-preview.html">Danh mục phim mẫu</a><a href="web-v18/index.html">Bộ bàn giao web V18</a></div>
+        <div><h3>CMS quản trị</h3><a href="rap-dem-cms-v2/index.html">Hồ sơ CMS V2</a><a href="rap-dem-cms-v2/prototype/index.html">Mở prototype độc lập</a><a href="rap-dem-cms-v2/docs/11-decisions.html">Các điểm chờ xác nhận</a></div>
+        <div><h3>Tải về</h3><a download href="rap-dem-cms-v2/rap-dem_cms-v2_trien-khai-va-nghiem-thu.xlsx">Bảng triển khai và nghiệm thu · XLSX</a><a download href="downloads/rap-dem_cms-v2_handoff.zip">Bộ CMS · ZIP</a><a download href="downloads/rap-dem-cms-v2.rar">Bộ CMS gốc · RAR</a></div>
       </div>
-    </section>
-    <section id="cms">
-      <h2>CMS quản trị <small>V2</small></h2>
-      <div class="flow">
-        <a href="rap-dem-cms-v2/gallery.html"><img loading="lazy" src="rap-dem-cms-v2/images/rap-dem_cms-v2_dashboard_desktop.png" alt="Mở thư viện màn hình CMS"></a>
-        <div><h3>Khung màn hình và prototype</h3><p>Đối chiếu 43 màn hình trên desktop, tablet và điện thoại. Trong prototype, bạn có thể thử duyệt phim và đặt lịch quảng cáo. Tải lại trang để đặt lại dữ liệu mẫu.</p>
-          <div class="links"><a class="button" href="rap-dem-cms-v2/prototype/index.html">Thử prototype CMS</a><a href="rap-dem-cms-v2/gallery.html">Xem 137 ảnh giao diện</a></div>
-        </div>
-      </div>
-      <div class="links"><a href="rap-dem-cms-v2/index.html">Hồ sơ CMS đầy đủ</a><a href="rap-dem-cms-v2/docs/06-feature-catalog.html">Danh sách chức năng</a><a href="rap-dem-cms-v2/docs/09-api-permissions.html">API và phân quyền</a><a href="rap-dem-cms-v2/docs/11-decisions.html">Các điểm chờ chốt</a></div>
-    </section>
-    <section class="downloads">
-      <h2>Tải tài liệu</h2>
-      <div class="links"><a download href="rap-dem-cms-v2/rap-dem_cms-v2_trien-khai-va-nghiem-thu.xlsx">Bảng triển khai và nghiệm thu (.xlsx)</a><a download href="downloads/rap-dem-cms-v2.rar">Bộ CMS gốc (.rar)</a><a download href="downloads/rap-dem_cms-v2_handoff.zip">Bộ CMS (.zip)</a></div>
     </section>
   </main>
+  <dialog id="viewer" aria-labelledby="view-title">
+    <div id="viewer-shell">
+    <div class="view-head">
+      <div><div class="view-kicker" id="view-group"></div><h2 id="view-title"></h2></div>
+      <div class="actions"><button id="full" title="Toàn màn hình (F)">Toàn màn hình</button><button id="close" class="icon-button" aria-label="Đóng trình xem" title="Đóng (Esc)">×</button></div>
+    </div>
+    <div class="view-options"><div class="devices" id="devices" role="group" aria-label="Khung xem"></div>
+      <label id="scene-label" hidden>Trạng thái <select id="scene"></select></label>
+      <button id="live" aria-pressed="false" hidden>Thử tương tác</button>
+    </div>
+    <div id="stage" tabindex="0" aria-label="Vùng xem thiết kế, cuộn để xem chi tiết"><div id="work-area"><div id="sheet"><div id="surface"></div></div></div></div>
+    <div class="view-foot">
+      <div class="zoom" role="group" aria-label="Độ phóng đại"><button id="minus" class="icon-button" aria-label="Thu nhỏ" title="Thu nhỏ (−)">−</button><output id="percent"></output><button id="plus" class="icon-button" aria-label="Phóng to" title="Phóng to (+)">+</button><button id="fit" title="Vừa khung (0)">Vừa khung</button></div>
+      <span id="view-info"></span>
+      <div class="actions"><a id="original" download>Tải PNG</a><button id="prev" class="icon-button" aria-label="Màn trước" title="Màn trước">‹</button><button id="next" class="icon-button" aria-label="Màn sau" title="Màn sau">›</button></div>
+    </div>
+    <p class="sr" id="viewer-status" role="status"></p>
+    </div>
+  </dialog>
 </body>
 </html>
